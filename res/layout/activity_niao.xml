@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/act_physiology_root_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffffff" >
+
+    <RelativeLayout
+        android:id="@id/act_physiology_title_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffeeeeee"
+           >
+
+       
+       
+        
+         <TextView
+            android:id="@+id/targetWeightback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"   
+           
+            android:layout_centerVertical="true"
+            android:background="@drawable/back_btn_state"
+            android:textColor="#ffffff"
+            android:textSize="16dp" />
+        
+       <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:padding="10.0dip"
+            android:text="尿酮比对"
+            android:textColor="#ff24ced8"
+            android:textSize="@dimen/title_text_size" />
+       
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@id/act_physiology_weight_record_second_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="30.0dip"
+        android:layout_marginTop="20dp"
+        
+        android:layout_below="@id/act_physiology_title_layout" >
+
+        <TextView
+            android:id="@id/act_physiology_weight_record_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="尿酮记录表"
+            android:textColor="#ff666666" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@id/act_physiology_canvas_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffeeeeee"
+        android:layout_below="@id/act_physiology_weight_record_second_layout"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="135.0dip" >
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/shysiology_repeat" />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:layout_alignParentBottom="true"
+                android:background="#ff24cdd8" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:id="@id/act_physiology_canvas_layout_scroll"
+        android:layout_width="fill_parent"
+        android:layout_height="150.0dip"
+        android:layout_below="@id/act_physiology_weight_record_second_layout"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@id/act_physiology_canvas_image_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="10dip"
+                android:orientation="horizontal" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <RelativeLayout
+        android:id="@id/act_physiology_among_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="130.0dip"
+        android:layout_below="@id/act_physiology_canvas_layout_scroll"
+        android:layout_marginTop="15.0dip" >
+        
+        <TextView
+            android:id="@+id/niaotong_zhuyi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="请对照尿酮试纸上的颜色进行选色"
+            android:textColor="#ff24ced8"
+            android:layout_marginBottom="5dp"
+            android:textSize="16sp" />
+
+       <LinearLayout
+            android:id="@+id/tool_background_course"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/niaotong_zhuyi"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="#ffe5e5e5"
+                android:gravity="center"
+                android:orientation="vertical"                
+                android:paddingTop="10dp" >
+
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/niaotong_1" />
+
+                <CheckBox
+                    android:id="@+id/color1"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"  />
+            </LinearLayout>
+
+           <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="#ffe5e5e5"
+                android:gravity="center"
+                android:orientation="vertical"                    
+                android:paddingTop="10dp" >
+
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/niaotong_2" />
+
+                <CheckBox
+                    android:id="@+id/color2"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"  />
+            </LinearLayout>
+			<LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="#ffe5e5e5"
+                android:gravity="center"
+                android:orientation="vertical"                
+                android:paddingTop="10dp" >
+
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/niaotong_3" />
+
+                <CheckBox
+                    android:id="@+id/color3"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"  />
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="#ffe5e5e5"
+                android:gravity="center"
+                android:orientation="vertical"                
+                android:paddingTop="10dp" >
+
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/niaotong_4" />
+
+                <CheckBox
+                    android:id="@+id/color4"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"  />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <Button
+        android:id="@id/act_physiology_record_weight"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/act_physiology_among_layout"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/blue_btn_select"
+        android:gravity="center"
+        android:text="提交数据"
+        android:textColor="#ffffffff"
+        android:textSize="13.0dip" />
+    
+     
+</RelativeLayout>

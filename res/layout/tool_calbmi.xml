@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/add_userinfo_root_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#fffafafa"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_bg" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:padding="10.0dip"
+            android:text="BMI"
+            android:textColor="#ff24ced8"
+            android:textSize="@dimen/title_text_size" />
+
+        <Button
+            android:id="@+id/tool_standardweight_back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/back_btn_state" />
+
+        <TextView
+            android:id="@id/add_userinfo_next_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15.0dip"
+            android:text="计  算"
+            android:textColor="@color/title_right_text_selector"
+            android:textSize="18.0dip" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffffff"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="80.0dip"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:id="@id/add_userinfo_height_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="15.0dip"
+                            android:background="@drawable/regist_height" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="15.0dip"
+                            android:text="身高"
+                            android:textColor="#ff333333"
+                            android:textSize="18.0dip" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@id/add_userinfo_height_unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="20.0dip"
+                        android:text="(厘米)"
+                        android:textColor="#ff999999"
+                        android:textSize="16.0dip" />
+
+                    <EditText
+                        android:id="@id/add_userinfo_height_editText"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginRight="2.0dip"
+                        android:layout_toLeftOf="@id/add_userinfo_height_unit"
+                        android:layout_toRightOf="@id/add_userinfo_height_layout"
+                        android:background="#00000000"
+                        android:gravity="right|center"
+                        android:hint="请输入身高"
+                        android:inputType="number"
+                        android:maxLength="3"
+                        android:textColor="#ff999999"
+                        android:textSize="18.0dip" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.0dip"
+                    android:background="#ffbfbfbf" />
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="80.0dip"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:id="@id/add_userinfo_weight_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="15.0dip"
+                            android:background="@drawable/regist_weight" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="15.0dip"
+                            android:text="体重"
+                            android:textColor="#ff333333"
+                            android:textSize="18.0dip" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@id/add_userinfo_weight_unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="20.0dip"
+                        android:text="(公斤)"
+                        android:textColor="#ff999999"
+                        android:textSize="16.0dip" />
+
+                    <EditText
+                        android:id="@id/add_userinfo_weight_editText"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginRight="2.0dip"
+                        android:layout_toLeftOf="@id/add_userinfo_weight_unit"
+                        android:layout_toRightOf="@id/add_userinfo_weight_layout"
+                        android:background="#00000000"
+                        android:gravity="right|center"
+                        android:hint="请输入体重"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5"
+                        android:textColor="#ff999999"
+                        android:textSize="18.0dip" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.0dip"
+                    android:background="#ffbfbfbf" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="身体质量指数(BMI)："
+                android:textColor="#ff24ced8"
+                android:textSize="18.0dip" />
+
+            <TextView
+                android:id="@+id/tool_standard_weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="轻体重:BMI&lt;18.5  健康:18.5&lt;BMI&lt;24"
+        android:textColor="#ff777777"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="超   重:24&lt;BMI&lt;28  肥胖:28&lt;BMI&lt;+~"
+        android:textColor="#ff777777"
+        android:textSize="16sp" />
+
+</LinearLayout>

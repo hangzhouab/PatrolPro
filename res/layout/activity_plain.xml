@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/add_userinfo_root_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#fffafafa"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_bg" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:padding="10.0dip"
+            android:text="瘦身计划"
+            android:textColor="#ff24ced8"
+            android:textSize="@dimen/title_text_size" />
+
+        <TextView
+            android:id="@+id/add_userinfo_back_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15.0dip"
+            android:text="上一步"
+            android:textColor="@color/title_right_text_selector"
+            android:textSize="@dimen/value_text_size" />
+
+        <TextView
+            android:id="@+id/add_userinfo_next_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15.0dip"
+            android:text="提交"
+            android:textColor="@color/title_right_text_selector"
+            android:textSize="@dimen/value_text_size" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffffff"
+                android:orientation="vertical" >
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.0dip"
+                    android:background="#ffbfbfbf" />
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="80.0dip"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:id="@id/add_userinfo_weight_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="15.0dip"
+                            android:background="@drawable/regist_weight" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="15.0dip"
+                            android:text="当前体重"
+                            android:textColor="#ff333333"
+                            android:textSize="18.0dip" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@id/add_userinfo_weight_unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="20.0dip"
+                        android:text="(公斤)"
+                        android:textColor="#ff999999"
+                        android:textSize="16.0dip" />
+
+                    <EditText
+                        android:id="@id/add_userinfo_weight_editText"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginRight="2.0dip"
+                        android:layout_toLeftOf="@id/add_userinfo_weight_unit"
+                        android:layout_toRightOf="@id/add_userinfo_weight_layout"
+                        android:background="#00000000"
+                        android:gravity="right|center"
+                        android:hint="请输入体重"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5"
+                        android:textColor="#ff999999"
+                        android:textSize="18.0dip" />
+
+                </RelativeLayout>
+				<View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.0dip"
+                    android:background="#ffbfbfbf" />
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="80.0dip"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:id="@id/add_userinfo_weight_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="15.0dip"
+                            android:background="@drawable/regist_weight" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="15.0dip"
+                            android:text="目标体重"
+                            android:textColor="#ff333333"
+                            android:textSize="18.0dip" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@id/add_userinfo_weight_unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="20.0dip"
+                        android:text="(公斤)"
+                        android:textColor="#ff999999"
+                        android:textSize="16.0dip" />
+
+                    <EditText
+                        android:id="@+id/add_userinfo_weighttarget_editText"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginRight="2.0dip"
+                        android:layout_toLeftOf="@id/add_userinfo_weight_unit"
+                        android:layout_toRightOf="@id/add_userinfo_weight_layout"
+                        android:background="#00000000"
+                        android:gravity="right|center"
+                        android:hint="请输入体重"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5"
+                        android:textColor="#ff999999"
+                        android:textSize="18.0dip" />
+
+                </RelativeLayout>
+                
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.0dip"
+                    android:background="#ffbfbfbf" />
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="80.0dip"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:id="@id/add_userinfo_height_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="15.0dip"
+                             android:background="@drawable/regist_sex"  />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="15.0dip"
+                            android:text="瘦身周期"
+                            android:textColor="#ff333333"
+                            android:textSize="18.0dip" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@id/add_userinfo_height_unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="20.0dip"
+                        android:text="(天数)"
+                        android:textColor="#ff999999"
+                        android:textSize="16.0dip" />
+
+                    <EditText
+                        android:id="@+id/add_userinfo_tian_editText"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginRight="2.0dip"
+                        android:layout_toLeftOf="@id/add_userinfo_height_unit"
+                        android:layout_toRightOf="@id/add_userinfo_height_layout"
+                        android:background="#00000000"
+                        android:gravity="right|center"
+                        android:hint="所需天数"
+                        android:inputType="number"
+                        android:maxLength="3"
+                        android:textColor="#ff999999"
+                        android:textSize="18.0dip" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.0dip"
+                    android:background="#ffbfbfbf" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#ffee3333"
+        android:textSize="16sp"
+        android:text="为了您的健康，每周减重不要超过1公斤" />
+
+</LinearLayout>

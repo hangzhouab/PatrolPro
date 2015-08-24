@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_bg"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@id/act_courseSearch_back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5.0dip"
+            android:background="@drawable/back_btn_state" />
+
+        <EditText
+            android:id="@id/act_coursekeysearch_key_et"
+            android:layout_width="0.0dip"
+            android:layout_height="40.0dip"
+            android:layout_gravity="center"
+            android:layout_weight="1.0"
+            android:background="@drawable/edit_bg"
+            android:hint="请输入查询关键字"
+            android:padding="10.0dip"
+            android:textSize="@dimen/value_text_size" />
+
+        <Button
+            android:id="@id/act_recordCal_commit_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginRight="10.0dip"
+            android:background="@drawable/search_btn_state"
+            android:textColor="@drawable/color_search_text"
+            android:textSize="@dimen/value_text_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal" >
+
+        <ListView
+            android:id="@id/act_courseSearch_condition_lv"
+            android:layout_width="100.0dip"
+            android:layout_height="fill_parent"
+            android:background="#ffd0d0e0"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="#ff898989"
+            android:dividerHeight="1.0dip"
+            android:listSelector="@android:color/transparent" />
+		
+       	 <LinearLayout
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:id="@+id/act_courseSearch_data_ly"
+            android:orientation="vertical" >
+
+            <ListView
+                android:id="@id/act_courseSearch_data_lv"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_marginBottom="10.0dip"
+                android:layout_weight="1.0"
+                android:cacheColorHint="#00000000"
+                android:divider="#ffbfbfbf"
+                android:dividerHeight="1.0dip" />
+        </LinearLayout>
+		
+       	 <ListView
+       	     android:visibility="gone"
+            android:id="@+id/act_courseSearch_result"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#ffd0d0e0"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="#ffbfbfbf"
+            android:listSelector="@android:color/transparent" />
+       	 
+         <LinearLayout
+            android:id="@+id/act_couseSearch_loading"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:visibility="gone"            
+            android:orientation="horizontal" >
+            <ProgressBar            
+             android:layout_width="40dp"
+             android:layout_height="40dp" />
+	        <TextView	    
+	            android:id="@+id/act_courseSearch_loadingtext"        
+	            android:layout_width="wrap_content"
+	            android:layout_height="50dp"
+	            android:gravity="center"
+	            android:text="正在加载。。。"
+	             />
+        </LinearLayout>
+
+         
+
+    </LinearLayout>
+
+</LinearLayout>

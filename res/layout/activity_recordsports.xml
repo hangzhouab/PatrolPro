@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_bg" >
+
+        <Button
+            android:id="@id/act_recordCal_back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/back_btn_state" />
+
+        <TextView
+            android:id="@id/act_recordCal_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="记录运动"
+            android:textColor="@color/titleTextColor"
+            android:textSize="@dimen/title_text_size" />
+
+        <TextView
+            android:id="@id/act_recordCal_commit_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10.0dip"
+            android:padding="10.0dip"
+            android:text="提交"
+            android:textSize="18sp"
+            android:textColor="@drawable/shoppingmall_top_text_state" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50.0dip"
+        android:orientation="horizontal"
+        android:padding="10.0dip" >
+
+        <TextView
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1.0"
+            android:text="运动项目:"
+            android:textColor="@color/textColor"
+            android:textSize="16.0dip" />
+
+        <TextView
+            android:id="@id/act_recordCal_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+           
+            android:textColor="@color/titleTextColor"
+            android:textSize="16.0dip" />
+    </LinearLayout>
+
+    <include layout="@layout/title_line" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50.0dip"
+        android:orientation="horizontal"
+        android:padding="10.0dip" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="运动时间:"
+            android:textColor="@color/textColor"
+            android:textSize="16.0dip" />
+
+        <EditText
+            android:id="@id/act_recordCal_amount_et"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1.0"
+            android:background="@android:color/transparent"
+            android:gravity="right"
+            android:inputType="number"
+            android:hint="请输入运动时间"
+            android:textColor="@color/textColor"
+            android:textSize="16.0dip" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5.0dip"
+            android:text="分"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/value_text_size" />
+    </LinearLayout>
+
+    <include layout="@layout/title_line" />
+
+</LinearLayout>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/add_userinfo_root_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#fffafafa"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_bg" >
+
+        <TextView
+            android:id="@+id/yys_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:padding="10.0dip"
+            android:text="简介"
+            android:textColor="#ff24ced8"
+            android:textSize="@dimen/title_text_size" />
+
+        <Button
+            android:id="@+id/tool_standardweight_back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/back_btn_state" />
+
+        <TextView
+            android:id="@+id/yys_zixun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15.0dip"
+            android:text="咨   询"
+            android:textColor="@color/title_right_text_selector"
+           android:textSize="18.0dip"/>
+    </RelativeLayout>
+
+    <ScrollView
+        
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/yys_image"     
+                 android:layout_marginTop="20dp"           
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/yys_server_body" />
+
+            <TextView
+                android:id="@+id/yys_dengji"
+                android:layout_marginTop="30dp"
+                android:textColor="#ff24ced8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="国家二级" />
+
+            <TextView
+                android:layout_marginLeft="20dp"
+         
+                android:layout_marginRight="20dp"
+                android:id="@+id/yys_jianjie"
+                android:layout_marginTop="20dp"
+                android:textSize="18sp"
+                android:textColor="#ff555555"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

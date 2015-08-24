@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffffff"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@id/act_setting_title_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffeeffee" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:padding="10.0dip"
+            android:id="@+id/biaoti"
+            android:text="非药物治疗营养干预三高领导品牌"
+            android:textColor="#ffee6868"
+            android:textSize="18sp" />
+       
+        
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dip"
+        android:layout_weight="1.0" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="15.0dip"
+            android:orientation="vertical" >
+            <ImageView
+                android:layout_width="100.0dip"
+                android:layout_height="100.0dip"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/erweima" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10.0dip"
+                android:text="诺利康减重减脂管家"
+                android:textColor="@android:color/black"
+                android:textSize="20.0dip" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="30.0dip"
+                android:orientation="horizontal" >
+ 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="版本"
+                        android:textColor="#ff666666"
+                        android:textSize="@dimen/value_text_size" />
+
+                    <TextView
+                        android:id="@id/setting_about_version_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5.0dip"
+                        android:text="1.0"
+                        android:textColor="#ff666666"
+                        android:textSize="@dimen/value_text_size" />
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@id/linearLayout2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/shoppingmall_index_bg_gray"
+            android:orientation="vertical"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="10.0dip" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20.0dip"
+                android:layout_marginTop="20.0dip"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="2.0dip"
+                    android:paddingRight="10.0dip" >
+
+                    <TextView
+                        android:id="@id/setting_about_website_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="核心理念"
+                        android:textColor="#ff24cdd8"
+                        android:textSize="18.0dip" />
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="1.0dip"
+                        android:layout_alignLeft="@id/setting_about_website_textView"
+                        android:layout_alignRight="@id/setting_about_website_textView"
+                        android:layout_below="@id/setting_about_website_textView"
+                        android:background="#ff24cdd8" />
+                </RelativeLayout>
+					<View
+                    android:layout_width="1.0dip"
+                    android:layout_height="25.0dip"
+                    android:background="#ffbfbfbf" />
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10.0dip"
+                    android:paddingRight="10.0dip" >
+
+                    <TextView
+                        android:id="@+id/setting_about_website_textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="营养师在线"
+                        android:textColor="#ffee5555"
+                        android:textSize="18.0dip" />
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="1.0dip"
+                        android:layout_alignLeft="@id/setting_about_website_textView3"
+                        android:layout_alignRight="@id/setting_about_website_textView3"
+                        android:layout_below="@id/setting_about_website_textView3"
+                        android:background="#ffee5555" />
+                </RelativeLayout>
+                
+                <View
+                    android:layout_width="1.0dip"
+                    android:layout_height="25.0dip"
+                    android:background="#ffbfbfbf" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10.0dip"
+                    android:paddingRight="2.0dip" >
+
+                    <TextView
+                        android:id="@id/setting_about_weibo_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="浏览官网"
+                        android:textColor="#ff46ee46"
+                        android:textSize="18.0dip" />
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="1.0dip"
+                        android:layout_alignLeft="@id/setting_about_weibo_textView"
+                        android:layout_alignRight="@id/setting_about_weibo_textView"
+                        android:layout_below="@id/setting_about_weibo_textView"
+                        android:background="#ff46ee46" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@id/setting_about_version_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10.0dip"
+                android:text="香港诺利康健康干预集团有限公司"
+                android:textColor="#ff666666"
+                android:textSize="@dimen/value_text_size" />
+
+            <TextView
+                android:id="@id/setting_about_copyright_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Copyright © 2014 NuoLiKang Health"
+                android:textColor="#ff999999"
+                android:textSize="10.0sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10.0dip"
+                android:text="All Rights Reserved"
+                android:textColor="#ff999999"
+                android:textSize="10.0sp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="40.0dip"
+            android:layout_above="@id/linearLayout2"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="5.0dip"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:id="@id/weixinLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/weixin_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5.0dip"
+                    android:text="微信: "
+                    android:textColor="#ff666666"
+                    android:textSize="@dimen/value_text_size" />
+
+                <TextView
+                    android:id="@id/setting_about_weixin_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5.0dip"
+                    android:text="nlk759"
+                    android:textColor="#ff666666"
+                    android:textSize="@dimen/value_text_size" />
+                 <ImageView
+                    android:layout_width="26dip"
+                    android:layout_height="25dip"
+                    android:layout_marginLeft="18dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/telphone" />
+
+                <TextView
+                    android:id="@id/setting_about_weixin_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5.0dip"
+                    android:text="0571-87073929"
+                    android:textColor="#ff666666"
+                    android:textSize="@dimen/value_text_size" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

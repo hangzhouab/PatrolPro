@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android_custom="http://schemas.android.com/apk/res/com.ab.health"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <RelativeLayout
+        android:background="#aaeeff"
+        android:layout_width="match_parent"
+        android:paddingBottom="50dp"
+    android:layout_height="wrap_content" >
+	 <com.ab.health.view.RoundProgressBar
+        android:id="@+id/FoodProgressBar"
+        android:layout_width="110dip"
+        android:layout_height="110dip"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="130dp"        
+        android_custom:roundColor="#dddddd"
+        android_custom:roundProgressColor="#3388dd"
+        android_custom:textColor="#9A32CD"
+        android_custom:roundWidth="8dip"        
+        android_custom:textSize="18sp" />
+
+	 <TextView
+	     android:id="@+id/textView2"
+	     android:layout_width="wrap_content"
+	     android:layout_height="wrap_content"
+	     android:layout_alignParentTop="true"
+	     android:layout_marginLeft="16dp"
+	     android:layout_marginTop="64dp"
+	     android:layout_toRightOf="@+id/FoodProgressBar"
+	     android:background="#ffffff"
+	     android:text="当前体重" />
+
+	 <TextView
+	     android:id="@+id/textView1"
+	     android:layout_width="wrap_content"
+	     android:layout_height="wrap_content"
+	     android:layout_alignBaseline="@+id/textView2"
+	     android:layout_alignBottom="@+id/textView2"
+	     android:layout_marginRight="21dp" 
+	     android:layout_toLeftOf="@+id/FoodProgressBar"
+	     android:background="#ffffff"
+	     android:text="目标体重" />
+	 
+	 </RelativeLayout>
+
+	 <Button
+	     android:id="@+id/button2"
+	     android:layout_width="wrap_content"
+	     android:layout_height="wrap_content"
+	     android:layout_alignParentBottom="true"
+	     android:layout_alignParentRight="true"
+	     android:layout_marginBottom="132dp"
+	     android:layout_marginRight="72dp"
+	     android:text="查询" />
+
+	 <Button
+	     android:id="@+id/button1"
+	     android:layout_width="wrap_content"
+	     android:layout_height="wrap_content"
+	     android:layout_alignBaseline="@+id/button2"
+	     android:layout_alignBottom="@+id/button2"
+	     android:layout_alignParentLeft="true"
+	     android:layout_marginLeft="72dp"
+	     android:text="记录" />
+	
+</RelativeLayout>

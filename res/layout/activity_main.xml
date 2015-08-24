@@ -1,0 +1,141 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffdddddd" >
+
+   
+    
+    <RelativeLayout
+        android:id="@id/titlebar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ffffffff" >
+
+        <TextView
+            android:id="@+id/titlebar_home_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="今天热量"
+            android:textColor="#ff24cdd8"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@id/bottombar_home"
+            android:layout_width="30dp"
+            android:layout_height="28dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/title_people" />
+
+        <Button
+            android:id="@+id/bottombar_gonggao"
+            android:layout_width="33dp"
+            android:layout_height="28dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            
+            android:background="@drawable/title_setting" />
+    </RelativeLayout>
+
+    <ViewFlipper
+        android:id="@+id/content_flipper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/titlebar_layout"
+        android:layout_marginBottom="66dp"
+        android:layout_marginTop="1dp"
+        android:background="#ffffffff" >
+    </ViewFlipper>
+
+    <LinearLayout
+        android:id="@id/bottombar_title"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_alignParentBottom="true"
+        android:background="#ffffffff"
+        android:baselineAligned="false"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/bottom_record"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="#ff46cdd8"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/bottombar_record"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/title_food" />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"                    
+                    android:text="热量" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bottom_tool"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/bottombar_tool"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/title_sports" />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="工具" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bottom_bbs"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/bottombar_bbs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/title_bbs2" />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="记录" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bottom_about"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@id/bottombar_about"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/title_server" />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="服务" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

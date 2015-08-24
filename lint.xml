@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="ContentDescription">
+        <ignore path="res/layout/activity_physiology.xml" />
+        <ignore path="res/layout/activity_setting.xml" />
+        <ignore path="res/layout/activity_setting_about.xml" />
+    </issue>
+    <issue id="HardcodedText">
+        <ignore path="res/layout/activity_fill_body_info.xml" />
+    </issue>
+    <issue id="UselessParent">
+        <ignore path="res/layout/activity_physiology.xml" />
+        <ignore path="res/layout/activity_setting_about.xml" />
+    </issue>
+</lint>

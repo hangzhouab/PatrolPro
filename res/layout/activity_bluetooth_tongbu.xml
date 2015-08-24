@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_bg" >
+
+        <Button
+            android:id="@id/act_recordCal_back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/back_btn_state" />
+
+        <TextView
+            android:id="@id/act_recordCal_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="同步数据"
+            android:textColor="@color/titleTextColor"
+            android:textSize="@dimen/title_text_size" />
+
+        <TextView
+            android:id="@+id/connection_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10.0dip"
+            android:padding="10.0dip"
+            android:text="@string/disconnected"
+            android:textColor="@drawable/shoppingmall_top_text_state"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <include layout="@layout/title_line" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#CFD0D2"
+         >
+        
+       
+        
+        <Button 
+            android:id="@+id/tongbu"
+            android:layout_width="180dp"
+            android:layout_centerInParent="true"
+            android:text="同     步"
+            android:textSize="20sp"
+            android:background="@drawable/tongbu2"            
+            android:layout_height="180dp"/>
+        
+         <ImageView  
+             android:id="@+id/tongbubeijing"
+            android:layout_width="250dp"
+            android:layout_centerInParent="true"
+            
+            android:src="@drawable/tongbubeijing2"
+            android:layout_height="250dp"/>
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="从上次同步数据到现在"
+            />
+    </RelativeLayout>
+
+</LinearLayout>

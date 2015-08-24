@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_bg" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:padding="10.0dip"
+            android:text="社区分享"
+            android:textColor="#ff24ced8"
+            android:textSize="@dimen/title_text_size" />
+
+        <Button
+            android:id="@+id/tool_standardweight_back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/back_btn_state" />
+        <TextView
+            android:id="@+id/discuz_xie"
+            android:layout_width="30dp"
+            android:background="@drawable/discuz_xie"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15.0dip" />
+
+        
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"     
+        android:background="#ffdddddd"   
+        android:orientation="horizontal" >
+        <android.support.v4.widget.SwipeRefreshLayout  
+	        android:id="@+id/swipe_ly"  
+	        android:layout_width="match_parent"  
+	        android:layout_height="match_parent" >  
+	        <ListView
+	            android:id="@id/act_courseSearch_data_lv"
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent"
+	            android:layout_marginBottom="10.0dip"            
+	            android:cacheColorHint="#00000000"
+	            android:divider="#ffbfbfbf"
+	            android:dividerHeight="1.0dip" />
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </LinearLayout>
+
+</LinearLayout>

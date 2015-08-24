@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffffff"
+    android:clickable="true"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@id/setting_title_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_bg" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:padding="10.0dip"
+            android:text="设置"
+            android:textColor="#ff24ced8"
+            android:textSize="@dimen/title_text_size" />
+
+        <Button
+            android:id="@id/setting_back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="0.0dip"
+            android:background="@drawable/back_btn_state" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/setting_title_layout" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@id/setting_general_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="50.0dip"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="0.0dip"
+                android:background="@drawable/space_white_state" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20.0dip"
+                    android:text="通用设置"
+                    android:textColor="#ff333333"
+                    android:textSize="@dimen/value_text_size" />
+
+                <ImageView
+                    android:id="@id/setting_general_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20.0dip"
+                    android:background="@drawable/mm_submenu_normal" />
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.0dip"
+                    android:layout_alignParentBottom="true"
+                    android:background="#ffbfbfbf" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@id/setting_share_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="50.0dip"
+                android:layout_below="@id/setting_general_layout"
+                android:layout_marginTop="0.0dip"
+                android:background="@drawable/space_white_state" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20.0dip"
+                    android:text="给我评分"
+                    android:textColor="#ff333333"
+                    android:textSize="@dimen/value_text_size" />
+
+                <ImageView
+                    android:id="@id/setting_share_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20.0dip"
+                    android:background="@drawable/mm_submenu_normal" />
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.0dip"
+                    android:layout_alignParentBottom="true"
+                    android:background="#ffbfbfbf" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@id/setting_checkversion_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="50.0dip"
+                android:layout_below="@id/setting_share_layout"
+                android:layout_marginTop="0.0dip"
+                android:background="@drawable/space_white_state" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20.0dip"
+                    android:text="版本检测"
+                    android:textColor="#ff333333"
+                    android:textSize="@dimen/value_text_size" />
+
+                <ImageView
+                    android:id="@id/setting_share_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20.0dip"
+                    android:background="@drawable/mm_submenu_normal" />
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.0dip"
+                    android:layout_alignParentBottom="true"
+                    android:background="#ffbfbfbf" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@id/setting_feedback_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="50.0dip"
+                android:layout_below="@id/setting_checkversion_layout"
+                android:layout_marginTop="0.0dip"
+                android:background="@drawable/space_white_state" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20.0dip"
+                    android:text="意见反馈"
+                    android:textColor="#ff333333"
+                    android:textSize="@dimen/value_text_size" />
+
+                <ImageView
+                    android:id="@id/setting_feedback_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20.0dip"
+                    android:background="@drawable/mm_submenu_normal" />
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.0dip"
+                    android:layout_alignParentBottom="true"
+                    android:background="#ffbfbfbf" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@id/setting_about_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="50.0dip"
+                android:layout_below="@id/setting_feedback_layout"
+                android:layout_marginTop="0.0dip"
+                android:background="@drawable/space_white_state" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20.0dip"
+                    android:text="关于我们"
+                    android:textColor="#ff333333"
+                    android:textSize="@dimen/value_text_size" />
+
+                <ImageView
+                    android:id="@id/setting_about_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20.0dip"
+                    android:background="@drawable/mm_submenu_normal" />
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.0dip"
+                    android:layout_alignParentBottom="true"
+                    android:background="#ffbfbfbf" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

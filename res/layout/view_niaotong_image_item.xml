@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/act_physiology_canvas_root_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    
+    android:background="#00000000" >
+
+    <TextView
+        android:id="@id/act_physiology_physiology_date"
+        android:layout_width="wrap_content"
+        android:layout_height="15.0dip"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ff24cdd8"        
+        android:textSize="11dip" />
+
+    <RelativeLayout
+        android:id="@id/act_physiology_canvas_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/act_physiology_physiology_date"
+        android:layout_marginLeft="15dp"
+        android:layout_centerHorizontal="true" >
+
+        <TextView
+            android:id="@id/act_physiology_canvas_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"            
+            
+            android:textColor="#ff24cdd8" />
+
+        <ImageView
+            android:id="@id/act_physiology_physiology_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/act_physiology_canvas_weight"
+            android:layout_centerHorizontal="true"
+             />
+
+        <ImageView
+            android:id="@id/act_physiology_physiology_image_line"
+            android:layout_width="2.0dip"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/act_physiology_physiology_image"
+            android:layout_centerHorizontal="true"
+            android:background="#fff9dcdc" />
+        
+        
+    </RelativeLayout>
+
+</RelativeLayout>

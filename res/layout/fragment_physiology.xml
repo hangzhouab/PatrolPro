@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/act_physiology_root_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffffff" >
+
+    <RelativeLayout
+        android:id="@id/act_physiology_title_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ff24ced8"
+         >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:padding="10.0dip"
+            android:text=""
+            
+            android:textColor="#ffffff"
+            android:textSize="16dp" />
+        <TextView
+            android:id="@+id/targetWeightText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            
+            
+            android:text="目标体重："
+            android:background="#ff24ced8"
+            android:textColor="#ffffff"
+            android:textSize="16dp" />
+        
+         <TextView
+            android:id="@+id/targetWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"   
+            android:layout_toRightOf="@+id/targetWeightText"        
+            android:layout_centerVertical="true"
+            android:text="70"
+            android:background="#ff24ced8"
+            android:textColor="#ffffff"
+            android:textSize="16dp" />
+        
+        <TextView
+            android:id="@+id/changefitness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:padding="10.0dip"
+            android:text="更改瘦身计划"
+            android:background="#ff24ced8"
+            android:textColor="#ffffff"
+            android:textSize="16dp" />
+
+       
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@id/act_physiology_weight_record_second_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="30.0dip"
+        android:layout_below="@id/act_physiology_title_layout" >
+
+        <TextView
+            android:id="@id/act_physiology_weight_record_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="体重记录表(kg)"
+            android:textColor="#ff666666" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@id/act_physiology_canvas_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/act_physiology_weight_record_second_layout"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="135.0dip" >
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/shysiology_repeat" />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:layout_alignParentBottom="true"
+                android:background="#ff24cdd8" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:id="@id/act_physiology_canvas_layout_scroll"
+        android:layout_width="fill_parent"
+        android:layout_height="150.0dip"
+        android:layout_below="@id/act_physiology_weight_record_second_layout"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@id/act_physiology_canvas_image_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="10dip"
+                android:orientation="horizontal" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <RelativeLayout
+        android:id="@id/act_physiology_among_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="130.0dip"
+        android:layout_below="@id/act_physiology_canvas_layout_scroll"
+        android:layout_marginTop="5.0dip" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="75.0dip"
+            android:layout_marginRight="75.0dip" >
+
+            <EditText
+                android:id="@id/act_physiology_weight_text"
+                android:layout_width="90.0dip"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20.0dip"
+                android:background="#00000000"
+                android:gravity="right"
+                android:inputType="numberDecimal"
+                android:maxLength="5"
+                android:textColor="#ff24cdd8"
+                android:textSize="25.0dip" />
+
+            <ImageView
+                android:id="@id/act_physiology_weight_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/act_physiology_weight_text"
+                android:background="@drawable/act_physiology_weight_image" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/act_physiology_weight_image"
+                android:layout_marginTop="2.0dip"
+                android:layout_toRightOf="@id/act_physiology_weight_image"
+                android:text="体重(kg)"
+                android:textColor="#ff333333" />
+
+            <ImageView
+                android:id="@id/act_physiology_weight_image_corner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/act_physiology_weight_image"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="2.0dip"
+                android:background="@drawable/act_physiology_weight_image_corner" />
+
+            <ImageView
+                android:id="@id/act_physiology_weight_baseline"
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:layout_below="@id/act_physiology_weight_image"
+                android:background="#ff24cdd8" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10.0dip"
+            android:text="您的体型"
+            android:textColor="#ff999999" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10.0dip"
+            android:text="BMI值"
+            android:textColor="#ff999999" />
+
+        <TextView
+            android:id="@id/act_physiology_your_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="22.0dip"
+            android:layout_marginTop="18.0dip"
+            android:text="无"
+            android:textColor="#ff666666"
+            android:textSize="17.0dip" />
+
+        <TextView
+            android:id="@id/act_physiology_your_BMI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="10.0dip"
+            android:layout_marginTop="18.0dip"
+            android:text="0.0"
+            android:textColor="#ff666666"
+            android:textSize="17.0dip" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@id/act_physiology_record_weight"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/act_physiology_among_layout"
+        
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/blue_btn_select"
+        android:gravity="center"
+        android:text="保存数据"
+        android:textColor="#ffffffff"
+        android:textSize="13.0dip" />
+    
+     
+</RelativeLayout>

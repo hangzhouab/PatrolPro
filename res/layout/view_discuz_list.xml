@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:background="@drawable/msg_item_state"
+    android:orientation="vertical"
+    android:padding="15dp" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/discuz_icon"
+            android:layout_width="30.0dip"
+            android:layout_height="30.0dip"
+            android:focusable="false"
+            android:scaleType="fitXY"
+            android:src="@drawable/gonggaoitem4" />
+
+        <TextView
+            android:id="@+id/discuz_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:layout_toRightOf="@+id/discuz_icon"
+            android:text="吴邦国"
+            android:textColor="#ff224499"
+            android:textSize="@dimen/value_text_size" />
+
+        <TextView
+            android:id="@+id/discuz_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="9dp"
+            android:text="今天11：20"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/discuz_pinglun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+           
+            android:text=""
+            android:textColor="@android:color/darker_gray"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="43dp"
+            android:orientation="vertical" >
+
+            <TextView 
+                android:id="@+id/discuz_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="二十国集团是开展国际经济合作的主要论坛，在促进世界经济稳定和增长方去几年，在我们共同努力下，世界经济逐步走出低谷，不断朝好的方向发展。"
+                android:textSize="@dimen/value_text_size" />
+
+            <LinearLayout
+                android:id="@+id/discuz_reply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"   
+                android:orientation="vertical" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"  
+                    android:layout_marginTop="5dp"
+                    android:textColor="@android:color/darker_gray"
+                   
+                    android:textSize="@dimen/value_text_size" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>
