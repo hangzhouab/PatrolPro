@@ -325,12 +325,9 @@ public class MainActivity extends Activity {
 		SharedPreferences appSetting = getSharedPreferences(
 				AppSetting.getSettingFile(), MODE_PRIVATE);
 		Editor editor = appSetting.edit();
-		if (appSetting.getBoolean("isFirstUse", true)
-				|| appSetting.getBoolean("NoRegister", true)) {
-			editor.putBoolean("isFirstUse", false);
-			editor.commit();
+		if (appSetting.getBoolean("NoRegister", true)) {			
 			Intent intent = new Intent();
-			intent.setClass(this, GuideActivity.class);
+			intent.setClass(this, LoginActivity.class);
 			startActivity(intent);
 		} else {
 			isback = true;
