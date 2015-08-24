@@ -19,7 +19,7 @@ public class AdStartActivity extends Activity {
 	Bitmap pngBM;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO 自动生成的方法存根
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_ad_start);
 		adImage = (ImageView) findViewById(R.id.start_ad);	
@@ -36,13 +36,13 @@ public class AdStartActivity extends Activity {
 		
 		@Override
 		protected Integer doInBackground(Object... params) {
-			try {
-    			URL picUrl = new URL(AppSetting.getRootURL()+ "ad.png");
-    			pngBM = BitmapFactory.decodeStream(picUrl.openStream());     			
-    			
-    		}catch (Exception e){ 
-    			e.printStackTrace();
-    		}    			
+//			try {
+//    			URL picUrl = new URL(AppSetting.getRootURL()+ "ad.png");
+//    			pngBM = BitmapFactory.decodeStream(picUrl.openStream());     			
+//    			
+//    		}catch (Exception e){ 
+//    			e.printStackTrace();
+//    		}    			
 			return 1;
 		}
 
