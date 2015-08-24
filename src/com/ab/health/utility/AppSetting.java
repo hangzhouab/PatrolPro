@@ -1,5 +1,11 @@
 package com.ab.health.utility;
 
+import com.ab.health.model.Guarder;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+
 public class AppSetting {
 	private  final static String url="http://www.lsanbang.com/fitness/";
 	private  final static String settingfile ="settingbh";
@@ -14,6 +20,7 @@ public class AppSetting {
 		return settingfile;
 	}
 	
+	
 	public static int getAndroidSDKVersion() { 
 	   int version = 0; 
 	   try { 
@@ -22,6 +29,22 @@ public class AppSetting {
 	     e.toString();
 	   } 
 	   return version; 
+	}
+	
+	public static void  writeAppConfig(Context ctx, Guarder guarder){
+		SharedPreferences appSetting = ctx.getSharedPreferences(AppSetting.getSettingFile(), Context.MODE_PRIVATE);
+		Editor editor = appSetting.edit();
+		editor.putString("username",guarder.getName() );
+		editor.putString("orgnization", guarder.getOrgnization());
+//		editor.putString("height", height);
+//		editor.putString("weight", weight);
+//		editor.putString("target", target);
+//		editor.putString("days", days);
+//		editor.putString("password", password);
+//		editor.putString("age", age);
+//		editor.putInt("sex", sex);
+		editor.putBoolean("NoRegister", false);	
+		editor.commit();
 	}
 	
 }

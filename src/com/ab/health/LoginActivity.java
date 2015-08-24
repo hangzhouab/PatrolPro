@@ -99,7 +99,9 @@ public class LoginActivity extends Activity {
 			}
 			JsonHandle(pass);
 			Log.i("person", username + height + age + target + sex);
+			
 			writeAppConfig();
+//			AppSetting.writeAppConfig(this, guarder);
 			
 			Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 			startActivity(intent);
@@ -135,6 +137,7 @@ public class LoginActivity extends Activity {
 	
 	void writeAppConfig(){		
 		SharedPreferences appSetting = getSharedPreferences(AppSetting.getSettingFile(), MODE_PRIVATE);
+		
 		Editor editor = appSetting.edit();
 		editor.putString("username", username);
 		editor.putString("nicename", nicename);
