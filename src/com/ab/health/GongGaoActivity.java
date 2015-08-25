@@ -27,7 +27,7 @@ public class GongGaoActivity extends Activity {
 
 	private ListView gonggaoLV;
 	private Button btn_back;
-	private OnClickLis onClickLis;
+	
 	private List<HashMap<String, String>> gonggaoData;
 	private SimpleAdapter gongGaoAdapter;
 	
@@ -45,12 +45,12 @@ public class GongGaoActivity extends Activity {
 			NetworkConnect.AlertNotCon(this);
 		}else {
 			setContentView(R.layout.activity_gonggao2);
-			onClickLis = new OnClickLis();
+			
 			gonggaoData = new ArrayList<HashMap<String, String>>();
 			
 			gonggaoLV = (ListView) findViewById(R.id.act_courseSearch_data_lv);
 			
-			btn_back = (Button) findViewById(R.id.tool_standardweight_back_btn);			
+					
 			
 			gonggaoLV.setOnScrollListener(new AbsListView.OnScrollListener() {
 				
@@ -74,7 +74,7 @@ public class GongGaoActivity extends Activity {
 				}
 			});
 			
-			btn_back.setOnClickListener(onClickLis);
+			
 			
 			httpData = new HttpGetData();
 			url = AppSetting.getRootURL() +  "gonggao.php";
@@ -191,24 +191,6 @@ public class GongGaoActivity extends Activity {
 		}
 		return ret;
 	}
-
-	class OnClickLis implements View.OnClickListener {
-
-		@Override
-		public void onClick(View v) {
-			switch (v.getId()) {
-			case R.id.tool_standardweight_back_btn:
-				finish();
-				break;
-			
-			default:
-				break;
-			}
-		}
-	}
-	
-	
-	
 	
 }
 

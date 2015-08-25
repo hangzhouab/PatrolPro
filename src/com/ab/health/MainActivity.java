@@ -404,7 +404,7 @@ public class MainActivity extends Activity {
 	}
 
 	private void db() {
-		calorieSum = 0;
+		int calorieSum = 0;
 		recordCalorie = 0;
 		SQLiteDatabase db = openOrCreateDatabase("health",
 				Context.MODE_PRIVATE, null);
