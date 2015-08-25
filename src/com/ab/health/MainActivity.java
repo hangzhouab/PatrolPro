@@ -3,6 +3,7 @@ package com.ab.health;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,10 +28,15 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 
+import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.SimpleAdapter;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.RelativeLayout.LayoutParams;
 
 import android.widget.TextView;
@@ -38,6 +44,8 @@ import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.ab.health.R;
+
+import com.ab.health.GongGaoActivity.ItemClick;
 import com.ab.health.ble.DeviceScanActivity;
 import com.ab.health.clock.DeskClockMainActivity;
 import com.ab.health.model.User;
@@ -59,7 +67,7 @@ public class MainActivity extends Activity {
 
 	private ViewFlipper contentViewPager = null;
 	private LayoutInflater flater = null;
-	private View activityFood, activityServer, activityTool,
+	private View viewGongGao, activityServer, activityTool,
 			activityPhysiology;
 	private RoundProgressBar foodProgress;
 	private RoundProgressBar sportsProgress;
@@ -89,6 +97,17 @@ public class MainActivity extends Activity {
 			bottom_server;
 	private float calorieSum = 0;
 	private boolean isback = false, isCommitWeight = false;
+	
+	// GongGao viewFliper
+	private List<HashMap<String, String>> gonggaoData;
+	private SimpleAdapter gongGaoAdapter;
+	private ListView gonggaoLV;
+	private boolean isComplelet = false;
+	private int catId;
+	private HttpGetData httpData;
+	private String subTitle;
+	private GongGaoItemClick itemclick;
+	
 
 	// private LinearLayout
 	// foodLL,sportsLL,standardLL,courseLL,blueLL,convertLL,sportsrecordLL,bmiLL,zhishiLL;
@@ -115,29 +134,68 @@ public class MainActivity extends Activity {
 
 			InitButton();
 			firstUseShowGuide();
-
-			PushManager.startWork(getApplicationContext(),
-					PushConstants.LOGIN_TYPE_API_KEY, AppSetting.PUSH_API_KEY);
-
-			WeightAysnTask weight = new WeightAysnTask();
-			weight.execute(0);
-
-			foodProgress = (RoundProgressBar) findViewById(R.id.FoodProgressBar);
-			sportsProgress = (RoundProgressBar) findViewById(R.id.TaskProgressBar);
-			db();
-			initProgress(false);
+			
+			
+			InitGongGaoViewFliper();
+			
+//			PushManager.startWork(getApplicationContext(),
+//					PushConstants.LOGIN_TYPE_API_KEY, AppSetting.PUSH_API_KEY);
+//
+//			WeightAysnTask weight = new WeightAysnTask();
+//			weight.execute(0);
+//
+//			foodProgress = (RoundProgressBar) findViewById(R.id.FoodProgressBar);
+//			sportsProgress = (RoundProgressBar) findViewById(R.id.TaskProgressBar);
+//			db();
+//			initProgress(false);
 
 		}
 
 	}
 
-	private void writeShared(String weight) {
-		SharedPreferences appSetting = getSharedPreferences(
-				AppSetting.getSettingFile(), MODE_PRIVATE);
-		Editor editor = appSetting.edit();
-		editor.putString("weight", weight);
-		editor.commit();  
+	private void InitGongGaoViewFliper() {
+		
+		gonggaoData = new ArrayList<HashMap<String, String>>();		
+		gonggaoLV = (ListView) findViewById(R.id.act_courseSearch_data_lv);	
+		
+		gonggaoLV.setOnScrollListener(new AbsListView.OnScrollListener() {
+			
+			@Override
+			public void onScrollStateChanged(AbsListView view, int scrollState) {
+				if(scrollState ==  OnScrollListener.SCROLL_STATE_IDLE){
+					if(gonggaoLV.getLastVisiblePosition() == (gonggaoLV.getCount()-1)){
+						Toast.makeText(getApplicationContext(), "正在加载", Toast.LENGTH_SHORT).show();
+						LoadGongGaoAysnTask load = new LoadGongGaoAysnTask();
+						load.execute(gonggaoData.size());	
+					}
+				}
+				
+			}
+			
+			@Override
+			public void onScroll(AbsListView view, int firstVisibleItem,
+					int visibleItemCount, int totalItemCount) {
+				
+				
+			}
+		});
+		
+		httpData = new HttpGetData();
+		url = AppSetting.getRootURL() +  "gonggao.php";
+		
+		LoadGongGaoAysnTask loadCourse = new LoadGongGaoAysnTask();
+		loadCourse.execute(0);
+		
+		
+		gongGaoAdapter = new SimpleAdapter(this, gonggaoData,R.layout.view_gonggao_list, 
+				new String[] { "title", "date" },new int[] { R.id.view_meal_list_name_tv,R.id.view_meal_list_cal_tv });
+	
+		gonggaoLV.setAdapter(gongGaoAdapter);
+		itemclick = new GongGaoItemClick();		 	
+		gonggaoLV.setOnItemClickListener(itemclick);
 	}
+
+
 
 	private void updateShared() {
 		SharedPreferences appSetting = getSharedPreferences(
@@ -153,30 +211,20 @@ public class MainActivity extends Activity {
 		targetWeight.setText(target + "公斤");
 	}
 
-	private void calTarget() {
+	class GongGaoItemClick implements AdapterView.OnItemClickListener{
 
-		// Log.i("p", "age=" + age + "height=" + height +"weight=" + weight
-		// +"sex=" + sex + "day=" + days );
-		float plusweight = Float.valueOf(weight) - Float.valueOf(target);
-		int weightToCalorie = (int) (plusweight * 7000);
-		int day = Integer.valueOf(days);
-		boolean sexTemp;
-		if (sex == 1) {
-			sexTemp = true;
-		} else {
-			sexTemp = false;
-		}
-		User user = new User(sexTemp, Integer.valueOf(age),
-				Float.valueOf(weight), Float.valueOf(height));
-		float bmr = (float) (HealthUtility.calBMR(user) * 1.4);
-		coursePerDay = (int) (bmr);
-		String course = String.valueOf(coursePerDay);
-		courseTarget.setText(course);
-
-		sportsPerDay = weightToCalorie / day;
-		String sports = String.valueOf(sportsPerDay);
-		sportsTarget.setText(sports);
-
+		@Override
+		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {			
+			HashMap<String, String> course = gonggaoData.get(arg2);
+			String title = course.get("titlelong");
+			String date = course.get("date");
+			int id = Integer.valueOf( course.get("newId"));
+			Intent intent = new Intent(MainActivity.this, GongGaoDetailActivity.class);
+			intent.putExtra("title", title);
+			intent.putExtra("date", date);		
+			intent.putExtra("count", id);
+			startActivity(intent);
+		} 		
 	}
 
 	@Override
@@ -185,8 +233,8 @@ public class MainActivity extends Activity {
 		// MyPushMessageReceiver.ehList.add(this);
 		if (isback) {
 			updateShared();
-			calTarget();
-			initProgress(true);
+			
+			
 
 		}
 
@@ -196,12 +244,11 @@ public class MainActivity extends Activity {
 		flater = getLayoutInflater();
 		contentViewPager = (ViewFlipper) findViewById(R.id.content_flipper);
 
-		activityFood = flater.inflate(R.layout.fragment_task, contentViewPager);
-		sportsTarget = (TextView) findViewById(R.id.task_sports_target_textView);
-		courseTarget = (TextView) findViewById(R.id.task_course_target_textView);
+		viewGongGao = flater.inflate(R.layout.activity_gonggao2, contentViewPager);
+		
 		activityTool = flater.inflate(R.layout.fragment_tool, contentViewPager);
 		activityPhysiology = flater.inflate(R.layout.fragment_physiology,
-				contentViewPager);
+				contentViewPager); 
 		activityServer = flater.inflate(R.layout.activity_setting_about,
 				contentViewPager);
 		onClickListener = new OnClickListener();
@@ -339,7 +386,7 @@ public class MainActivity extends Activity {
 			days = appSetting.getString("days", "");
 			age = appSetting.getString("age", "");
 			sex = appSetting.getInt("sex", 0);
-			calTarget();
+			
 			updateBMIdisplay(weight);
 		}
 
@@ -387,61 +434,10 @@ public class MainActivity extends Activity {
 		db.close();
 	}
 
-	private void initProgress(final boolean buttonPress) {
-		recordSports.setText(String.valueOf((int) calorieSum));
-		recordCal.setText(String.valueOf(recordCalorie));
-		new Thread(new Runnable() {
-
-			@Override
-			public void run() { // sportsProgress
-				if (buttonPress) {
-					sportsProgress.setProgress(0);
-					progressSports = 0;
-
-				}
-				sportsProgress.setMax(sportsPerDay + 1);
-
-				calorieSumInt = (int) calorieSum;
-				while (progressSports <= calorieSumInt) {
-					progressSports += 1;
-
-					sportsProgress.setProgress(progressSports);
-					try {
-						Thread.sleep(10);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-		}).start();
-
-		new Thread(new Runnable() { // foodProgress
-
-					@Override
-					public void run() {
-						if (buttonPress) {
-							foodProgress.setProgress(0);
-							progress = 0;
-
-						}
-						foodProgress.setMax(coursePerDay + 1);
-
-						while (progress <= recordCalorie) {
-							progress += 10;
-							foodProgress.setProgress(progress);
-							try {
-								Thread.sleep(10);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-						}
-					}
-				}).start();
-	}
 
 	void commitWeight() {
-		WeightAysnTask weight = new WeightAysnTask();
-		weight.execute(0);
+//		WeightAysnTask weight = new WeightAysnTask();
+//		weight.execute(0);
 	}
 
 	private class OnClickListener implements View.OnClickListener {
@@ -452,13 +448,13 @@ public class MainActivity extends Activity {
 			case R.id.bottombar_record:
 				contentViewPager.setDisplayedChild(3);
 				contentViewPager.showNext();
-				titleBar.setText("今天热量");
+				titleBar.setText("公司公告");
 				bottom_record.setBackgroundColor(0Xff46cdd8);
 				bottom_server.setBackgroundColor(0XFFFFFFFF);
 				bottom_tool.setBackgroundColor(0XFFFFFFFF);
 				bottom_weight.setBackgroundColor(0XFFFFFFFF);
 				db();
-				initProgress(true);
+				
 				break;
 
 			case R.id.bottombar_tool:
@@ -604,25 +600,7 @@ public class MainActivity extends Activity {
 				Intent intentBluetooth = new Intent(MainActivity.this,
 						DeviceScanActivity.class);
 				startActivity(intentBluetooth);
-				break;
-			case R.id.act_physiology_record_weight:
-				if (!NetworkConnect.isNetworkConnected(getApplicationContext())) {
-					Toast.makeText(getApplicationContext(), "没有网络连接，请先打开网络",
-							Toast.LENGTH_SHORT).show();
-					break;
-				}
-				EditText editWeight = (EditText) findViewById(R.id.act_physiology_weight_text);
-				inputWeight = editWeight.getText().toString();
-				if (inputWeight.equals("")) {
-					Toast.makeText(getApplicationContext(), "请先输入体重",
-							Toast.LENGTH_SHORT).show();
-					return;
-				}
-				writeShared(inputWeight);
-				updateBMIdisplay(inputWeight);
-				isCommitWeight = true;
-				commitWeight();
-				break;
+				break;			
 			case R.id.setting_about_website_textView:
 				Intent intent2 = new Intent(MainActivity.this,
 						CoreBriefActivity.class);
@@ -644,90 +622,6 @@ public class MainActivity extends Activity {
 		}
 	}
 
-	private class WeightAysnTask extends AsyncTask<Object, Integer, Integer> {
-
-		@Override
-		protected void onPreExecute() {
-			if (isCommitWeight) {
-				float inWeightTemp = Float.valueOf(inputWeight);
-				int targetTemp = Integer.valueOf(target);
-				if (targetTemp >= inWeightTemp) {
-					Toast.makeText(getApplicationContext(),
-							"恭喜您!已达到目标，请先更改瘦身计划", Toast.LENGTH_SHORT).show();
-					return;
-				}
-			}
-			commitDate = new HttpGetData();
-			url = AppSetting.getRootURL() + "user_commit.php";
-			param = "?username=" + username + "&weight=" + inputWeight;
-
-		}
-
-		@Override
-		protected Integer doInBackground(Object... params) {
-
-			commitDate.HttpGets(url, param);
-
-			url = AppSetting.getRootURL() + "user_weight.php";
-			SharedPreferences userSP = getSharedPreferences(
-					AppSetting.getSettingFile(), MODE_PRIVATE);
-			userSP.getString("username", null);
-			param = "?username=" + username;
-			ret = commitDate.HttpGets(url, param);
-
-			return 0;
-		}
-
-		@Override
-		protected void onPostExecute(Integer result) {
-			flater = getLayoutInflater();
-			weightRecordList.clear();
-			weightRecordly.removeAllViews();
-
-			try {
-				JSONObject json = new JSONObject(ret);
-				JSONArray weightArray = json.getJSONArray("weights");
-				for (int i = 0; i < weightArray.length(); i++) {
-					View tempView = flater.inflate(
-							R.layout.view_physiology_image_item, null);
-					TextView tempDate = (TextView) tempView
-							.findViewById(R.id.act_physiology_physiology_date);
-					TextView tempHeight = (TextView) tempView
-							.findViewById(R.id.act_physiology_canvas_weight);
-
-					JSONObject temp = (JSONObject) weightArray.opt(i);
-					String weight = temp.getString("weight");
-					String date = temp.getString("date");
-					float weighttemp = Float.valueOf(weight);
-					if (weighttemp > 129)
-						weighttemp = 129;
-					int dpHeighttemp = DensityUtil.px2dip(
-							getApplicationContext(), 135 - weighttemp);
-					int dpHeight = DensityUtil.dip2px(getApplicationContext(),
-							dpHeighttemp);
-					RelativeLayout.LayoutParams paramheight = new LayoutParams(
-							LayoutParams.WRAP_CONTENT,
-							LayoutParams.WRAP_CONTENT);
-					paramheight.topMargin = dpHeight;
-
-					tempHeight.setLayoutParams(paramheight);
-					tempHeight.setText(weight);
-					tempDate.setText(date);
-					weightRecordList.add(tempView);
-				}
-
-			} catch (JSONException e) {
-				
-				e.printStackTrace();
-			}
-
-			for (int i = 0; i < weightRecordList.size(); i++) {
-				View temp2 = weightRecordList.get(i);
-				weightRecordly.addView(temp2);
-			}
-		}
-
-	}
 
 	public boolean isNetworkConnected(Context context) {
 		if (context != null) {
@@ -742,10 +636,78 @@ public class MainActivity extends Activity {
 		return false;
 	}
 
-	@Override
-	protected void onPause() {
+	
+	
+	private class LoadGongGaoAysnTask extends AsyncTask<Object, Integer, Integer>{
+		int ret;
+		
 
-		super.onPause();
+		@Override
+		protected void onPreExecute() {		
+			if( isComplelet ){ 
+				Toast.makeText(getApplicationContext(), "全部信息已加载", Toast.LENGTH_SHORT).show();
+			}else {
+				Toast.makeText(getApplicationContext(), "正在加载...", Toast.LENGTH_SHORT).show();
+			}
+		}
+		
+		@Override
+		protected Integer doInBackground(Object... params) {			
+			int sId = (Integer) params[0];
+			param = "?startid="+sId+"&endid=10&catid=" + catId;		
+			ret = gongGaoJsonHandle(httpData.HttpGets(url,param));
+			return ret;
+		}
+
+		@Override
+		protected void onPostExecute(Integer result) {
+			
+			if(ret ==0){			
+					gongGaoAdapter.notifyDataSetChanged();	
+					
+			}else {
+
+			}			
+		}
+
+	}
+	
+	
+
+	
+	
+
+	private Integer gongGaoJsonHandle(String retResponse) {
+		int ret =0;
+		try { 
+			JSONObject json = new JSONObject(retResponse);
+			JSONArray foodsArray = json.getJSONArray("foods");
+			if(foodsArray.length() == 0 ){
+				isComplelet = true;
+			}
+			for (int i = 0; i < foodsArray.length(); i++) {
+				JSONObject temp = (JSONObject) foodsArray.opt(i);
+				HashMap<String, String> courseItem = new HashMap<String, String>();
+				String titlelong = temp.getString("title");
+				String newsid = temp.getString("id");
+				String date = temp.getString("date");
+				if(titlelong.length() > 12){
+					subTitle = titlelong.substring(0, 11) + "...";
+					courseItem.put("title", subTitle);
+				}else {
+					courseItem.put("title", titlelong);
+				}
+				courseItem.put("newId", newsid);
+				courseItem.put("titlelong", titlelong);
+				courseItem.put("date", date);	
+				gonggaoData.add(courseItem);				
+			}
+			ret =0 ;
+		} catch (JSONException e) {
+			e.printStackTrace();
+			ret = 1;
+		}
+		return ret;
 	}
 
 }

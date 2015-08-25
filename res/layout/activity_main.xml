@@ -10,15 +10,16 @@
         android:id="@id/titlebar_layout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#ffffffff" >
+        
+        android:background="#ff46cdd8">
 
         <TextView
             android:id="@+id/titlebar_home_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="今天热量"
-            android:textColor="#ff24cdd8"
+            android:text="单位公告"
+            
             android:textSize="20sp" />
 
         <Button
@@ -46,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/titlebar_layout"
-        android:layout_marginBottom="66dp"
+        android:layout_marginBottom="56dp"
         android:layout_marginTop="1dp"
         android:background="#ffffffff" >
     </ViewFlipper>
@@ -54,16 +55,17 @@
     <LinearLayout
         android:id="@id/bottombar_title"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_height="55dp"
         android:layout_alignParentBottom="true"
         android:background="#ffffffff"
+       
         android:baselineAligned="false"
         android:orientation="horizontal" >
 
         <LinearLayout
             android:id="@+id/bottom_record"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="match_parent"            
             android:layout_weight="1"
             android:gravity="center"
             android:background="#ff46cdd8"
@@ -71,13 +73,14 @@
 
             <Button
                 android:id="@+id/bottombar_record"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="25dp"
+                android:layout_height="30dp"                
                 android:background="@drawable/title_food" />
             <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"                    
-                    android:text="热量" />
+                    android:layout_height="wrap_content"   
+                    android:textSize="12sp"                 
+                    android:text="公告" />
         </LinearLayout>
 
         <LinearLayout
@@ -90,13 +93,14 @@
 
             <Button
                 android:id="@+id/bottombar_tool"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/title_sports" />
+                android:layout_width="30dp"
+                android:layout_height="30dp"  
+                android:background="@drawable/title_bbs2" />
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="工具" />
+                    android:textSize="12sp"   
+                    android:text="巡更" />
         </LinearLayout>
 
         <LinearLayout
@@ -109,13 +113,14 @@
 
             <Button
                 android:id="@+id/bottombar_bbs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/title_bbs2" />
+                android:layout_width="30dp"
+                android:layout_height="30dp"  
+                android:background="@drawable/title_sports" />
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="记录" />
+                    android:textSize="12sp"   
+                    android:text="查询" />
         </LinearLayout>
 
         <LinearLayout
@@ -128,12 +133,13 @@
 
             <Button
                 android:id="@id/bottombar_about"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:background="@drawable/title_server" />
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="12sp"   
                     android:text="服务" />
         </LinearLayout>
     </LinearLayout>
