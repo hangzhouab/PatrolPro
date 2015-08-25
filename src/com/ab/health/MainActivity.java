@@ -95,7 +95,7 @@ public class MainActivity extends Activity {
 	private HttpGetData commitDate;
 	private LinearLayout bottom_record, bottom_tool, bottom_weight,
 			bottom_server;
-	private float calorieSum = 0;
+	
 	private boolean isback = false, isCommitWeight = false;
 	
 	// GongGao viewFliper
