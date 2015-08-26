@@ -39,7 +39,7 @@ public class GongGaoActivity extends Activity {
 	private ItemClick itemclick;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-
+		// wgp new 
 		super.onCreate(savedInstanceState);
 		if(!NetworkConnect.isNetworkConnected(this)){
 			NetworkConnect.AlertNotCon(this);
