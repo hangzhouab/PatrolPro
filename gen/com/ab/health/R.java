@@ -3288,7 +3288,8 @@ containing a value of this type.
     }
     public static final class xml {
         public static final int alarm_prefs=0x7f050000;
-        public static final int settings=0x7f050001;
+        public static final int nfc_tech_filter=0x7f050001;
+        public static final int settings=0x7f050002;
     }
     public static final class styleable {
         /** Attributes that can be used with a RoundProgressBar.

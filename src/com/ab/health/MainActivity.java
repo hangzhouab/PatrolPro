@@ -113,6 +113,9 @@ public class MainActivity extends Activity {
 	private SimpleAdapter patrolRecordAdapter;
 	private ListView patrolRecordLV;	
 	
+	
+	private boolean isInit = false;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -121,28 +124,37 @@ public class MainActivity extends Activity {
 		if (!NetworkConnect.isNetworkConnected(this)) {
 			NetworkConnect.AlertNotCon(this);
 		} else {
-
-			update = new UpdateManager(MainActivity.this);
-			setContentView(R.layout.activity_main);
-
-			new Thread(new Runnable() {
-
-				@Override
-				public void run() {
-					Looper.prepare();
-					update.checkUpdate();
-					Looper.loop();
-				}
-			}).start();
-
-			InitButton();
-			firstUseShowGuide();
 			
-			
-			InitGongGaoViewFliper();
-			InitPatrolRecordViewFliper();
+			if( !isInit ){
+				update = new UpdateManager(MainActivity.this);
+				setContentView(R.layout.activity_main);
+	
+				new Thread(new Runnable() {
+	
+					@Override
+					public void run() {
+						Looper.prepare();
+						update.checkUpdate();
+						Looper.loop();
+					}
+				}).start();
+	
+				InitButton();
+				firstUseShowGuide();				
+				
+				InitGongGaoViewFliper();
+				InitPatrolRecordViewFliper();
+				isInit = true;
+			}else{
+				UpdatePatrolRecord();
+			}
 		}
 
+	}
+
+	private void UpdatePatrolRecord() {
+		UploadPatrolRecordAysnTask upload = new UploadPatrolRecordAysnTask();
+		upload.execute(1);
 	}
 
 	private void InitGongGaoViewFliper() {
@@ -724,6 +736,38 @@ public class MainActivity extends Activity {
 		}
 
 	}
+	
+	private class UploadPatrolRecordAysnTask extends AsyncTask<Object, Integer, Integer>{
+		int ret;
+		@Override
+		protected void onPreExecute() {		
+			if( isComplelet ){ 
+			//	Toast.makeText(getApplicationContext(), "全部信息已加载", Toast.LENGTH_SHORT).show();
+			}else {
+			//	Toast.makeText(getApplicationContext(), "正在加载...", Toast.LENGTH_SHORT).show();
+			}
+		}
+		
+		@Override
+		protected Integer doInBackground(Object... params) {			
+			int sId = (Integer) params[0];
+			param = "?startid="+sId+"&endid=10&catid=" + catId;		
+			ret = gongGaoJsonHandle(httpData.HttpGets(url,param));
+			return ret;
+		}
+
+		@Override
+		protected void onPostExecute(Integer result) {			
+			if(ret ==0){			
+					LoadPatrolRecordAysnTask load = new LoadPatrolRecordAysnTask();
+					load.execute(1);
+			}else {
+
+			}			
+		}
+
+	}
+	
 	
 	private Integer gongGaoJsonHandle(String retResponse) {
 		int ret =0;
