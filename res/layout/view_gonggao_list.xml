@@ -7,16 +7,17 @@
 
     <ImageView
         android:id="@id/view_meal_list_icon_iv"
-        android:layout_width="50.0dip"
-        android:layout_height="50.0dip"
-        android:layout_margin="10.0dip"
-        android:src="@drawable/gonggaoitem4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/gonggaoitem"
         android:focusable="false"
         android:scaleType="fitXY" />
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="fill_parent" 
+        android:layout_marginTop="6dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -30,26 +31,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
+                android:text="浙江电信大楼三楼机房"
                 android:textSize="@dimen/value_text_size" />
 
             <TextView
                 android:id="@id/view_meal_list_cal_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="2015-08-26 18:55"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="@dimen/value_text_size" />
         </LinearLayout>
-
-        <Button
-            android:id="@id/view_meal_list_xx_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="20.0dip"
-            android:layout_marginRight="20.0dip"
-            android:background="@drawable/mail_attach_item_arrow"
-            android:focusable="false" />
     </RelativeLayout>
 
 </LinearLayout>

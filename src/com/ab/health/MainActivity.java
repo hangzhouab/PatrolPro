@@ -230,7 +230,7 @@ public class MainActivity extends Activity {
 		loadCourse.execute(0);
 		
 		
-		patrolRecordAdapter = new SimpleAdapter(this, gonggaoData,R.layout.view_gonggao_list, 
+		patrolRecordAdapter = new SimpleAdapter(this, gonggaoData,R.layout.view_patrol_record_list, 
 				new String[] { "title", "date" },new int[] { R.id.view_meal_list_name_tv,R.id.view_meal_list_cal_tv });
 	
 		patrolRecordLV.setAdapter(patrolRecordAdapter);
