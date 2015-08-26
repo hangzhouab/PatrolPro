@@ -108,9 +108,12 @@ public class MainActivity extends Activity {
 	private String subTitle;
 	private GongGaoItemClick itemclick;
 	
+	// PatrolRecord viewFliper
+	private List<HashMap<String, String>> patrolRecordData;
+	private SimpleAdapter patrolRecordAdapter;
+	private ListView patrolRecordLV;	
+	
 
-	// private LinearLayout
-	// foodLL,sportsLL,standardLL,courseLL,blueLL,convertLL,sportsrecordLL,bmiLL,zhishiLL;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -137,18 +140,7 @@ public class MainActivity extends Activity {
 			
 			
 			InitGongGaoViewFliper();
-			
-//			PushManager.startWork(getApplicationContext(),
-//					PushConstants.LOGIN_TYPE_API_KEY, AppSetting.PUSH_API_KEY);
-//
-//			WeightAysnTask weight = new WeightAysnTask();
-//			weight.execute(0);
-//
-//			foodProgress = (RoundProgressBar) findViewById(R.id.FoodProgressBar);
-//			sportsProgress = (RoundProgressBar) findViewById(R.id.TaskProgressBar);
-//			db();
-//			initProgress(false);
-
+			InitPatrolRecordViewFliper();
 		}
 
 	}
@@ -195,8 +187,45 @@ public class MainActivity extends Activity {
 		gonggaoLV.setOnItemClickListener(itemclick);
 	}
 
-
-
+	private void InitPatrolRecordViewFliper() {
+		
+		patrolRecordData = new ArrayList<HashMap<String, String>>();		
+		patrolRecordLV = (ListView) findViewById(R.id.act_patrol_data_lv);	
+		
+		patrolRecordLV.setOnScrollListener(new AbsListView.OnScrollListener() {
+			
+			@Override
+			public void onScrollStateChanged(AbsListView view, int scrollState) {
+				if(scrollState ==  OnScrollListener.SCROLL_STATE_IDLE){
+					if(patrolRecordLV.getLastVisiblePosition() == (patrolRecordLV.getCount()-1)){
+						Toast.makeText(getApplicationContext(), "正在加载", Toast.LENGTH_SHORT).show();
+						LoadPatrolRecordAysnTask load = new LoadPatrolRecordAysnTask();
+						load.execute(patrolRecordData.size());	
+					}
+				}				
+			}
+			
+			@Override
+			public void onScroll(AbsListView view, int firstVisibleItem,
+					int visibleItemCount, int totalItemCount) {
+				
+			}
+		});		
+		
+		url = AppSetting.getRootURL() +  "gonggao.php";
+		
+		LoadPatrolRecordAysnTask loadCourse = new LoadPatrolRecordAysnTask();
+		loadCourse.execute(0);
+		
+		
+		patrolRecordAdapter = new SimpleAdapter(this, gonggaoData,R.layout.view_gonggao_list, 
+				new String[] { "title", "date" },new int[] { R.id.view_meal_list_name_tv,R.id.view_meal_list_cal_tv });
+	
+		patrolRecordLV.setAdapter(patrolRecordAdapter);
+		itemclick = new GongGaoItemClick();		 	
+		patrolRecordLV.setOnItemClickListener(itemclick);
+	}
+	
 	private void updateShared() {
 		SharedPreferences appSetting = getSharedPreferences(
 				AppSetting.getSettingFile(), MODE_PRIVATE);
@@ -246,22 +275,22 @@ public class MainActivity extends Activity {
 
 		viewGongGao = flater.inflate(R.layout.activity_gonggao2, contentViewPager);
 		
-		activityTool = flater.inflate(R.layout.fragment_tool, contentViewPager);
+		activityTool = flater.inflate(R.layout.activity_patrol_record, contentViewPager);
 		activityPhysiology = flater.inflate(R.layout.fragment_physiology,
 				contentViewPager); 
 		activityServer = flater.inflate(R.layout.activity_setting_about,
 				contentViewPager);
 		onClickListener = new OnClickListener();
-		yourWeight = (TextView) findViewById(R.id.act_physiology_your_weight);
-		yourBMI = (TextView) findViewById(R.id.act_physiology_your_BMI);
-		targetWeight = (TextView) findViewById(R.id.targetWeight);
-
-		recordSports = (TextView) findViewById(R.id.task_yundong_current_textView);
-		sportsTarget = (TextView) findViewById(R.id.task_sports_target_textView);
-		courseTarget = (TextView) findViewById(R.id.task_course_target_textView);
-
-		changePlain = (TextView) findViewById(R.id.changefitness);
-		changePlain.setOnClickListener(onClickListener);
+//		yourWeight = (TextView) findViewById(R.id.act_physiology_your_weight);
+//		yourBMI = (TextView) findViewById(R.id.act_physiology_your_BMI);
+//		targetWeight = (TextView) findViewById(R.id.targetWeight);
+//
+//		recordSports = (TextView) findViewById(R.id.task_yundong_current_textView);
+//		sportsTarget = (TextView) findViewById(R.id.task_sports_target_textView);
+//		courseTarget = (TextView) findViewById(R.id.task_course_target_textView);
+//
+//		changePlain = (TextView) findViewById(R.id.changefitness);
+//		changePlain.setOnClickListener(onClickListener);
 		btn_record = (Button) findViewById(R.id.bottombar_record);
 		btn_record.setOnClickListener(onClickListener);
 		btn_bbs = (Button) findViewById(R.id.bottombar_bbs);
@@ -274,53 +303,53 @@ public class MainActivity extends Activity {
 		goWeb.setOnClickListener(onClickListener);
 		TextView coreBreif = (TextView) findViewById(R.id.setting_about_website_textView);
 		coreBreif.setOnClickListener(onClickListener);
-		TextView online = (TextView) findViewById(R.id.setting_about_website_textView3);
-		online.setOnClickListener(onClickListener);
+//		TextView online = (TextView) findViewById(R.id.setting_about_website_textView3);
+//		online.setOnClickListener(onClickListener);
 
 		// Tool
-		btn_tool_food = (Button) findViewById(R.id.tool_food_btn);
-		btn_tool_food.setOnClickListener(onClickListener);
-		btn_tool_standardweight = (Button) findViewById(R.id.tool_standard_weight_btn);
-		btn_tool_standardweight.setOnClickListener(onClickListener);
-		btn_tool_healthweight = (Button) findViewById(R.id.tool_health_weight);
-		btn_tool_healthweight.setOnClickListener(onClickListener);
-		btn_tool_sports = (Button) findViewById(R.id.tool_sports_btn);
-		btn_tool_sports.setOnClickListener(onClickListener);
-		btn_tool_bluetooth = (Button) findViewById(R.id.tool_bluetooth);
-		btn_tool_bluetooth.setOnClickListener(onClickListener);
-		btn_tool_zhishi = (Button) findViewById(R.id.tool_zhishi);
-		btn_tool_zhishi.setOnClickListener(onClickListener);
-		btn_tool_sportsrecord = (Button) findViewById(R.id.tool_sports_record);
-		btn_tool_sportsrecord.setOnClickListener(onClickListener);
-		btn_tool_courserecord = (Button) findViewById(R.id.tool_course_record);
-		btn_tool_courserecord.setOnClickListener(onClickListener);
-		btn_tool_bmi = (Button) findViewById(R.id.tool_bmi);
-		btn_tool_bmi.setOnClickListener(onClickListener);
-		/*
-		 * btn_tool_health = (Button) findViewById(R.id.tool_health_weight);
-		 * btn_tool_health.setOnClickListener(onClickListener);
-		 */
-		btn_tool_bmr = (Button) findViewById(R.id.tool_bmr);
-		btn_tool_bmr.setOnClickListener(onClickListener);
-		btn_tool_convert = (Button) findViewById(R.id.tool_calorie);
-		btn_tool_convert.setOnClickListener(onClickListener);
-		btn_tool_sanwei = (Button) findViewById(R.id.tool_sanwei);
-		btn_tool_sanwei.setOnClickListener(onClickListener);
-		btn_tool_niaotong = (Button) findViewById(R.id.tool_niaotong);
-		btn_tool_niaotong.setOnClickListener(onClickListener);
-		btn_tool_gonggao = (Button) findViewById(R.id.tool_gonggao);
-		btn_tool_gonggao.setOnClickListener(onClickListener);
-		btn_tool_clock = (Button) findViewById(R.id.tool_clock);
-		btn_tool_clock.setOnClickListener(onClickListener);
-
-		btn_tool_online = (Button) findViewById(R.id.tool_online_btn);
-		btn_tool_online.setOnClickListener(onClickListener);
-
-		btn_tool_lipin = (Button) findViewById(R.id.tool_lipin);
-		btn_tool_lipin.setOnClickListener(onClickListener);
-
-		btn_tool_discuz = (Button) findViewById(R.id.tool_discuz);
-		btn_tool_discuz.setOnClickListener(onClickListener);
+//		btn_tool_food = (Button) findViewById(R.id.tool_food_btn);
+//		btn_tool_food.setOnClickListener(onClickListener);
+//		btn_tool_standardweight = (Button) findViewById(R.id.tool_standard_weight_btn);
+//		btn_tool_standardweight.setOnClickListener(onClickListener);
+//		btn_tool_healthweight = (Button) findViewById(R.id.tool_health_weight);
+//		btn_tool_healthweight.setOnClickListener(onClickListener);
+//		btn_tool_sports = (Button) findViewById(R.id.tool_sports_btn);
+//		btn_tool_sports.setOnClickListener(onClickListener);
+//		btn_tool_bluetooth = (Button) findViewById(R.id.tool_bluetooth);
+//		btn_tool_bluetooth.setOnClickListener(onClickListener);
+//		btn_tool_zhishi = (Button) findViewById(R.id.tool_zhishi);
+//		btn_tool_zhishi.setOnClickListener(onClickListener);
+//		btn_tool_sportsrecord = (Button) findViewById(R.id.tool_sports_record);
+//		btn_tool_sportsrecord.setOnClickListener(onClickListener);
+//		btn_tool_courserecord = (Button) findViewById(R.id.tool_course_record);
+//		btn_tool_courserecord.setOnClickListener(onClickListener);
+//		btn_tool_bmi = (Button) findViewById(R.id.tool_bmi);
+//		btn_tool_bmi.setOnClickListener(onClickListener);
+//		/*
+//		 * btn_tool_health = (Button) findViewById(R.id.tool_health_weight);
+//		 * btn_tool_health.setOnClickListener(onClickListener);
+//		 */
+//		btn_tool_bmr = (Button) findViewById(R.id.tool_bmr);
+//		btn_tool_bmr.setOnClickListener(onClickListener);
+//		btn_tool_convert = (Button) findViewById(R.id.tool_calorie);
+//		btn_tool_convert.setOnClickListener(onClickListener);
+//		btn_tool_sanwei = (Button) findViewById(R.id.tool_sanwei);
+//		btn_tool_sanwei.setOnClickListener(onClickListener);
+//		btn_tool_niaotong = (Button) findViewById(R.id.tool_niaotong);
+//		btn_tool_niaotong.setOnClickListener(onClickListener);
+//		btn_tool_gonggao = (Button) findViewById(R.id.tool_gonggao);
+//		btn_tool_gonggao.setOnClickListener(onClickListener);
+//		btn_tool_clock = (Button) findViewById(R.id.tool_clock);
+//		btn_tool_clock.setOnClickListener(onClickListener);
+//
+//		btn_tool_online = (Button) findViewById(R.id.tool_online_btn);
+//		btn_tool_online.setOnClickListener(onClickListener);
+//
+//		btn_tool_lipin = (Button) findViewById(R.id.tool_lipin);
+//		btn_tool_lipin.setOnClickListener(onClickListener);
+//
+//		btn_tool_discuz = (Button) findViewById(R.id.tool_discuz);
+//		btn_tool_discuz.setOnClickListener(onClickListener);
 
 		// Tool background
 		/*
@@ -346,18 +375,18 @@ public class MainActivity extends Activity {
 		bottom_server.setOnClickListener(onClickListener);
 		bottom_weight = (LinearLayout) findViewById(R.id.bottom_bbs);
 		bottom_weight.setOnClickListener(onClickListener);
-
-		// topbar
+//
+//		// topbar 
 		gonggao = (Button) findViewById(R.id.bottombar_gonggao);
 		gonggao.setOnClickListener(onClickListener);
 		btn_topbar_home = (Button) findViewById(R.id.bottombar_home);
 		btn_topbar_home.setOnClickListener(onClickListener);
 		titleBar = (TextView) findViewById(R.id.titlebar_home_title);
-
-		btn_saveWeight = (Button) findViewById(R.id.act_physiology_record_weight);
-		btn_saveWeight.setOnClickListener(onClickListener);
-		weightRecordly = (LinearLayout) findViewById(R.id.act_physiology_canvas_image_layout);
-		recordCal = (TextView) findViewById(R.id.task_consum_current_textView2);
+//
+//		btn_saveWeight = (Button) findViewById(R.id.act_physiology_record_weight);
+//		btn_saveWeight.setOnClickListener(onClickListener);
+//		weightRecordly = (LinearLayout) findViewById(R.id.act_physiology_canvas_image_layout);
+//		recordCal = (TextView) findViewById(R.id.task_consum_current_textView2);
 
 	}
 
@@ -371,23 +400,23 @@ public class MainActivity extends Activity {
 	private void firstUseShowGuide() {
 		SharedPreferences appSetting = getSharedPreferences(
 				AppSetting.getSettingFile(), MODE_PRIVATE);
-		Editor editor = appSetting.edit();
+		
 		if (appSetting.getBoolean("NoRegister", true)) {			
 			Intent intent = new Intent();
 			intent.setClass(this, LoginActivity.class);
 			startActivity(intent);
 		} else {
-			isback = true;
-			username = appSetting.getString("username", "");
-			nicename = appSetting.getString("nicename", "");
-			height = appSetting.getString("height", "");
-			weight = appSetting.getString("weight", "");
-			target = appSetting.getString("target", "");
-			days = appSetting.getString("days", "");
-			age = appSetting.getString("age", "");
-			sex = appSetting.getInt("sex", 0);
-			
-			updateBMIdisplay(weight);
+//			isback = true;
+//			username = appSetting.getString("username", "");
+//			nicename = appSetting.getString("nicename", "");
+//			height = appSetting.getString("height", "");
+//			weight = appSetting.getString("weight", "");
+//			target = appSetting.getString("target", "");
+//			days = appSetting.getString("days", "");
+//			age = appSetting.getString("age", "");
+//			sex = appSetting.getInt("sex", 0);
+//			
+//			updateBMIdisplay(weight);
 		}
 
 	}
@@ -434,7 +463,6 @@ public class MainActivity extends Activity {
 		db.close();
 	}
 
-
 	void commitWeight() {
 //		WeightAysnTask weight = new WeightAysnTask();
 //		weight.execute(0);
@@ -448,7 +476,7 @@ public class MainActivity extends Activity {
 			case R.id.bottombar_record:
 				contentViewPager.setDisplayedChild(3);
 				contentViewPager.showNext();
-				titleBar.setText("公司公告");
+				titleBar.setText("单位公告");
 				bottom_record.setBackgroundColor(0Xff46cdd8);
 				bottom_server.setBackgroundColor(0XFFFFFFFF);
 				bottom_tool.setBackgroundColor(0XFFFFFFFF);
@@ -460,7 +488,7 @@ public class MainActivity extends Activity {
 			case R.id.bottombar_tool:
 				contentViewPager.setDisplayedChild(0);
 				contentViewPager.showNext();
-				titleBar.setText("瘦身工具");
+				titleBar.setText("巡更记录");
 				bottom_record.setBackgroundColor(0XFFFFFFFF);
 				bottom_server.setBackgroundColor(0XFFFFFFFF);
 				bottom_tool.setBackgroundColor(0Xff46cdd8);
@@ -469,7 +497,7 @@ public class MainActivity extends Activity {
 			case R.id.bottombar_bbs:
 				contentViewPager.setDisplayedChild(1);
 				contentViewPager.showNext();
-				titleBar.setText("体重变化");
+				titleBar.setText("记录查询");
 				bottom_record.setBackgroundColor(0XFFFFFFFF);
 				bottom_server.setBackgroundColor(0XFFFFFFFF);
 				bottom_tool.setBackgroundColor(0XFFFFFFFF);
@@ -622,7 +650,6 @@ public class MainActivity extends Activity {
 		}
 	}
 
-
 	public boolean isNetworkConnected(Context context) {
 		if (context != null) {
 			ConnectivityManager mConnectivityManager = (ConnectivityManager) context
@@ -636,12 +663,8 @@ public class MainActivity extends Activity {
 		return false;
 	}
 
-	
-	
 	private class LoadGongGaoAysnTask extends AsyncTask<Object, Integer, Integer>{
 		int ret;
-		
-
 		@Override
 		protected void onPreExecute() {		
 			if( isComplelet ){ 
@@ -672,11 +695,36 @@ public class MainActivity extends Activity {
 
 	}
 	
-	
+	private class LoadPatrolRecordAysnTask extends AsyncTask<Object, Integer, Integer>{
+		int ret;
+		@Override
+		protected void onPreExecute() {		
+			if( isComplelet ){ 
+			//	Toast.makeText(getApplicationContext(), "全部信息已加载", Toast.LENGTH_SHORT).show();
+			}else {
+			//	Toast.makeText(getApplicationContext(), "正在加载...", Toast.LENGTH_SHORT).show();
+			}
+		}
+		
+		@Override
+		protected Integer doInBackground(Object... params) {			
+			int sId = (Integer) params[0];
+			param = "?startid="+sId+"&endid=10&catid=" + catId;		
+			ret = gongGaoJsonHandle(httpData.HttpGets(url,param));
+			return ret;
+		}
 
-	
-	
+		@Override
+		protected void onPostExecute(Integer result) {			
+			if(ret ==0){			
+					gongGaoAdapter.notifyDataSetChanged();						
+			}else {
 
+			}			
+		}
+
+	}
+	
 	private Integer gongGaoJsonHandle(String retResponse) {
 		int ret =0;
 		try { 
