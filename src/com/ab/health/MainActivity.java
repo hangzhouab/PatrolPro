@@ -48,22 +48,17 @@ import android.widget.ViewFlipper;
 import com.ab.health.R;
 
 import com.ab.health.GongGaoActivity.ItemClick;
-import com.ab.health.ble.DeviceScanActivity;
-import com.ab.health.clock.DeskClockMainActivity;
+
 import com.ab.health.model.User;
-import com.ab.health.online.Message;
-import com.ab.health.online.MyPushMessageReceiver;
-import com.ab.health.online.OnlineMainActivity;
-import com.ab.health.online.Utils;
+
 import com.ab.health.utility.DensityUtil;
 import com.ab.health.utility.HealthUtility;
 import com.ab.health.utility.HttpGetData;
 import com.ab.health.utility.AppSetting;
 import com.ab.health.utility.NetworkConnect;
 import com.ab.health.utility.UpdateManager;
-import com.ab.health.view.RoundProgressBar;
-import com.baidu.android.pushservice.PushConstants;
-import com.baidu.android.pushservice.PushManager;
+import com.ab.nfc.NFCReader;
+
 
 public class MainActivity extends Activity {
 
@@ -71,18 +66,14 @@ public class MainActivity extends Activity {
 	private LayoutInflater flater = null;
 	private View viewGongGao, activityServer, activityTool,
 			activityPhysiology;
-	private RoundProgressBar foodProgress;
-	private RoundProgressBar sportsProgress;
-	private Button btn_about, btn_bbs, btn_tool, btn_record, btn_topbar_home,
-			btn_tool_gonggao;
-	private Button btn_tool_food, btn_patrolQuery, btn_tool_standardweight,
-			btn_tool_healthweight, btn_tool_clock;
-	private Button btn_tool_sports, btn_tool_bluetooth, btn_tool_zhishi,
-			btn_tool_sportsrecord, btn_tool_sanwei, btn_tool_niaotong;
-	private Button gonggao, btn_tool_courserecord, btn_tool_bmi,
-			btn_tool_health, btn_tool_bmr, btn_tool_convert;
-	private Button btn_tool_online, btn_tool_lipin, btn_tool_discuz;
-	private int progress = 0, progressSports = 0, calorieSumInt;
+
+	private Button btn_about, btn_bbs, btn_tool, btn_record, btn_topbar_home;
+			
+	private Button btn_patrolQuery;
+	
+	private Button gonggao;
+	
+	
 	private OnClickListener onClickListener;
 	private String url, param, ret, inputWeight = "";
 	private int recordCalorie = 0, sex;
@@ -157,6 +148,8 @@ public class MainActivity extends Activity {
 	}
 
 	private void UpdatePatrolRecord() {
+		NFCReader nfcReader = new NFCReader();
+		String text = nfcReader.read(getIntent());
 		UploadPatrolRecordAysnTask upload = new UploadPatrolRecordAysnTask();
 		upload.execute(1);
 	}
@@ -541,11 +534,7 @@ public class MainActivity extends Activity {
 				overridePendingTransition(R.anim.slide_in_from_bottom,
 						R.anim.slide_out_to_top);
 				break;
-			case R.id.bottombar_gonggao:
-				Intent intentgonggao = new Intent(MainActivity.this,
-						DiscuzActivity.class);
-				startActivity(intentgonggao);
-				break;
+			
 			case R.id.bottombar_home:
 				Intent intenthome = new Intent(MainActivity.this,
 						HomeActivity.class);
@@ -558,75 +547,25 @@ public class MainActivity extends Activity {
 						CourseActivity.class);
 				startActivity(intent);
 				break;
-			case R.id.tool_niaotong:
-				Intent intentniao = new Intent(MainActivity.this,
-						ToolNiaoTongActivity.class);
-				startActivity(intentniao);
-				break;
+			
 			case R.id.tool_gonggao:
 				Intent intentgongg = new Intent(MainActivity.this,
 						GongGaoActivity.class);
 				startActivity(intentgongg);
 				break;
-			case R.id.tool_clock:
-				Intent intentclock = new Intent(MainActivity.this,
-						DeskClockMainActivity.class);
-				startActivity(intentclock);
-				break;
-			case R.id.tool_bmi:
-				Intent intentbmi = new Intent(MainActivity.this, ToolBMI.class);
-				startActivity(intentbmi);
-				break;
-			case R.id.tool_calorie:
-				Intent intentcalorie = new Intent(MainActivity.this,
-						ToolConvert.class);
-				startActivity(intentcalorie);
-				break;
-			case R.id.tool_sanwei:
-				Intent intentsanwei = new Intent(MainActivity.this,
-						ToolSanWei.class);
-				startActivity(intentsanwei);
-				break;
-			case R.id.tool_bmr:
-				Intent intentbmr = new Intent(MainActivity.this, ToolBMR.class);
-				startActivity(intentbmr);
-				break;
-			case R.id.tool_health_weight:
-				Intent intenthealth = new Intent(MainActivity.this,
-						ToolHealthWeight.class);
-				startActivity(intenthealth);
-				break;
 			case R.id.tool_sports_record:
 				Intent intentsports_record = new Intent(MainActivity.this,
 						SportsRecordActivity.class);
 				startActivity(intentsports_record);
-				break;
-			case R.id.tool_course_record:
-				Intent intentcourse_record = new Intent(MainActivity.this,
-						CourseRecordActivity.class);
-				startActivity(intentcourse_record);
-				break;
-			case R.id.tool_standard_weight_btn:
-				Intent intentWeight = new Intent(MainActivity.this,
-						ToolStandardWeight.class);
-				startActivity(intentWeight);
-				break;
+				break;			
 			case R.id.tool_sports_btn:
 				Intent intentSports = new Intent(MainActivity.this,
 						SportsActivity.class);
 				startActivity(intentSports);
 				break;
 
-			case R.id.tool_online_btn:
-				Intent intentOnline = new Intent(MainActivity.this,
-						OnlineMainActivity.class);
-				startActivity(intentOnline);
-				break;
-			case R.id.tool_discuz:
-				Intent intentDiscuz = new Intent(MainActivity.this,
-						DiscuzActivity.class);
-				startActivity(intentDiscuz);
-				break;
+			
+			
 			case R.id.tool_lipin:
 				Intent intentLipin = new Intent(MainActivity.this,
 						LiPinActivity.class);
@@ -646,21 +585,13 @@ public class MainActivity extends Activity {
 					break;
 				}
 				Toast.makeText(getApplicationContext(), "请稍候，正在打开蓝牙",
-						Toast.LENGTH_SHORT).show();
-				Intent intentBluetooth = new Intent(MainActivity.this,
-						DeviceScanActivity.class);
-				startActivity(intentBluetooth);
+						Toast.LENGTH_SHORT).show();				
 				break;			
 			case R.id.setting_about_website_textView:
 				Intent intent2 = new Intent(MainActivity.this,
 						CoreBriefActivity.class);
 				startActivity(intent2);
-				break;
-			case R.id.setting_about_website_textView3:
-				Intent intent5 = new Intent(MainActivity.this,
-						OnlineMainActivity.class);
-				startActivity(intent5);
-				break;
+				break;			
 			case R.id.act_physiology_record_weight:
 				Toast.makeText(MainActivity.this, "dd", Toast.LENGTH_SHORT).show();
 				break;
