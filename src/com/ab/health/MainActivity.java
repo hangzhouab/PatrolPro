@@ -23,6 +23,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -31,6 +32,7 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -73,7 +75,7 @@ public class MainActivity extends Activity {
 	private RoundProgressBar sportsProgress;
 	private Button btn_about, btn_bbs, btn_tool, btn_record, btn_topbar_home,
 			btn_tool_gonggao;
-	private Button btn_tool_food, btn_saveWeight, btn_tool_standardweight,
+	private Button btn_tool_food, btn_patrolQuery, btn_tool_standardweight,
 			btn_tool_healthweight, btn_tool_clock;
 	private Button btn_tool_sports, btn_tool_bluetooth, btn_tool_zhishi,
 			btn_tool_sportsrecord, btn_tool_sanwei, btn_tool_niaotong;
@@ -113,6 +115,8 @@ public class MainActivity extends Activity {
 	private SimpleAdapter patrolRecordAdapter;
 	private ListView patrolRecordLV;	
 	
+	
+	private  CalendarView calendar;
 	
 	private boolean isInit = false;
 	
@@ -288,7 +292,7 @@ public class MainActivity extends Activity {
 		viewGongGao = flater.inflate(R.layout.activity_gonggao2, contentViewPager);
 		
 		activityTool = flater.inflate(R.layout.activity_patrol_record, contentViewPager);
-		activityPhysiology = flater.inflate(R.layout.fragment_physiology,
+		activityPhysiology = flater.inflate(R.layout.fragment_patrol_query,
 				contentViewPager); 
 		activityServer = flater.inflate(R.layout.activity_setting_about,
 				contentViewPager);
@@ -303,6 +307,10 @@ public class MainActivity extends Activity {
 //
 //		changePlain = (TextView) findViewById(R.id.changefitness);
 //		changePlain.setOnClickListener(onClickListener);
+		calendar = (CalendarView) findViewById(R.id.calendarView1);
+		calendar.setBackgroundColor(0xffcccccc);
+		
+		
 		btn_record = (Button) findViewById(R.id.bottombar_record);
 		btn_record.setOnClickListener(onClickListener);
 		btn_bbs = (Button) findViewById(R.id.bottombar_bbs);
@@ -394,9 +402,11 @@ public class MainActivity extends Activity {
 		btn_topbar_home = (Button) findViewById(R.id.bottombar_home);
 		btn_topbar_home.setOnClickListener(onClickListener);
 		titleBar = (TextView) findViewById(R.id.titlebar_home_title);
-//
-//		btn_saveWeight = (Button) findViewById(R.id.act_physiology_record_weight);
-//		btn_saveWeight.setOnClickListener(onClickListener);
+
+		
+		// patrol query view fliper		
+		btn_patrolQuery = (Button) findViewById(R.id.act_physiology_record_weight);
+		btn_patrolQuery.setOnClickListener(onClickListener);
 //		weightRecordly = (LinearLayout) findViewById(R.id.act_physiology_canvas_image_layout);
 //		recordCal = (TextView) findViewById(R.id.task_consum_current_textView2);
 
@@ -650,6 +660,9 @@ public class MainActivity extends Activity {
 				Intent intent5 = new Intent(MainActivity.this,
 						OnlineMainActivity.class);
 				startActivity(intent5);
+				break;
+			case R.id.act_physiology_record_weight:
+				Toast.makeText(MainActivity.this, "dd", Toast.LENGTH_SHORT).show();
 				break;
 			case R.id.setting_about_weibo_textView:
 				Uri nuolikangUri = Uri.parse("http://www.nlk759.com");

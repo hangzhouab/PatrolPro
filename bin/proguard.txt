@@ -98,9 +98,6 @@
 # view AndroidManifest.xml #generated:179
 -keep class com.ab.health.ZhiShiDetailActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:310
--keep class com.ab.health.ble.BluetoothLeService { <init>(...); }
-
 # view AndroidManifest.xml #generated:195
 -keep class com.ab.health.ble.BluetoothResult { <init>(...); }
 
@@ -115,12 +112,6 @@
 
 # view AndroidManifest.xml #generated:229
 -keep class com.ab.health.clock.AlarmAlertFullScreen { <init>(...); }
-
-# view AndroidManifest.xml #generated:301
--keep class com.ab.health.clock.AlarmInitReceiver { <init>(...); }
-
-# view AndroidManifest.xml #generated:293
--keep class com.ab.health.clock.AlarmKlaxon { <init>(...); }
 
 # view res/xml/alarm_prefs.xml #generated:29
 -keep class com.ab.health.clock.AlarmPreference { <init>(...); }
@@ -157,9 +148,6 @@
 # view AndroidManifest.xml #generated:272
 -keep class com.ab.health.online.ChatActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:319
--keep class com.ab.health.online.MyPushMessageReceiver { <init>(...); }
-
 # view AndroidManifest.xml #generated:263
 -keep class com.ab.health.online.OnlineMainActivity { <init>(...); }
 
@@ -179,15 +167,6 @@
 # view res/layout/fragment_task.xml #generated:59
 # view res/layout/main_food.xml #generated:11
 -keep class com.ab.health.view.RoundProgressBar { <init>(...); }
-
-# view AndroidManifest.xml #generated:350
--keep class com.baidu.android.pushservice.PushService { <init>(...); }
-
-# view AndroidManifest.xml #generated:330
--keep class com.baidu.android.pushservice.PushServiceReceiver { <init>(...); }
-
-# view AndroidManifest.xml #generated:339
--keep class com.baidu.android.pushservice.RegistrationReceiver { <init>(...); }
 
 # view AndroidManifest.xml #generated:31
 -keep class com.baidu.frontia.FrontiaApplication { <init>(...); }
