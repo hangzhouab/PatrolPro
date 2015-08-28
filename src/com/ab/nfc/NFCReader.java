@@ -12,6 +12,9 @@ public class NFCReader {
 	
 	public String read(Intent intent){
 		Parcelable [] rawArray = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
+		if(rawArray == null){
+			return "error";
+		}
 		NdefMessage ndefMsg = (NdefMessage) rawArray[0];
 		NdefRecord ndefRecord = ndefMsg.getRecords()[0];
 		return parse(ndefRecord);

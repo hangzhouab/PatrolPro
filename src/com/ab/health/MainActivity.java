@@ -12,9 +12,13 @@ import org.json.JSONObject;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.nfc.NdefMessage;
+import android.nfc.NdefRecord;
+import android.nfc.NfcAdapter;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Looper;
+import android.os.Parcelable;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
@@ -79,8 +83,7 @@ public class MainActivity extends Activity {
 	private int recordCalorie = 0, sex;
 	private String username = "nlk", nicename = "nlk", height = "175",
 			weight = "75", age = "30", target = "70", days = "20";
-	private int sportsPerDay, coursePerDay;
-	private LinearLayout weightRecordly;
+
 	private TextView recordCal, titleBar, recordSports, courseTarget,
 			sportsTarget, changePlain, yourBMI, yourWeight, targetWeight;
 	private ArrayList<View> weightRecordList = new ArrayList<View>();
@@ -89,7 +92,7 @@ public class MainActivity extends Activity {
 	private LinearLayout bottom_record, bottom_tool, bottom_weight,
 			bottom_server;
 	
-	private boolean isback = false, isCommitWeight = false;
+
 	
 	// GongGao viewFliper
 	private List<HashMap<String, String>> gonggaoData;
@@ -106,6 +109,7 @@ public class MainActivity extends Activity {
 	private SimpleAdapter patrolRecordAdapter;
 	private ListView patrolRecordLV;	
 	
+	private String TAGaddress;
 	
 	private  CalendarView calendar;
 	
@@ -118,19 +122,14 @@ public class MainActivity extends Activity {
 
 		if (!NetworkConnect.isNetworkConnected(this)) {
 			NetworkConnect.AlertNotCon(this);
-		} else {
-			
-			if( !isInit ){				
-				setContentView(R.layout.activity_main);		
-				CreatePatroRecordTabel();
-				CheckAppUpdate();	
-				InitButton();
-				InitGongGaoViewFliper();
-				InitPatrolRecordViewFliper();
-				isInit = true;
-			}else{
-				UpdatePatrolRecord();
-			}
+		} else {			
+			setContentView(R.layout.activity_main);	
+			InitButton();
+			CreatePatroRecordTabel();
+			CheckAppUpdate();					
+			InitGongGaoViewFliper();
+			InitPatrolRecordViewFliper();			
+			UpdatePatrolRecord();
 		}
 	}
 	
@@ -147,9 +146,12 @@ public class MainActivity extends Activity {
 		updateApp.execute(1);
 	}
 
-	private void UpdatePatrolRecord() {
+	private void UpdatePatrolRecord() {		
 		NFCReader nfcReader = new NFCReader();
-		String text = nfcReader.read(getIntent());
+		TAGaddress = nfcReader.read(getIntent());
+		if(TAGaddress.equals("error")){
+			return;
+		}
 		UploadPatrolRecordAysnTask upload = new UploadPatrolRecordAysnTask();
 		upload.execute(1);
 	}
@@ -219,27 +221,25 @@ public class MainActivity extends Activity {
 					int visibleItemCount, int totalItemCount) {
 				
 			}
-		});		
+		});				
 		
-		url = AppSetting.getRootURL() +  "gonggao.php";
 		
 		LoadPatrolRecordAysnTask loadCourse = new LoadPatrolRecordAysnTask();
 		loadCourse.execute(0);
 		
 		
-		patrolRecordAdapter = new SimpleAdapter(this, gonggaoData,R.layout.view_patrol_record_list, 
-				new String[] { "title", "date" },new int[] { R.id.view_meal_list_name_tv,R.id.view_meal_list_cal_tv });
+		patrolRecordAdapter = new SimpleAdapter(this, patrolRecordData,R.layout.view_patrol_record_list, 
+				new String[] { "address", "time" },new int[] { R.id.view_meal_list_name_tv,R.id.view_meal_list_cal_tv });
 	
 		patrolRecordLV.setAdapter(patrolRecordAdapter);
-		itemclick = new GongGaoItemClick();		 	
-		patrolRecordLV.setOnItemClickListener(itemclick);
+		 	
+	
 	}
 	
 	private void GetShared() {
 		SharedPreferences appSetting = getSharedPreferences(AppSetting.getSettingFile(), MODE_PRIVATE);
 		ramUsername = appSetting.getString(AppSetting.username, "");
-		ramOrgniztion = appSetting.getString(AppSetting.orgnization, "");		
-		Log.i("ram", ramUsername);
+		ramOrgniztion = appSetting.getString(AppSetting.orgnization, "");	
 	}
 
 	class GongGaoItemClick implements AdapterView.OnItemClickListener{
@@ -276,16 +276,7 @@ public class MainActivity extends Activity {
 		activityServer = flater.inflate(R.layout.activity_setting_about,
 				contentViewPager);
 		onClickListener = new OnClickListener();
-//		yourWeight = (TextView) findViewById(R.id.act_physiology_your_weight);
-//		yourBMI = (TextView) findViewById(R.id.act_physiology_your_BMI);
-//		targetWeight = (TextView) findViewById(R.id.targetWeight);
-//
-//		recordSports = (TextView) findViewById(R.id.task_yundong_current_textView);
-//		sportsTarget = (TextView) findViewById(R.id.task_sports_target_textView);
-//		courseTarget = (TextView) findViewById(R.id.task_course_target_textView);
-//
-//		changePlain = (TextView) findViewById(R.id.changefitness);
-//		changePlain.setOnClickListener(onClickListener);
+
 		calendar = (CalendarView) findViewById(R.id.calendarView1);
 		calendar.setBackgroundColor(0xffcccccc);
 		
@@ -302,68 +293,7 @@ public class MainActivity extends Activity {
 		goWeb.setOnClickListener(onClickListener);
 		TextView coreBreif = (TextView) findViewById(R.id.setting_about_website_textView);
 		coreBreif.setOnClickListener(onClickListener);
-//		TextView online = (TextView) findViewById(R.id.setting_about_website_textView3);
-//		online.setOnClickListener(onClickListener);
 
-		// Tool
-//		btn_tool_food = (Button) findViewById(R.id.tool_food_btn);
-//		btn_tool_food.setOnClickListener(onClickListener);
-//		btn_tool_standardweight = (Button) findViewById(R.id.tool_standard_weight_btn);
-//		btn_tool_standardweight.setOnClickListener(onClickListener);
-//		btn_tool_healthweight = (Button) findViewById(R.id.tool_health_weight);
-//		btn_tool_healthweight.setOnClickListener(onClickListener);
-//		btn_tool_sports = (Button) findViewById(R.id.tool_sports_btn);
-//		btn_tool_sports.setOnClickListener(onClickListener);
-//		btn_tool_bluetooth = (Button) findViewById(R.id.tool_bluetooth);
-//		btn_tool_bluetooth.setOnClickListener(onClickListener);
-//		btn_tool_zhishi = (Button) findViewById(R.id.tool_zhishi);
-//		btn_tool_zhishi.setOnClickListener(onClickListener);
-//		btn_tool_sportsrecord = (Button) findViewById(R.id.tool_sports_record);
-//		btn_tool_sportsrecord.setOnClickListener(onClickListener);
-//		btn_tool_courserecord = (Button) findViewById(R.id.tool_course_record);
-//		btn_tool_courserecord.setOnClickListener(onClickListener);
-//		btn_tool_bmi = (Button) findViewById(R.id.tool_bmi);
-//		btn_tool_bmi.setOnClickListener(onClickListener);
-//		/*
-//		 * btn_tool_health = (Button) findViewById(R.id.tool_health_weight);
-//		 * btn_tool_health.setOnClickListener(onClickListener);
-//		 */
-//		btn_tool_bmr = (Button) findViewById(R.id.tool_bmr);
-//		btn_tool_bmr.setOnClickListener(onClickListener);
-//		btn_tool_convert = (Button) findViewById(R.id.tool_calorie);
-//		btn_tool_convert.setOnClickListener(onClickListener);
-//		btn_tool_sanwei = (Button) findViewById(R.id.tool_sanwei);
-//		btn_tool_sanwei.setOnClickListener(onClickListener);
-//		btn_tool_niaotong = (Button) findViewById(R.id.tool_niaotong);
-//		btn_tool_niaotong.setOnClickListener(onClickListener);
-//		btn_tool_gonggao = (Button) findViewById(R.id.tool_gonggao);
-//		btn_tool_gonggao.setOnClickListener(onClickListener);
-//		btn_tool_clock = (Button) findViewById(R.id.tool_clock);
-//		btn_tool_clock.setOnClickListener(onClickListener);
-//
-//		btn_tool_online = (Button) findViewById(R.id.tool_online_btn);
-//		btn_tool_online.setOnClickListener(onClickListener);
-//
-//		btn_tool_lipin = (Button) findViewById(R.id.tool_lipin);
-//		btn_tool_lipin.setOnClickListener(onClickListener);
-//
-//		btn_tool_discuz = (Button) findViewById(R.id.tool_discuz);
-//		btn_tool_discuz.setOnClickListener(onClickListener);
-
-		// Tool background
-		/*
-		 * foodLL = (LinearLayout) findViewById(R.id.tool_background_food);
-		 * sportsLL = (LinearLayout) findViewById(R.id.tool_background_sports);
-		 * standardLL = (LinearLayout)
-		 * findViewById(R.id.tool_background_standard); courseLL =
-		 * (LinearLayout) findViewById(R.id.tool_background_course); blueLL =
-		 * (LinearLayout) findViewById(R.id.tool_background_blue); convertLL =
-		 * (LinearLayout) findViewById(R.id.tool_background_convert);
-		 * sportsrecordLL = (LinearLayout)
-		 * findViewById(R.id.tool_background_sportsrecord); bmiLL =
-		 * (LinearLayout) findViewById(R.id.tool_background_bmi); zhishiLL =
-		 * (LinearLayout) findViewById(R.id.tool_background_zhishi);
-		 */
 
 		// buttom button
 		bottom_record = (LinearLayout) findViewById(R.id.bottom_record);
@@ -386,30 +316,10 @@ public class MainActivity extends Activity {
 		// patrol query view fliper		
 		btn_patrolQuery = (Button) findViewById(R.id.act_physiology_record_weight);
 		btn_patrolQuery.setOnClickListener(onClickListener);
-//		weightRecordly = (LinearLayout) findViewById(R.id.act_physiology_canvas_image_layout);
-//		recordCal = (TextView) findViewById(R.id.task_consum_current_textView2);
 
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
 
-	
-
-	private void updateBMIdisplay(String weight) {
-		User user = new User();
-		user.setHeight(Float.valueOf(height));
-		user.setWeight(Float.valueOf(weight));
-		float tempbmi = HealthUtility.calBMI(user);
-		String tixing = HealthUtility.boolHealth(user);
-		yourBMI.setText(String.valueOf((int) tempbmi));
-		yourWeight.setText(tixing);
-		targetWeight.setText(target + "公斤");
-	}
 
 	private void db() {
 		int calorieSum = 0;
@@ -442,10 +352,6 @@ public class MainActivity extends Activity {
 		db.close();
 	}
 
-	void commitWeight() {
-//		WeightAysnTask weight = new WeightAysnTask();
-//		weight.execute(0);
-	}
 
 	private class OnClickListener implements View.OnClickListener {
 
@@ -453,8 +359,8 @@ public class MainActivity extends Activity {
 		public void onClick(View arg0) {
 			switch (arg0.getId()) {
 			case R.id.bottombar_record:
-				LoadGongGaoAysnTask loadCourse = new LoadGongGaoAysnTask();
-				loadCourse.execute(0);
+//				LoadGongGaoAysnTask loadCourse = new LoadGongGaoAysnTask();
+//				loadCourse.execute(0);
 				contentViewPager.setDisplayedChild(3);
 				contentViewPager.showNext();
 				titleBar.setText("单位公告");
@@ -587,8 +493,10 @@ public class MainActivity extends Activity {
 
 	private class LoadGongGaoAysnTask extends AsyncTask<Object, Integer, Integer>{
 		int ret;
+		String ggURL;
 		@Override
 		protected void onPreExecute() {		
+			ggURL = AppSetting.getRootURL() + "gonggao.php";
 			if( isComplelet ){ 
 				Toast.makeText(getApplicationContext(), "全部信息已加载", Toast.LENGTH_SHORT).show();
 			}else {
@@ -599,8 +507,9 @@ public class MainActivity extends Activity {
 		@Override
 		protected Integer doInBackground(Object... params) {			
 			int sId = (Integer) params[0];
-			param = "?startid="+sId+"&endid=10&catid=" + catId;		
-			ret = gongGaoJsonHandle(httpData.HttpGets(url,param));
+			param = "?startid="+sId+"&endid=10&catid=" + catId;	
+			Log.i("url", url);
+			ret = gongGaoJsonHandle(httpData.HttpGets(ggURL,param));
 			return ret;
 		}
 
@@ -618,31 +527,26 @@ public class MainActivity extends Activity {
 	}
 	
 	private class LoadPatrolRecordAysnTask extends AsyncTask<Object, Integer, Integer>{
-		int ret;
+		
 		@Override
 		protected void onPreExecute() {		
-			if( isComplelet ){ 
-			//	Toast.makeText(getApplicationContext(), "全部信息已加载", Toast.LENGTH_SHORT).show();
-			}else {
-			//	Toast.makeText(getApplicationContext(), "正在加载...", Toast.LENGTH_SHORT).show();
-			}
+			url = AppSetting.getRootURL() + "loadpatrol.php";
+			GetShared();
 		}
 		
 		@Override
-		protected Integer doInBackground(Object... params) {			
+		protected Integer doInBackground(Object... params) {	
 			int sId = (Integer) params[0];
-			param = "?startid="+sId+"&endid=10&catid=" + catId;		
-			ret = gongGaoJsonHandle(httpData.HttpGets(url,param));
-			return ret;
+			param = "?username="+ramUsername + "&startid="+sId+"&endid=10";		
+			HttpGetData httpData = new HttpGetData();
+			patrolRecordJsonHandle(httpData.HttpGets(url,param));
+			return 1;
 		}
 
 		@Override
 		protected void onPostExecute(Integer result) {			
-			if(ret ==0){			
-					gongGaoAdapter.notifyDataSetChanged();						
-			}else {
-
-			}			
+			patrolRecordAdapter.notifyDataSetChanged();					
+					
 		}
 
 	}
@@ -662,34 +566,37 @@ public class MainActivity extends Activity {
 	}
 	
 	private class UploadPatrolRecordAysnTask extends AsyncTask<Object, Integer, Integer>{
-		int ret;
+		String time;
 		@Override
 		protected void onPreExecute() {		
-			if( isComplelet ){ 
-			//	Toast.makeText(getApplicationContext(), "全部信息已加载", Toast.LENGTH_SHORT).show();
-			}else {
-			//	Toast.makeText(getApplicationContext(), "正在加载...", Toast.LENGTH_SHORT).show();
-			}
+			url = AppSetting.getRootURL() + "patrolrecord.php";
+			GetShared();
+			param = "?username="+ramUsername + "&address=" + TAGaddress ;	
+			Log.i("upload", param);
 		}
 		
 		@Override
-		protected Integer doInBackground(Object... params) {			
-			int sId = (Integer) params[0];
-			param = "?startid="+sId+"&endid=10&catid=" + catId;		
-			ret = gongGaoJsonHandle(httpData.HttpGets(url,param));
-			return ret;
+		protected Integer doInBackground(Object... params) {	
+			HttpGetData httpData = new HttpGetData();
+			time = httpData.HttpGets(url,param);
+			return 1;
 		}
 
 		@Override
-		protected void onPostExecute(Integer result) {			
-			if(ret ==0){			
-					LoadPatrolRecordAysnTask load = new LoadPatrolRecordAysnTask();
-					load.execute(1);
-			}else {
-
-			}			
+		protected void onPostExecute(Integer result) {	
+//			if(time == null ){
+//				Log.i("time", "patrol记录时间返回错误");
+//				return;
+//			}				
+//			HashMap<String, String> recordItem = new HashMap<String, String>();			
+//			recordItem.put("address", TAGaddress);
+//			recordItem.put("time", time);			
+//			patrolRecordData.add(recordItem);
+//			patrolRecordAdapter.notifyDataSetChanged();		
+			LoadPatrolRecordAysnTask load = new LoadPatrolRecordAysnTask();
+			load.execute(0);
+//					
 		}
-
 	}
 	
 	private class CreateTableAysnTask extends AsyncTask<Object, Integer, Integer>{
@@ -697,8 +604,7 @@ public class MainActivity extends Activity {
 		@Override
 		protected void onPreExecute() {		
 			url = AppSetting.getRootURL() + "createtable.php";
-			GetShared();
-			
+			GetShared();			
 		}
 		
 		@Override
@@ -712,12 +618,7 @@ public class MainActivity extends Activity {
 
 		@Override
 		protected void onPostExecute(Integer result) {			
-			if(ret ==0){			
-					LoadPatrolRecordAysnTask load = new LoadPatrolRecordAysnTask();
-					load.execute(1);
-			}else {
-
-			}			
+			
 		}
 
 	}
@@ -731,6 +632,7 @@ public class MainActivity extends Activity {
 			return 1;
 		}
 		try { 
+			Log.i("gonggao", retResponse);
 			JSONObject json = new JSONObject(retResponse);
 			JSONArray foodsArray = json.getJSONArray("foods");
 			if(foodsArray.length() == 0 ){
@@ -754,6 +656,32 @@ public class MainActivity extends Activity {
 				gonggaoData.add(courseItem);				
 			}
 			ret =0 ;
+		} catch (JSONException e) {
+			e.printStackTrace();
+			ret = 1;
+		}
+		return ret;
+	}
+	
+	private Integer patrolRecordJsonHandle(String retResponse) {
+		int ret =0;
+		if(retResponse == null ){
+			Log.i("ret", "获取巡更失败");
+			return 1;
+		}
+		try { 		
+			Log.i("patrolRet", retResponse);
+			JSONObject json = new JSONObject(retResponse);
+			JSONArray foodsArray = json.getJSONArray("foods");			
+			for (int i = 0; i < foodsArray.length(); i++) {
+				JSONObject temp = (JSONObject) foodsArray.opt(i);
+				HashMap<String, String> courseItem = new HashMap<String, String>();				
+				String time = temp.getString("time");		
+				String address = temp.getString("address");					
+				courseItem.put("time", time);	
+				courseItem.put("address", address);	
+				patrolRecordData.add(courseItem);				
+			}			
 		} catch (JSONException e) {
 			e.printStackTrace();
 			ret = 1;
