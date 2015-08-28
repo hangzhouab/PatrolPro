@@ -96,7 +96,7 @@ public class UpdateManager
 			showNoticeDialog();
 		} else
 		{
-			Toast.makeText(mContext, "当前是最新的版本", Toast.LENGTH_LONG).show();
+			
 		}
 	}
 
@@ -121,6 +121,10 @@ public class UpdateManager
 
 		
 	private Integer JsonHandle(String retResponse) {
+		if(retResponse == null){
+			Log.i("update", "获取新版本失败");
+			return 1;
+		}
 		int ret =0;
 		try {
 			JSONObject json = new JSONObject(retResponse);

@@ -7,10 +7,18 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
 public class AppSetting {
-	private  final static String url="http://www.lsanbang.com/fitness/";
+	private  final static String url="http://www.lsanbang.com/patrol/";
 	private  final static String settingfile ="settingbh";
 	public final static String PUSH_API_KEY = "Cu8XF05UqqjGAbZzC33SHe25";
 	public final static String PUSH_SECRIT_KEY = "ef0l0D02H8GBEqlkvHC1xfKeGArSaCRA";
+	
+	// write settingFile's key
+	public final static String username="username";
+	public final static String orgnization="orgnization";
+	public final static String phone="phone";
+	public final static String isRegister = "isRegister";
+	
+	
 	public static String getRootURL()
 	{
 		return url;

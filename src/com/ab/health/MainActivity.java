@@ -110,7 +110,7 @@ public class MainActivity extends Activity {
 	private  CalendarView calendar;
 	
 	private boolean isInit = false;
-	
+	private String ramUsername,ramOrgniztion;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -120,23 +120,11 @@ public class MainActivity extends Activity {
 			NetworkConnect.AlertNotCon(this);
 		} else {
 			
-			if( !isInit ){
-				update = new UpdateManager(MainActivity.this);
-				setContentView(R.layout.activity_main);
-	
-				new Thread(new Runnable() {
-	
-					@Override
-					public void run() {
-						Looper.prepare();
-						update.checkUpdate();
-						Looper.loop();
-					}
-				}).start();
-	
+			if( !isInit ){				
+				setContentView(R.layout.activity_main);		
+				CreatePatroRecordTabel();
+				CheckAppUpdate();	
 				InitButton();
-				firstUseShowGuide();				
-				
 				InitGongGaoViewFliper();
 				InitPatrolRecordViewFliper();
 				isInit = true;
@@ -144,7 +132,19 @@ public class MainActivity extends Activity {
 				UpdatePatrolRecord();
 			}
 		}
+	}
+	
+	
+	private void CreatePatroRecordTabel() {
+		CreateTableAysnTask create = new CreateTableAysnTask();
+		create.execute(1);
+		
+	}
 
+
+	private void CheckAppUpdate(){
+		UpdateAppAysnTask updateApp = new UpdateAppAysnTask();
+		updateApp.execute(1);
 	}
 
 	private void UpdatePatrolRecord() {
@@ -235,18 +235,11 @@ public class MainActivity extends Activity {
 		patrolRecordLV.setOnItemClickListener(itemclick);
 	}
 	
-	private void updateShared() {
-		SharedPreferences appSetting = getSharedPreferences(
-				AppSetting.getSettingFile(), MODE_PRIVATE);
-		username = appSetting.getString("username", "");
-		nicename = appSetting.getString("nicename", "");
-		height = appSetting.getString("height", "");
-		weight = appSetting.getString("weight", "");
-		target = appSetting.getString("target", "");
-		days = appSetting.getString("days", "");
-		age = appSetting.getString("age", "");
-		sex = appSetting.getInt("sex", 0);
-		targetWeight.setText(target + "公斤");
+	private void GetShared() {
+		SharedPreferences appSetting = getSharedPreferences(AppSetting.getSettingFile(), MODE_PRIVATE);
+		ramUsername = appSetting.getString(AppSetting.username, "");
+		ramOrgniztion = appSetting.getString(AppSetting.orgnization, "");		
+		Log.i("ram", ramUsername);
 	}
 
 	class GongGaoItemClick implements AdapterView.OnItemClickListener{
@@ -268,14 +261,7 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		// MyPushMessageReceiver.ehList.add(this);
-		if (isback) {
-			updateShared();
-			
-			
-
-		}
-
+		
 	}
 
 	private void InitButton() {
@@ -412,29 +398,7 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
-	private void firstUseShowGuide() {
-		SharedPreferences appSetting = getSharedPreferences(
-				AppSetting.getSettingFile(), MODE_PRIVATE);
-		
-		if (appSetting.getBoolean("NoRegister", true)) {			
-			Intent intent = new Intent();
-			intent.setClass(this, LoginActivity.class);
-			startActivity(intent);
-		} else {
-//			isback = true;
-//			username = appSetting.getString("username", "");
-//			nicename = appSetting.getString("nicename", "");
-//			height = appSetting.getString("height", "");
-//			weight = appSetting.getString("weight", "");
-//			target = appSetting.getString("target", "");
-//			days = appSetting.getString("days", "");
-//			age = appSetting.getString("age", "");
-//			sex = appSetting.getInt("sex", 0);
-//			
-//			updateBMIdisplay(weight);
-		}
-
-	}
+	
 
 	private void updateBMIdisplay(String weight) {
 		User user = new User();
@@ -489,6 +453,8 @@ public class MainActivity extends Activity {
 		public void onClick(View arg0) {
 			switch (arg0.getId()) {
 			case R.id.bottombar_record:
+				LoadGongGaoAysnTask loadCourse = new LoadGongGaoAysnTask();
+				loadCourse.execute(0);
 				contentViewPager.setDisplayedChild(3);
 				contentViewPager.showNext();
 				titleBar.setText("单位公告");
@@ -681,6 +647,20 @@ public class MainActivity extends Activity {
 
 	}
 	
+	private class UpdateAppAysnTask extends AsyncTask<Object, Integer, Integer>{
+		int ret;
+		@Override
+		protected void onPreExecute() {		
+			update = new UpdateManager(MainActivity.this);
+		}
+		
+		@Override
+		protected Integer doInBackground(Object... params) {			
+			update.checkUpdate();
+			return ret;
+		}
+	}
+	
 	private class UploadPatrolRecordAysnTask extends AsyncTask<Object, Integer, Integer>{
 		int ret;
 		@Override
@@ -712,9 +692,44 @@ public class MainActivity extends Activity {
 
 	}
 	
+	private class CreateTableAysnTask extends AsyncTask<Object, Integer, Integer>{
+		int ret;
+		@Override
+		protected void onPreExecute() {		
+			url = AppSetting.getRootURL() + "createtable.php";
+			GetShared();
+			
+		}
+		
+		@Override
+		protected Integer doInBackground(Object... params) {
+			
+			param = "?username="+ramUsername;		
+			HttpGetData httpData = new HttpGetData();
+			httpData.HttpGets(url,param);
+			return ret;
+		}
+
+		@Override
+		protected void onPostExecute(Integer result) {			
+			if(ret ==0){			
+					LoadPatrolRecordAysnTask load = new LoadPatrolRecordAysnTask();
+					load.execute(1);
+			}else {
+
+			}			
+		}
+
+	}
+	
+	
 	
 	private Integer gongGaoJsonHandle(String retResponse) {
 		int ret =0;
+		if(retResponse == null ){
+			Log.i("ret", "获取公告失败");
+			return 1;
+		}
 		try { 
 			JSONObject json = new JSONObject(retResponse);
 			JSONArray foodsArray = json.getJSONArray("foods");

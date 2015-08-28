@@ -56,9 +56,8 @@ public class AdStartActivity extends Activity {
 			}
 			new Handler().postDelayed(new Runnable() {    
 		           @Override
-					public void run() {  	
-		        	   	
-						Intent intent = new Intent(AdStartActivity.this, MainActivity.class);						
+					public void run() {  			        	   	
+						Intent intent = new Intent(AdStartActivity.this, LoginActivity.class);						
 						startActivity(intent);
 						finish();
 		           }

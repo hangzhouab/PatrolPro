@@ -11,8 +11,8 @@
         android:layout_marginTop="50.0dip" >
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_centerInParent="true"
             android:background="@drawable/logo" />
     </RelativeLayout>
@@ -47,8 +47,8 @@
                     android:layout_marginLeft="10.0dip"
                     android:layout_marginRight="10.0dip"
                     android:background="#00000000"
-                    android:hint="请输入手机号"
-                    android:inputType="number"
+                    android:hint="请输入用户名"
+                    android:inputType="text"
                     android:textSize="15.0dip" />
             </LinearLayout>
 
@@ -78,6 +78,8 @@
                     android:inputType="textPassword"
                     android:textSize="15.0dip" />
             </LinearLayout>
+            
+            
 
             <View
                 android:layout_width="fill_parent"
@@ -102,19 +104,9 @@
                     android:id="@id/login_jump_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:text="注   册》"
-                    android:textColor="#ff666666"
-                    android:textSize="16.0dip" />
-                <TextView
-                    android:id="@+id/login_jump_textview2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    android:text="《  返   回"
-                    android:textColor="#ff666666"
+                    android:layout_centerInParent="true"
+                    android:text="没有账户？请单击这里注册"
+                    android:textColor="#ff6666ff"
                     android:textSize="16.0dip" />
             </RelativeLayout>
         </LinearLayout>

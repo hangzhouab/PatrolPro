@@ -4,6 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
 import com.ab.health.utility.HttpGetData;
 import com.ab.health.utility.AppSetting;
 
@@ -22,9 +23,8 @@ import android.widget.Toast;
 
 public class LoginActivity extends Activity {
 
-	private String url,param,username,password,nicename;
-	private String height,weight,target,age,days;
-	private int sex;
+	private String url,param,username,password,orgniztion;
+	
 	
 	
 	private EditText userName,passWord;
@@ -33,16 +33,10 @@ public class LoginActivity extends Activity {
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
+		isFirstUse();
+		
 		userName = (EditText) findViewById(R.id.login_account_edittext);
 		passWord = (EditText) findViewById(R.id.login_password_edittext);
-		
-		TextView back = (TextView) findViewById(R.id.login_jump_textview2);
-		back.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				finish();
-			}
-		});
 		
 		
 
@@ -51,7 +45,7 @@ public class LoginActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				finish();
-				Intent intent = new Intent(LoginActivity.this, FirstUseActivity.class);
+				Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
 				startActivity(intent);
 			}
 		});
@@ -59,16 +53,29 @@ public class LoginActivity extends Activity {
 		
 		Button login = (Button) findViewById(R.id.login_sumbit_button);
 		login.setOnClickListener(new View.OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
-				LoginAysnTask loginAysn = new LoginAysnTask();
-				loginAysn.execute(0);
-				finish();
+				if(userName.length()<=0 ||passWord.length()<=0 ){
+					Toast.makeText(getApplicationContext(), "用户名、密码不能为空", Toast.LENGTH_SHORT).show();
+					return;
+				}else{									
+					LoginAysnTask loginAysn = new LoginAysnTask();
+					loginAysn.execute(0);					
+				}	
 			}
 		});
-		
 	}
+	
+	private void isFirstUse() {
+		SharedPreferences appSetting = getSharedPreferences( AppSetting.getSettingFile(), MODE_PRIVATE);		
+		if (appSetting.getBoolean(AppSetting.isRegister, false)) {			
+			Intent intent = new Intent();
+			intent.setClass(this, MainActivity.class);
+			startActivity(intent);
+			finish();
+		}
+	}
+	
 	
 	private class LoginAysnTask extends AsyncTask<Object, Integer, Integer>{
 		String pass;		
@@ -89,6 +96,10 @@ public class LoginActivity extends Activity {
 		
 		@Override
 		protected void onPostExecute(Integer result) {
+			if(pass == null){
+				Toast.makeText(getApplicationContext(),"网络异常，请重试",Toast.LENGTH_SHORT).show();
+				return;
+			}
 			if(pass.equals("1")){				
 				Toast.makeText(getApplicationContext(),"该账户不存在，请先注册",Toast.LENGTH_SHORT).show();
 				return;
@@ -97,17 +108,12 @@ public class LoginActivity extends Activity {
 				Toast.makeText(getApplicationContext(),"密码不正确",Toast.LENGTH_SHORT).show();
 				return;
 			}
-			JsonHandle(pass);
-			Log.i("person", username + height + age + target + sex);
-			
-			writeAppConfig();
-//			AppSetting.writeAppConfig(this, guarder);
-			
+			JsonHandle(pass);	
+			writeAppConfig();			
 			Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-			startActivity(intent);
-			
+			startActivity(intent);			
+			finish();
 		}
-
 	}
 	
 	
@@ -119,15 +125,8 @@ public class LoginActivity extends Activity {
 			for (int i = 0; i < foodsArray.length(); i++) {
 				JSONObject temp = (JSONObject) foodsArray.opt(i);
 				username = temp.getString("username");
-				nicename = temp.getString("nicename");
-				height = temp.getString("height");
-				weight = temp.getString("weight");
-				age = temp.getString("age");
-				target = temp.getString("target");
-				sex = Integer.valueOf( temp.getString("sex"));
-				days = temp.getString("days");
-			}
-			ret =0 ;
+				orgniztion = temp.getString("orgniztion");				
+			}			
 		} catch (JSONException e) {
 			e.printStackTrace();
 			ret = 1;
@@ -136,19 +135,13 @@ public class LoginActivity extends Activity {
 	}
 	
 	void writeAppConfig(){		
-		SharedPreferences appSetting = getSharedPreferences(AppSetting.getSettingFile(), MODE_PRIVATE);
-		
+		SharedPreferences appSetting = getSharedPreferences(AppSetting.getSettingFile(), MODE_PRIVATE);		
 		Editor editor = appSetting.edit();
-		editor.putString("username", username);
-		editor.putString("nicename", nicename);
-		editor.putString("height", height);
-		editor.putString("weight", weight);
-		editor.putString("target", target);
-		editor.putString("days", days);
-		editor.putString("password", password);
-		editor.putString("age", age);
-		editor.putInt("sex", sex);
-		editor.putBoolean("NoRegister", false);	
+		editor.putString(AppSetting.username, username);
+		editor.putString(AppSetting.orgnization, orgniztion);		
+		editor.putBoolean(AppSetting.isRegister, true);			
 		editor.commit();
+		Log.i("username", username);
+		Log.i("org", orgniztion);
 	}
 }

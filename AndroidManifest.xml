@@ -36,10 +36,7 @@
         android:screenOrientation="portrait"
         android:theme="@android:style/Theme.Light.NoTitleBar" >
         
-        <provider android:name=".clock.AlarmProvider"
-                android:authorities="com.ab.health.clock"
-                android:exported="false" />
-        
+       
         <activity
             android:name=".AdStartActivity"
             android:label="@string/app_name" >
@@ -76,58 +73,21 @@
             android:name=".RecentListActivity"
             android:screenOrientation="portrait" >
         </activity>
-        <activity
-            android:name=".DiscuzActivity"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".RecordCourseActivity"
-            android:screenOrientation="portrait" >
-        </activity>
          <activity
-            android:name=".DiscuzNew"
+            android:name=".RegisterActivity"
             android:screenOrientation="portrait" >
         </activity>
-        <activity
-            android:name=".RecordSportsActivity"
-            android:screenOrientation="portrait" >
-        </activity>
-         <activity
-            android:name=".LiPinActivity"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".PingGuActivity"
-            android:screenOrientation="portrait" >
-        </activity>
+        
         <activity
             android:name=".GuideActivity"
             android:screenOrientation="portrait" >
         </activity>
-         <activity
-            android:name="com.ab.health.online.YYSGuide"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".ChangeInfoActivity"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".ChangePlainActivity"
-            android:screenOrientation="portrait" >
-        </activity>
+         
         <activity
             android:name=".LoginActivity"
             android:screenOrientation="portrait" >
         </activity>
-         <activity
-            android:name=".ToolNiaoTongActivity"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".CourseActivity"
-            android:screenOrientation="portrait" >
-        </activity>
+         
         <activity
             android:name=".FirstUseActivity"
             android:screenOrientation="portrait" >
@@ -136,34 +96,12 @@
             android:name=".CoreBriefActivity"
             android:screenOrientation="portrait" >
         </activity>
-        <activity
-            android:name=".SportsActivity"
-            android:screenOrientation="portrait" >
-        </activity>
+       
         <activity
             android:name=".HomeActivity"
             android:screenOrientation="portrait" >
         </activity>
-        <activity
-            android:name=".ToolBMI"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".ToolBMR"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".ToolSanWei"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".ToolConvert"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".ToolHealthWeight"
-            android:screenOrientation="portrait" >
-        </activity>
+       
         <activity
             android:name=".GongGaoActivity"
             android:screenOrientation="portrait" >
@@ -171,112 +109,7 @@
         <activity
             android:name=".GongGaoDetailActivity"
             android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".ZhiShiActivity"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".ZhiShiDetailActivity"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".SportsRecordActivity"
-            android:screenOrientation="landscape" >
-        </activity>
-        <activity
-            android:name=".CourseRecordActivity"
-            android:screenOrientation="landscape" >
-        </activity>
-        <activity
-            android:name=".ble.DeviceControlActivity"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".ble.BluetoothResult"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".ble.DeviceScanActivity"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".ToolStandardWeight"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".clock.DeskClockMainActivity"
-            android:configChanges="orientation|keyboardHidden|keyboard|navigation"
-            android:launchMode="singleInstance" >
-
-            <!-- while docked, this is our home application -->
-            <meta-data
-                android:name="android.dock_home"
-                android:value="true" />
-        </activity>
-        <activity
-            android:name=".clock.SetAlarm"
-            android:configChanges="orientation|keyboardHidden|keyboard|navigation" />
-        <activity
-            android:name=".clock.SettingsActivity"
-            android:excludeFromRecents="true"
-            android:label="@string/settings"
-            android:taskAffinity="" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".clock.AlarmAlertFullScreen"
-            android:configChanges="orientation|keyboardHidden|keyboard|navigation"
-            android:excludeFromRecents="true"
-            android:launchMode="singleInstance"
-            android:taskAffinity="" />
-
-        <receiver android:name=".clock.AlarmReceiver"  android:process=":remote" >
-            <intent-filter>
-                <action android:name="com.ab.health.clock.ALARM_ALERT" />
-                <action android:name="alarm_killed" />
-                <action android:name="cancel_snooze" />
-            </intent-filter>
-        </receiver>
-
-        <activity
-            android:name=".clock.AlarmAlert"
-            android:configChanges="orientation|keyboardHidden|keyboard|navigation"
-            android:excludeFromRecents="true"
-            android:launchMode="singleInstance"
-            android:taskAffinity=""
-            android:theme="@style/alarm_alert" />
-        <activity
-            android:name=".clock.HandleSetAlarm"
-            android:excludeFromRecents="true"
-            android:permission="com.android.alarm.permission.SET_ALARM"
-            android:theme="@android:style/Theme.NoDisplay" >
-            <intent-filter>
-                <action android:name="android.intent.action.SET_ALARM" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-         <activity
-            android:name=".online.OnlineMainActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait" /> 
-           
-          <activity
-            android:name=".online.RecentChat"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".online.ChatActivity"
-            android:screenOrientation="portrait" >
-        </activity>
-         <activity
-            android:name=".online.RecentListActivity"
-            android:screenOrientation="portrait" >
-        </activity>
+        </activity>       
 
         
     </application>

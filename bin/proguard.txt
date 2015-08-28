@@ -5,125 +5,41 @@
 # view res/layout/notification_custom_builder.xml #generated:48
 -keep class android.widget.DateTimeView { <init>(...); }
 
-# view AndroidManifest.xml #generated:43
+# view AndroidManifest.xml #generated:40
 -keep class com.ab.health.AdStartActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:111
--keep class com.ab.health.ChangeInfoActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:115
--keep class com.ab.health.ChangePlainActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:135
+# view AndroidManifest.xml #generated:95
 -keep class com.ab.health.CoreBriefActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:127
--keep class com.ab.health.CourseActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:187
--keep class com.ab.health.CourseRecordActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:79
--keep class com.ab.health.DiscuzActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:87
--keep class com.ab.health.DiscuzNew { <init>(...); }
-
-# view AndroidManifest.xml #generated:131
+# view AndroidManifest.xml #generated:91
 -keep class com.ab.health.FirstUseActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:167
+# view AndroidManifest.xml #generated:105
 -keep class com.ab.health.GongGaoActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:171
+# view AndroidManifest.xml #generated:109
 -keep class com.ab.health.GongGaoDetailActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:103
+# view AndroidManifest.xml #generated:81
 -keep class com.ab.health.GuideActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:143
+# view AndroidManifest.xml #generated:100
 -keep class com.ab.health.HomeActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:95
--keep class com.ab.health.LiPinActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:119
+# view AndroidManifest.xml #generated:86
 -keep class com.ab.health.LoginActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:52
+# view AndroidManifest.xml #generated:49
 -keep class com.ab.health.MainActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:99
--keep class com.ab.health.PingGuActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:75
+# view AndroidManifest.xml #generated:72
 -keep class com.ab.health.RecentListActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:83
--keep class com.ab.health.RecordCourseActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:91
--keep class com.ab.health.RecordSportsActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:139
--keep class com.ab.health.SportsActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:183
--keep class com.ab.health.SportsRecordActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:147
--keep class com.ab.health.ToolBMI { <init>(...); }
-
-# view AndroidManifest.xml #generated:151
--keep class com.ab.health.ToolBMR { <init>(...); }
-
-# view AndroidManifest.xml #generated:159
--keep class com.ab.health.ToolConvert { <init>(...); }
-
-# view AndroidManifest.xml #generated:163
--keep class com.ab.health.ToolHealthWeight { <init>(...); }
-
-# view AndroidManifest.xml #generated:123
--keep class com.ab.health.ToolNiaoTongActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:155
--keep class com.ab.health.ToolSanWei { <init>(...); }
-
-# view AndroidManifest.xml #generated:203
--keep class com.ab.health.ToolStandardWeight { <init>(...); }
-
-# view AndroidManifest.xml #generated:175
--keep class com.ab.health.ZhiShiActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:179
--keep class com.ab.health.ZhiShiDetailActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:195
--keep class com.ab.health.ble.BluetoothResult { <init>(...); }
-
-# view AndroidManifest.xml #generated:191
--keep class com.ab.health.ble.DeviceControlActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:199
--keep class com.ab.health.ble.DeviceScanActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:244
--keep class com.ab.health.clock.AlarmAlert { <init>(...); }
-
-# view AndroidManifest.xml #generated:229
--keep class com.ab.health.clock.AlarmAlertFullScreen { <init>(...); }
+# view AndroidManifest.xml #generated:76
+-keep class com.ab.health.RegisterActivity { <init>(...); }
 
 # view res/xml/alarm_prefs.xml #generated:29
 -keep class com.ab.health.clock.AlarmPreference { <init>(...); }
-
-# view AndroidManifest.xml #generated:39
--keep class com.ab.health.clock.AlarmProvider { <init>(...); }
-
-# view AndroidManifest.xml #generated:236
--keep class com.ab.health.clock.AlarmReceiver { <init>(...); }
-
-# view AndroidManifest.xml #generated:207
--keep class com.ab.health.clock.DeskClockMainActivity { <init>(...); }
 
 # view res/layout/alarm_alert.xml #generated:48
 # view res/layout/alarm_clock.xml #generated:75
@@ -133,32 +49,8 @@
 # view res/layout/alarm_time.xml #generated:31
 -keep class com.ab.health.clock.DontPressWithParentLayout { <init>(...); }
 
-# view AndroidManifest.xml #generated:251
--keep class com.ab.health.clock.HandleSetAlarm { <init>(...); }
-
 # view res/xml/alarm_prefs.xml #generated:25
 -keep class com.ab.health.clock.RepeatPreference { <init>(...); }
-
-# view AndroidManifest.xml #generated:217
--keep class com.ab.health.clock.SetAlarm { <init>(...); }
-
-# view AndroidManifest.xml #generated:220
--keep class com.ab.health.clock.SettingsActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:272
--keep class com.ab.health.online.ChatActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:263
--keep class com.ab.health.online.OnlineMainActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:268
--keep class com.ab.health.online.RecentChat { <init>(...); }
-
-# view AndroidManifest.xml #generated:276
--keep class com.ab.health.online.RecentListActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:107
--keep class com.ab.health.online.YYSGuide { <init>(...); }
 
 # view res/layout/online_recentlist.xml #generated:50
 -keep class com.ab.health.online.swipelistview.SwipeListView { <init>(...); }
