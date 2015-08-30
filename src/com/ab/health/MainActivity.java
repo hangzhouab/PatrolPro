@@ -1,5 +1,6 @@
 package com.ab.health;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -9,6 +10,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -28,6 +31,7 @@ import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
+import android.text.format.Time;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -37,9 +41,11 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.CalendarView.OnDateChangeListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.AbsListView.OnScrollListener;
@@ -61,6 +67,7 @@ import com.ab.health.utility.HttpGetData;
 import com.ab.health.utility.AppSetting;
 import com.ab.health.utility.NetworkConnect;
 import com.ab.health.utility.UpdateManager;
+import com.ab.nfc.NFCAdapter;
 import com.ab.nfc.NFCReader;
 
 
@@ -84,7 +91,7 @@ public class MainActivity extends Activity {
 	private String username = "nlk", nicename = "nlk", height = "175",
 			weight = "75", age = "30", target = "70", days = "20";
 
-	private TextView recordCal, titleBar, recordSports, courseTarget,
+	private TextView recordCal, titleBar, query, recordSports, courseTarget,
 			sportsTarget, changePlain, yourBMI, yourWeight, targetWeight;
 	private ArrayList<View> weightRecordList = new ArrayList<View>();
 	private UpdateManager update;
@@ -99,27 +106,29 @@ public class MainActivity extends Activity {
 	private SimpleAdapter gongGaoAdapter;
 	private ListView gonggaoLV;
 	private boolean isComplelet = false;
-	private int catId;
+	
 	private HttpGetData httpData;
 	private String subTitle;
 	private GongGaoItemClick itemclick;
 	
 	// PatrolRecord viewFliper
 	private List<HashMap<String, String>> patrolRecordData;
-	private SimpleAdapter patrolRecordAdapter;
+	private NFCAdapter patrolRecordAdapter;
 	private ListView patrolRecordLV;	
-	
+	private ProgressBar patrolwaiter;
+	private SoundPool soundPool;
 	private String TAGaddress;
-	
+	private int year,month,day=0;
 	private  CalendarView calendar;
-	
-	private boolean isInit = false;
+	private Button refresh;
+	private boolean isInit = false,patroltouch=false;
 	private String ramUsername,ramOrgniztion;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		if(firstUse())
+			return;
 		if (!NetworkConnect.isNetworkConnected(this)) {
 			NetworkConnect.AlertNotCon(this);
 		} else {			
@@ -134,6 +143,21 @@ public class MainActivity extends Activity {
 	}
 	
 	
+	
+	private boolean firstUse() {
+		SharedPreferences appSetting = getSharedPreferences( AppSetting.getSettingFile(), MODE_PRIVATE);		
+		if (!appSetting.getBoolean(AppSetting.isRegister, false)) {			
+			Intent intent = new Intent();
+			intent.setClass(this, LoginActivity.class);
+			startActivity(intent);
+			finish();
+			return true;
+		}		
+		return false;
+	}
+
+
+
 	private void CreatePatroRecordTabel() {
 		CreateTableAysnTask create = new CreateTableAysnTask();
 		create.execute(1);
@@ -149,11 +173,13 @@ public class MainActivity extends Activity {
 	private void UpdatePatrolRecord() {		
 		NFCReader nfcReader = new NFCReader();
 		TAGaddress = nfcReader.read(getIntent());
-		if(TAGaddress.equals("error")){
+		if(TAGaddress.equals("error")){			
 			return;
+		}else{
+			
+			UploadPatrolRecordAysnTask upload = new UploadPatrolRecordAysnTask();
+			upload.execute(0);
 		}
-		UploadPatrolRecordAysnTask upload = new UploadPatrolRecordAysnTask();
-		upload.execute(1);
 	}
 
 	private void InitGongGaoViewFliper() {
@@ -166,8 +192,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onScrollStateChanged(AbsListView view, int scrollState) {
 				if(scrollState ==  OnScrollListener.SCROLL_STATE_IDLE){
-					if(gonggaoLV.getLastVisiblePosition() == (gonggaoLV.getCount()-1)){
-						Toast.makeText(getApplicationContext(), "正在加载", Toast.LENGTH_SHORT).show();
+					if(gonggaoLV.getLastVisiblePosition() == (gonggaoLV.getCount()-1)){						
 						LoadGongGaoAysnTask load = new LoadGongGaoAysnTask();
 						load.execute(gonggaoData.size());	
 					}
@@ -202,6 +227,7 @@ public class MainActivity extends Activity {
 		
 		patrolRecordData = new ArrayList<HashMap<String, String>>();		
 		patrolRecordLV = (ListView) findViewById(R.id.act_patrol_data_lv);	
+		patrolwaiter = (ProgressBar) findViewById(R.id.patrol_waiter);
 		
 		patrolRecordLV.setOnScrollListener(new AbsListView.OnScrollListener() {
 			
@@ -209,7 +235,8 @@ public class MainActivity extends Activity {
 			public void onScrollStateChanged(AbsListView view, int scrollState) {
 				if(scrollState ==  OnScrollListener.SCROLL_STATE_IDLE){
 					if(patrolRecordLV.getLastVisiblePosition() == (patrolRecordLV.getCount()-1)){
-						Toast.makeText(getApplicationContext(), "正在加载", Toast.LENGTH_SHORT).show();
+						patroltouch = true;
+						
 						LoadPatrolRecordAysnTask load = new LoadPatrolRecordAysnTask();
 						load.execute(patrolRecordData.size());	
 					}
@@ -228,11 +255,11 @@ public class MainActivity extends Activity {
 		loadCourse.execute(0);
 		
 		
-		patrolRecordAdapter = new SimpleAdapter(this, patrolRecordData,R.layout.view_patrol_record_list, 
+		patrolRecordAdapter = new NFCAdapter(this, patrolRecordData,R.layout.view_patrol_record_list, 
 				new String[] { "address", "time" },new int[] { R.id.view_meal_list_name_tv,R.id.view_meal_list_cal_tv });
 	
 		patrolRecordLV.setAdapter(patrolRecordAdapter);
-		 	
+		
 	
 	}
 	
@@ -267,19 +294,38 @@ public class MainActivity extends Activity {
 	private void InitButton() {
 		flater = getLayoutInflater();
 		contentViewPager = (ViewFlipper) findViewById(R.id.content_flipper);
-
+		activityTool = flater.inflate(R.layout.activity_patrol_record, contentViewPager);
 		viewGongGao = flater.inflate(R.layout.activity_gonggao2, contentViewPager);
 		
-		activityTool = flater.inflate(R.layout.activity_patrol_record, contentViewPager);
+		
 		activityPhysiology = flater.inflate(R.layout.fragment_patrol_query,
 				contentViewPager); 
 		activityServer = flater.inflate(R.layout.activity_setting_about,
 				contentViewPager);
 		onClickListener = new OnClickListener();
 
-		calendar = (CalendarView) findViewById(R.id.calendarView1);
+		calendar = (CalendarView) findViewById(R.id.patrol_query_calendar);
 		calendar.setBackgroundColor(0xffcccccc);
+		calendar.setOnDateChangeListener(new OnDateChangeListener() {
+			
+			@Override
+			public void onSelectedDayChange(CalendarView view, int y, int m,
+					int d) {				
+				year = y;
+				month = m;
+				day = d;
+			}
+		});
+		Time t = new Time();
+		t.setToNow();
+		year = t.year;
+		month = t.month;
+		day = t.monthDay;
 		
+		refresh = (Button) findViewById(R.id.patrol_refresh);
+		refresh.setOnClickListener(onClickListener);
+		query = (TextView) findViewById(R.id.topbar_query);
+		query.setOnClickListener(onClickListener);
 		
 		btn_record = (Button) findViewById(R.id.bottombar_record);
 		btn_record.setOnClickListener(onClickListener);
@@ -289,10 +335,6 @@ public class MainActivity extends Activity {
 		btn_about.setOnClickListener(onClickListener);
 		btn_tool = (Button) findViewById(R.id.bottombar_tool);
 		btn_tool.setOnClickListener(onClickListener);
-		TextView goWeb = (TextView) findViewById(R.id.setting_about_weibo_textView);
-		goWeb.setOnClickListener(onClickListener);
-		TextView coreBreif = (TextView) findViewById(R.id.setting_about_website_textView);
-		coreBreif.setOnClickListener(onClickListener);
 
 
 		// buttom button
@@ -306,16 +348,13 @@ public class MainActivity extends Activity {
 		bottom_weight.setOnClickListener(onClickListener);
 //
 //		// topbar 
-		gonggao = (Button) findViewById(R.id.bottombar_gonggao);
-		gonggao.setOnClickListener(onClickListener);
-		btn_topbar_home = (Button) findViewById(R.id.bottombar_home);
-		btn_topbar_home.setOnClickListener(onClickListener);
+//		gonggao = (Button) findViewById(R.id.bottombar_gonggao);
+//		gonggao.setOnClickListener(onClickListener);
+//		btn_topbar_home = (Button) findViewById(R.id.bottombar_home);
+//		btn_topbar_home.setOnClickListener(onClickListener);
 		titleBar = (TextView) findViewById(R.id.titlebar_home_title);
 
-		
-		// patrol query view fliper		
-		btn_patrolQuery = (Button) findViewById(R.id.act_physiology_record_weight);
-		btn_patrolQuery.setOnClickListener(onClickListener);
+
 
 	}
 
@@ -359,36 +398,35 @@ public class MainActivity extends Activity {
 		public void onClick(View arg0) {
 			switch (arg0.getId()) {
 			case R.id.bottombar_record:
-//				LoadGongGaoAysnTask loadCourse = new LoadGongGaoAysnTask();
-//				loadCourse.execute(0);
 				contentViewPager.setDisplayedChild(3);
 				contentViewPager.showNext();
-				titleBar.setText("单位公告");
+				titleBar.setText("巡更记录");
 				bottom_record.setBackgroundColor(0Xff46cdd8);
 				bottom_server.setBackgroundColor(0XFFFFFFFF);
 				bottom_tool.setBackgroundColor(0XFFFFFFFF);
-				bottom_weight.setBackgroundColor(0XFFFFFFFF);
-				db();
-				
+				bottom_weight.setBackgroundColor(0XFFFFFFFF);		
+				query.setVisibility(View.GONE);
 				break;
 
 			case R.id.bottombar_tool:
 				contentViewPager.setDisplayedChild(0);
 				contentViewPager.showNext();
-				titleBar.setText("巡更记录");
+				titleBar.setText("单位公告");
 				bottom_record.setBackgroundColor(0XFFFFFFFF);
 				bottom_server.setBackgroundColor(0XFFFFFFFF);
 				bottom_tool.setBackgroundColor(0Xff46cdd8);
 				bottom_weight.setBackgroundColor(0XFFFFFFFF);
+				query.setVisibility(View.GONE);
 				break;
 			case R.id.bottombar_bbs:
 				contentViewPager.setDisplayedChild(1);
 				contentViewPager.showNext();
-				titleBar.setText("记录查询");
+				titleBar.setText("巡更查询");
 				bottom_record.setBackgroundColor(0XFFFFFFFF);
 				bottom_server.setBackgroundColor(0XFFFFFFFF);
 				bottom_tool.setBackgroundColor(0XFFFFFFFF);
 				bottom_weight.setBackgroundColor(0Xff46cdd8);
+				query.setVisibility(View.VISIBLE);
 				break;
 			case R.id.bottombar_about:
 				contentViewPager.setDisplayedChild(2);
@@ -398,6 +436,7 @@ public class MainActivity extends Activity {
 				bottom_server.setBackgroundColor(0Xff46cdd8);
 				bottom_tool.setBackgroundColor(0XFFFFFFFF);
 				bottom_weight.setBackgroundColor(0XFFFFFFFF);
+				query.setVisibility(View.GONE);
 				break;
 			case R.id.changefitness:
 				Intent intentplain = new Intent(MainActivity.this,
@@ -414,59 +453,23 @@ public class MainActivity extends Activity {
 				overridePendingTransition(R.anim.push_left_in,
 						R.anim.push_right_out);
 				break;
-			case R.id.tool_food_btn:
-				Intent intent = new Intent(MainActivity.this,
-						CourseActivity.class);
-				startActivity(intent);
-				break;
 			
-			case R.id.tool_gonggao:
-				Intent intentgongg = new Intent(MainActivity.this,
-						GongGaoActivity.class);
-				startActivity(intentgongg);
-				break;
-			case R.id.tool_sports_record:
-				Intent intentsports_record = new Intent(MainActivity.this,
-						SportsRecordActivity.class);
-				startActivity(intentsports_record);
-				break;			
-			case R.id.tool_sports_btn:
-				Intent intentSports = new Intent(MainActivity.this,
-						SportsActivity.class);
-				startActivity(intentSports);
-				break;
-
+			case R.id.topbar_query:
+				
+				Intent intent = new Intent(MainActivity.this,PatrolQueryActivity.class);
+				intent.putExtra("year", year);
+				intent.putExtra("month", month);
+				intent.putExtra("day", day);
+				startActivity(intent);	
+				break;	
+			case R.id.patrol_refresh:	
+				patrolwaiter.setVisibility(View.VISIBLE);
+				refresh.setVisibility(View.GONE);
+				LoadPatrolRecordAysnTask load = new LoadPatrolRecordAysnTask();
+				load.execute(0);
+				break;	
 			
 			
-			case R.id.tool_lipin:
-				Intent intentLipin = new Intent(MainActivity.this,
-						LiPinActivity.class);
-				startActivity(intentLipin);
-				break;
-
-			case R.id.tool_zhishi:
-				Intent intentZhishi = new Intent(MainActivity.this,
-						ZhiShiActivity.class);
-				startActivity(intentZhishi);
-				break;
-			case R.id.tool_bluetooth:
-				int version = AppSetting.getAndroidSDKVersion();
-				if (version < 18) {
-					Toast.makeText(getApplicationContext(),
-							"您系统的版本小于4.3,请先升级再使用", Toast.LENGTH_LONG).show();
-					break;
-				}
-				Toast.makeText(getApplicationContext(), "请稍候，正在打开蓝牙",
-						Toast.LENGTH_SHORT).show();				
-				break;			
-			case R.id.setting_about_website_textView:
-				Intent intent2 = new Intent(MainActivity.this,
-						CoreBriefActivity.class);
-				startActivity(intent2);
-				break;			
-			case R.id.act_physiology_record_weight:
-				Toast.makeText(MainActivity.this, "dd", Toast.LENGTH_SHORT).show();
-				break;
 			case R.id.setting_about_weibo_textView:
 				Uri nuolikangUri = Uri.parse("http://www.nlk759.com");
 				Intent intent3 = new Intent(Intent.ACTION_VIEW, nuolikangUri);
@@ -489,27 +492,26 @@ public class MainActivity extends Activity {
 			}
 		}
 		return false;
-	}
+	}  
 
 	private class LoadGongGaoAysnTask extends AsyncTask<Object, Integer, Integer>{
 		int ret;
-		String ggURL;
+		String ggURL,gonggaoParam;
 		@Override
 		protected void onPreExecute() {		
+			GetShared();
 			ggURL = AppSetting.getRootURL() + "gonggao.php";
 			if( isComplelet ){ 
 				Toast.makeText(getApplicationContext(), "全部信息已加载", Toast.LENGTH_SHORT).show();
-			}else {
-				Toast.makeText(getApplicationContext(), "正在加载...", Toast.LENGTH_SHORT).show();
 			}
 		}
 		
 		@Override
 		protected Integer doInBackground(Object... params) {			
 			int sId = (Integer) params[0];
-			param = "?startid="+sId+"&endid=10&catid=" + catId;	
-			Log.i("url", url);
-			ret = gongGaoJsonHandle(httpData.HttpGets(ggURL,param));
+			gonggaoParam = "?startid="+sId+"&endid=10&unit=" + ramOrgniztion;	
+			
+			ret = gongGaoJsonHandle(httpData.HttpGets(ggURL,gonggaoParam));
 			return ret;
 		}
 
@@ -527,26 +529,39 @@ public class MainActivity extends Activity {
 	}
 	
 	private class LoadPatrolRecordAysnTask extends AsyncTask<Object, Integer, Integer>{
-		
+		String loadParam,url;
 		@Override
 		protected void onPreExecute() {		
+			if( isComplelet ){ 
+				Toast.makeText(getApplicationContext(), "全部信息已加载完成", Toast.LENGTH_SHORT).show();
+			}else {
+				Toast.makeText(getApplicationContext(), "正在加载，请稍后...", Toast.LENGTH_SHORT).show();
+			}
+			if(!patroltouch){
+				patrolRecordData.clear();
+			}
 			url = AppSetting.getRootURL() + "loadpatrol.php";
 			GetShared();
-		}
+		} 
 		
 		@Override
 		protected Integer doInBackground(Object... params) {	
 			int sId = (Integer) params[0];
-			param = "?username="+ramUsername + "&startid="+sId+"&endid=10";		
+			loadParam = "?username="+ramUsername + "&startid="+sId+"&endid=10";		
 			HttpGetData httpData = new HttpGetData();
-			patrolRecordJsonHandle(httpData.HttpGets(url,param));
+			patrolRecordJsonHandle(httpData.HttpGets(url,loadParam));
 			return 1;
 		}
 
 		@Override
-		protected void onPostExecute(Integer result) {			
-			patrolRecordAdapter.notifyDataSetChanged();					
-					
+		protected void onPostExecute(Integer result) {				
+			patrolwaiter.setVisibility(View.GONE);		
+			refresh.setVisibility(View.GONE);
+			patrolRecordLV.setVisibility(View.VISIBLE);
+			patrolRecordAdapter.notifyDataSetChanged();				
+			if(patrolRecordData.size() <= 0){
+				refresh.setVisibility(View.VISIBLE);
+			}
 		}
 
 	}
@@ -555,6 +570,7 @@ public class MainActivity extends Activity {
 		int ret;
 		@Override
 		protected void onPreExecute() {		
+			
 			update = new UpdateManager(MainActivity.this);
 		}
 		
@@ -563,44 +579,42 @@ public class MainActivity extends Activity {
 			update.checkUpdate();
 			return ret;
 		}
+	
 	}
 	
 	private class UploadPatrolRecordAysnTask extends AsyncTask<Object, Integer, Integer>{
-		String time;
+		
+		String uploadparam,url;
 		@Override
-		protected void onPreExecute() {		
+		protected void onPreExecute() {	
+			soundPool = new SoundPool(10, AudioManager.STREAM_NOTIFICATION, 0);
+			soundPool.load(getApplicationContext(), R.raw.notis, 1);
 			url = AppSetting.getRootURL() + "patrolrecord.php";
 			GetShared();
-			param = "?username="+ramUsername + "&address=" + TAGaddress ;	
-			Log.i("upload", param);
-		}
+			uploadparam = "?username="+ramUsername + "&address=" + TAGaddress ;	
+			
+		}  
 		
 		@Override
 		protected Integer doInBackground(Object... params) {	
 			HttpGetData httpData = new HttpGetData();
-			time = httpData.HttpGets(url,param);
+			Log.i("upload", uploadparam);
+			httpData.HttpGets(url,uploadparam);
 			return 1;
 		}
 
 		@Override
 		protected void onPostExecute(Integer result) {	
-//			if(time == null ){
-//				Log.i("time", "patrol记录时间返回错误");
-//				return;
-//			}				
-//			HashMap<String, String> recordItem = new HashMap<String, String>();			
-//			recordItem.put("address", TAGaddress);
-//			recordItem.put("time", time);			
-//			patrolRecordData.add(recordItem);
-//			patrolRecordAdapter.notifyDataSetChanged();		
+			
 			LoadPatrolRecordAysnTask load = new LoadPatrolRecordAysnTask();
 			load.execute(0);
-//					
+			soundPool.play(1, 1, 1, 1, 0, 1);
 		}
 	}
 	
 	private class CreateTableAysnTask extends AsyncTask<Object, Integer, Integer>{
 		int ret;
+		String url,param;
 		@Override
 		protected void onPreExecute() {		
 			url = AppSetting.getRootURL() + "createtable.php";
@@ -632,7 +646,7 @@ public class MainActivity extends Activity {
 			return 1;
 		}
 		try { 
-			Log.i("gonggao", retResponse);
+			
 			JSONObject json = new JSONObject(retResponse);
 			JSONArray foodsArray = json.getJSONArray("foods");
 			if(foodsArray.length() == 0 ){
@@ -666,24 +680,31 @@ public class MainActivity extends Activity {
 	private Integer patrolRecordJsonHandle(String retResponse) {
 		int ret =0;
 		if(retResponse == null ){
-			Log.i("ret", "获取巡更失败");
+			Log.i("ret", "获取巡更失败");			
 			return 1;
 		}
-		try { 		
-			Log.i("patrolRet", retResponse);
+		Log.i("ret", retResponse);
+		try { 					
 			JSONObject json = new JSONObject(retResponse);
-			JSONArray foodsArray = json.getJSONArray("foods");			
+			JSONArray foodsArray = json.getJSONArray("foods");	
+			Log.i("food", String.valueOf(foodsArray.length()));
+			if(foodsArray.length() == 0 ){
+				isComplelet = true;
+			}
 			for (int i = 0; i < foodsArray.length(); i++) {
 				JSONObject temp = (JSONObject) foodsArray.opt(i);
 				HashMap<String, String> courseItem = new HashMap<String, String>();				
 				String time = temp.getString("time");		
 				String address = temp.getString("address");					
 				courseItem.put("time", time);	
-				courseItem.put("address", address);	
-				patrolRecordData.add(courseItem);				
+				courseItem.put("address", address);					
+				patrolRecordData.add(courseItem);	
+				  
 			}			
+			
 		} catch (JSONException e) {
 			e.printStackTrace();
+			Log.i("excetion", retResponse);
 			ret = 1;
 		}
 		return ret;

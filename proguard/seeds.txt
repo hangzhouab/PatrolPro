@@ -71,38 +71,22 @@ android.support.v4.widget.SwipeRefreshLayout: void setRefreshing(boolean)
 android.support.v4.widget.SwipeRefreshLayout: void setTargetOffsetTopAndBottom(int)
 com.ab.health.AdStartActivity
 com.ab.health.AdStartActivity: AdStartActivity()
-com.ab.health.ChangeInfoActivity
-com.ab.health.ChangeInfoActivity: ChangeInfoActivity()
-com.ab.health.ChangePlainActivity
-com.ab.health.ChangePlainActivity: ChangePlainActivity()
 com.ab.health.CoreBriefActivity
 com.ab.health.CoreBriefActivity: CoreBriefActivity()
-com.ab.health.CourseActivity
-com.ab.health.CourseActivity: CourseActivity()
-com.ab.health.CourseRecordActivity
-com.ab.health.CourseRecordActivity: CourseRecordActivity()
-com.ab.health.DiscuzActivity
-com.ab.health.DiscuzActivity: DiscuzActivity()
-com.ab.health.DiscuzNew
-com.ab.health.DiscuzNew: DiscuzNew()
 com.ab.health.FirstUseActivity
 com.ab.health.FirstUseActivity: FirstUseActivity()
 com.ab.health.GongGaoActivity
 com.ab.health.GongGaoActivity: GongGaoActivity()
 com.ab.health.GongGaoDetailActivity
 com.ab.health.GongGaoDetailActivity: GongGaoDetailActivity()
-com.ab.health.GuideActivity
-com.ab.health.GuideActivity: GuideActivity()
 com.ab.health.HomeActivity
 com.ab.health.HomeActivity: HomeActivity()
-com.ab.health.LiPinActivity
-com.ab.health.LiPinActivity: LiPinActivity()
 com.ab.health.LoginActivity
 com.ab.health.LoginActivity: LoginActivity()
 com.ab.health.MainActivity
 com.ab.health.MainActivity: MainActivity()
-com.ab.health.PingGuActivity
-com.ab.health.PingGuActivity: PingGuActivity()
+com.ab.health.PatrolQueryActivity
+com.ab.health.PatrolQueryActivity: PatrolQueryActivity()
 com.ab.health.R$anim: int dialog_enter
 com.ab.health.R$anim: int dialog_exit
 com.ab.health.R$anim: int disappear
@@ -471,6 +455,7 @@ com.ab.health.R$dimen: int umeng_socialize_pad_window_height
 com.ab.health.R$dimen: int umeng_socialize_pad_window_width
 com.ab.health.R$dimen: int value_text_size
 com.ab.health.R$drawable: int about_title
+com.ab.health.R$drawable: int access_point
 com.ab.health.R$drawable: int act_physiology_height_image
 com.ab.health.R$drawable: int act_physiology_height_image_corner
 com.ab.health.R$drawable: int act_physiology_round
@@ -596,6 +581,7 @@ com.ab.health.R$drawable: int exchange_background_left
 com.ab.health.R$drawable: int exchange_background_right
 com.ab.health.R$drawable: int fooditem3
 com.ab.health.R$drawable: int friend_rank_forword_state
+com.ab.health.R$drawable: int gonggaoitem
 com.ab.health.R$drawable: int gonggaoitem4
 com.ab.health.R$drawable: int goto_chat
 com.ab.health.R$drawable: int gray_button_selector
@@ -937,6 +923,7 @@ com.ab.health.R$id: int act_herolist_local_btn
 com.ab.health.R$id: int act_herolist_mine_btn
 com.ab.health.R$id: int act_herolist_nationwide_btn
 com.ab.health.R$id: int act_main_progress_cal
+com.ab.health.R$id: int act_patrol_data_lv
 com.ab.health.R$id: int act_personal_home_sex_man
 com.ab.health.R$id: int act_personal_home_sex_woman
 com.ab.health.R$id: int act_personalhome_title_tv
@@ -1213,7 +1200,6 @@ com.ab.health.R$id: int bottom_tool
 com.ab.health.R$id: int bottombar_about
 com.ab.health.R$id: int bottombar_bbs
 com.ab.health.R$id: int bottombar_discuz
-com.ab.health.R$id: int bottombar_gonggao
 com.ab.health.R$id: int bottombar_home
 com.ab.health.R$id: int bottombar_record
 com.ab.health.R$id: int bottombar_title
@@ -1618,12 +1604,13 @@ com.ab.health.R$id: int loading
 com.ab.health.R$id: int login_account_edittext
 com.ab.health.R$id: int login_forget_textview
 com.ab.health.R$id: int login_jump_textview
-com.ab.health.R$id: int login_jump_textview2
 com.ab.health.R$id: int login_other_text
 com.ab.health.R$id: int login_password_edittext
+com.ab.health.R$id: int login_password_edittext2
 com.ab.health.R$id: int login_qq_layout
 com.ab.health.R$id: int login_sina_layout
 com.ab.health.R$id: int login_sumbit_button
+com.ab.health.R$id: int login_unit_edittext
 com.ab.health.R$id: int logtip_fra
 com.ab.health.R$id: int main_content_fragment
 com.ab.health.R$id: int main_footbar_bbs
@@ -2044,6 +2031,10 @@ com.ab.health.R$id: int partner_vs_second_week_consume
 com.ab.health.R$id: int partner_vs_second_week_consume_text
 com.ab.health.R$id: int partner_vs_sport_record
 com.ab.health.R$id: int partner_vs_top_layout
+com.ab.health.R$id: int patrol_list
+com.ab.health.R$id: int patrol_query_calendar
+com.ab.health.R$id: int patrol_refresh
+com.ab.health.R$id: int patrol_waiter
 com.ab.health.R$id: int pcenterPanel
 com.ab.health.R$id: int person_bmi
 com.ab.health.R$id: int person_bmi_title
@@ -2244,6 +2235,7 @@ com.ab.health.R$id: int pull_to_refresh_progress
 com.ab.health.R$id: int pull_to_refresh_sub_text
 com.ab.health.R$id: int pull_to_refresh_text
 com.ab.health.R$id: int pull_to_refresh_updated_at
+com.ab.health.R$id: int query_result
 com.ab.health.R$id: int recent_del_btn
 com.ab.health.R$id: int recent_list_item_msg
 com.ab.health.R$id: int recent_list_item_name
@@ -2321,7 +2313,6 @@ com.ab.health.R$id: int setting_about_layout
 com.ab.health.R$id: int setting_about_textView
 com.ab.health.R$id: int setting_about_version_textView
 com.ab.health.R$id: int setting_about_website_textView
-com.ab.health.R$id: int setting_about_website_textView3
 com.ab.health.R$id: int setting_about_weibo_textView
 com.ab.health.R$id: int setting_about_weixin_textView
 com.ab.health.R$id: int setting_anounce_advance
@@ -2544,6 +2535,7 @@ com.ab.health.R$id: int tool_standardweight_back_btn
 com.ab.health.R$id: int tool_userinfo_age_editText
 com.ab.health.R$id: int tool_zhishi
 com.ab.health.R$id: int topPanel
+com.ab.health.R$id: int topbar_query
 com.ab.health.R$id: int topic_banner_image
 com.ab.health.R$id: int topic_detail_bottom_camera_button
 com.ab.health.R$id: int topic_detail_bottom_funtion_layout
@@ -2923,6 +2915,8 @@ com.ab.health.R$layout: int activity_lipinzhanshi
 com.ab.health.R$layout: int activity_login
 com.ab.health.R$layout: int activity_main
 com.ab.health.R$layout: int activity_niao
+com.ab.health.R$layout: int activity_patrol_query
+com.ab.health.R$layout: int activity_patrol_record
 com.ab.health.R$layout: int activity_physiology
 com.ab.health.R$layout: int activity_pinggu_info
 com.ab.health.R$layout: int activity_plain
@@ -2930,6 +2924,7 @@ com.ab.health.R$layout: int activity_plainchange
 com.ab.health.R$layout: int activity_recordcal
 com.ab.health.R$layout: int activity_recordcourse
 com.ab.health.R$layout: int activity_recordsports
+com.ab.health.R$layout: int activity_register
 com.ab.health.R$layout: int activity_reset_password
 com.ab.health.R$layout: int activity_setting
 com.ab.health.R$layout: int activity_setting_about
@@ -2950,6 +2945,7 @@ com.ab.health.R$layout: int context_menu_header
 com.ab.health.R$layout: int custom_activity
 com.ab.health.R$layout: int discuz_new
 com.ab.health.R$layout: int fragment_bbs
+com.ab.health.R$layout: int fragment_patrol_query
 com.ab.health.R$layout: int fragment_physiology
 com.ab.health.R$layout: int fragment_task
 com.ab.health.R$layout: int fragment_tool
@@ -2985,6 +2981,7 @@ com.ab.health.R$layout: int view_gonggao_list
 com.ab.health.R$layout: int view_meal_list
 com.ab.health.R$layout: int view_niaotong_image_item
 com.ab.health.R$layout: int view_online_list
+com.ab.health.R$layout: int view_patrol_record_list
 com.ab.health.R$layout: int view_physiology_image_item
 com.ab.health.R$layout: int view_physiology_image_item2
 com.ab.health.R$layout: int view_shouhuan_list
@@ -2998,6 +2995,9 @@ com.ab.health.R$menu: int gatt_services
 com.ab.health.R$menu: int main
 com.ab.health.R$raw: int fallbackring
 com.ab.health.R$raw: int in_call_alarm
+com.ab.health.R$raw: int noti
+com.ab.health.R$raw: int notify
+com.ab.health.R$raw: int notis
 com.ab.health.R$string: int OAUTH_AccessToken_ACCESS
 com.ab.health.R$string: int OAUTH_AccessToken_ERROR
 com.ab.health.R$string: int OAUTH_AccessToken_SXPIRED
@@ -3230,125 +3230,14 @@ com.ab.health.R$styleable: int SwipeListView_swipeOffsetLeft
 com.ab.health.R$styleable: int SwipeListView_swipeOffsetRight
 com.ab.health.R$styleable: int SwipeListView_swipeOpenOnLongPress
 com.ab.health.R$xml: int alarm_prefs
+com.ab.health.R$xml: int nfc_tech_filter
 com.ab.health.R$xml: int settings
-com.ab.health.RecordCourseActivity
-com.ab.health.RecordCourseActivity: RecordCourseActivity()
-com.ab.health.RecordSportsActivity
-com.ab.health.RecordSportsActivity: RecordSportsActivity()
-com.ab.health.SportsActivity
-com.ab.health.SportsActivity: SportsActivity()
-com.ab.health.SportsRecordActivity
-com.ab.health.SportsRecordActivity: SportsRecordActivity()
-com.ab.health.ToolBMI
-com.ab.health.ToolBMI: ToolBMI()
-com.ab.health.ToolBMR
-com.ab.health.ToolBMR: ToolBMR()
-com.ab.health.ToolConvert
-com.ab.health.ToolConvert: ToolConvert()
-com.ab.health.ToolHealthWeight
-com.ab.health.ToolHealthWeight: ToolHealthWeight()
-com.ab.health.ToolNiaoTongActivity
-com.ab.health.ToolNiaoTongActivity: ToolNiaoTongActivity()
-com.ab.health.ToolSanWei
-com.ab.health.ToolSanWei: ToolSanWei()
-com.ab.health.ToolStandardWeight
-com.ab.health.ToolStandardWeight: ToolStandardWeight()
-com.ab.health.ZhiShiActivity
-com.ab.health.ZhiShiActivity: ZhiShiActivity()
-com.ab.health.ZhiShiDetailActivity
-com.ab.health.ZhiShiDetailActivity: ZhiShiDetailActivity()
-com.ab.health.ble.BluetoothLeService
-com.ab.health.ble.BluetoothLeService: BluetoothLeService()
-com.ab.health.ble.BluetoothResult
-com.ab.health.ble.BluetoothResult: BluetoothResult()
-com.ab.health.ble.DeviceControlActivity
-com.ab.health.ble.DeviceControlActivity: DeviceControlActivity()
-com.ab.health.ble.DeviceScanActivity
-com.ab.health.ble.DeviceScanActivity: DeviceScanActivity()
-com.ab.health.clock.Alarm
-com.ab.health.clock.Alarm: android.os.Parcelable$Creator CREATOR
-com.ab.health.clock.AlarmAlert
-com.ab.health.clock.AlarmAlert: AlarmAlert()
-com.ab.health.clock.AlarmAlertFullScreen
-com.ab.health.clock.AlarmAlertFullScreen: AlarmAlertFullScreen()
-com.ab.health.clock.AlarmInitReceiver
-com.ab.health.clock.AlarmInitReceiver: AlarmInitReceiver()
-com.ab.health.clock.AlarmKlaxon
-com.ab.health.clock.AlarmKlaxon: AlarmKlaxon()
-com.ab.health.clock.AlarmPreference
-com.ab.health.clock.AlarmPreference: AlarmPreference(android.content.Context,android.util.AttributeSet)
-com.ab.health.clock.AlarmProvider
-com.ab.health.clock.AlarmProvider: AlarmProvider()
-com.ab.health.clock.AlarmReceiver
-com.ab.health.clock.AlarmReceiver: AlarmReceiver()
-com.ab.health.clock.DeskClockMainActivity
-com.ab.health.clock.DeskClockMainActivity: DeskClockMainActivity()
-com.ab.health.clock.DigitalClock
-com.ab.health.clock.DigitalClock: DigitalClock(android.content.Context)
-com.ab.health.clock.DigitalClock: DigitalClock(android.content.Context,android.util.AttributeSet)
-com.ab.health.clock.DigitalClock: void setLive(boolean)
-com.ab.health.clock.DigitalClock: void setTypeface(android.graphics.Typeface)
-com.ab.health.clock.DontPressWithParentLayout
-com.ab.health.clock.DontPressWithParentLayout: DontPressWithParentLayout(android.content.Context,android.util.AttributeSet)
-com.ab.health.clock.DontPressWithParentLayout: void setPressed(boolean)
-com.ab.health.clock.HandleSetAlarm
-com.ab.health.clock.HandleSetAlarm: HandleSetAlarm()
-com.ab.health.clock.RepeatPreference
-com.ab.health.clock.RepeatPreference: RepeatPreference(android.content.Context,android.util.AttributeSet)
-com.ab.health.clock.SetAlarm
-com.ab.health.clock.SetAlarm: SetAlarm()
-com.ab.health.clock.SettingsActivity
-com.ab.health.clock.SettingsActivity: SettingsActivity()
-com.ab.health.online.ChatActivity
-com.ab.health.online.ChatActivity: ChatActivity()
-com.ab.health.online.MyPushMessageReceiver
-com.ab.health.online.MyPushMessageReceiver: MyPushMessageReceiver()
-com.ab.health.online.OnlineMainActivity
-com.ab.health.online.OnlineMainActivity: OnlineMainActivity()
-com.ab.health.online.RecentListActivity
-com.ab.health.online.RecentListActivity: RecentListActivity()
-com.ab.health.online.RecentListActivity: void onClick(android.view.View)
-com.ab.health.online.YYSGuide
-com.ab.health.online.YYSGuide: YYSGuide()
-com.ab.health.online.swipelistview.SwipeListView
-com.ab.health.online.swipelistview.SwipeListView: SwipeListView(android.content.Context,int,int)
-com.ab.health.online.swipelistview.SwipeListView: SwipeListView(android.content.Context,android.util.AttributeSet)
-com.ab.health.online.swipelistview.SwipeListView: SwipeListView(android.content.Context,android.util.AttributeSet,int)
-com.ab.health.online.swipelistview.SwipeListView: void setAdapter(android.widget.ListAdapter)
-com.ab.health.online.swipelistview.SwipeListView: void setSwipeListViewListener(com.ab.health.online.swipelistview.BaseSwipeListViewListener)
-com.ab.health.online.swipelistview.SwipeListView: void setOffsetRight(float)
-com.ab.health.online.swipelistview.SwipeListView: void setOffsetLeft(float)
-com.ab.health.online.swipelistview.SwipeListView: void setSwipeCloseAllItemsWhenMoveList(boolean)
-com.ab.health.online.swipelistview.SwipeListView: void setSwipeOpenOnLongPress(boolean)
-com.ab.health.online.swipelistview.SwipeListView: void setSwipeMode(int)
-com.ab.health.online.swipelistview.SwipeListView: int getSwipeActionLeft()
-com.ab.health.online.swipelistview.SwipeListView: void setSwipeActionLeft(int)
-com.ab.health.online.swipelistview.SwipeListView: int getSwipeActionRight()
-com.ab.health.online.swipelistview.SwipeListView: void setSwipeActionRight(int)
-com.ab.health.online.swipelistview.SwipeListView: void setAnimationTime(long)
-com.ab.health.view.RoundProgressBar
-com.ab.health.view.RoundProgressBar: RoundProgressBar(android.content.Context)
-com.ab.health.view.RoundProgressBar: RoundProgressBar(android.content.Context,android.util.AttributeSet)
-com.ab.health.view.RoundProgressBar: RoundProgressBar(android.content.Context,android.util.AttributeSet,int)
-com.ab.health.view.RoundProgressBar: int getMax()
-com.ab.health.view.RoundProgressBar: void setMax(int)
-com.ab.health.view.RoundProgressBar: int getProgress()
-com.ab.health.view.RoundProgressBar: void setProgress(int)
-com.ab.health.view.RoundProgressBar: int getCricleColor()
-com.ab.health.view.RoundProgressBar: void setCricleColor(int)
-com.ab.health.view.RoundProgressBar: int getCricleProgressColor()
-com.ab.health.view.RoundProgressBar: void setCricleProgressColor(int)
-com.ab.health.view.RoundProgressBar: int getTextColor()
-com.ab.health.view.RoundProgressBar: void setTextColor(int)
-com.ab.health.view.RoundProgressBar: float getTextSize()
-com.ab.health.view.RoundProgressBar: void setTextSize(float)
-com.ab.health.view.RoundProgressBar: float getRoundWidth()
-com.ab.health.view.RoundProgressBar: void setRoundWidth(float)
+com.ab.health.RegisterActivity
+com.ab.health.RegisterActivity: RegisterActivity()
 com.baidu.frontia.FrontiaApplication
 com.baidu.frontia.FrontiaApplication: FrontiaApplication()
 com.baidu.frontia.FrontiaQuery$SortOrder: com.baidu.frontia.FrontiaQuery$SortOrder[] values()
 com.baidu.frontia.FrontiaQuery$SortOrder: com.baidu.frontia.FrontiaQuery$SortOrder valueOf(java.lang.String)
-com.baidu.frontia.api.FrontiaPushMessageReceiver: FrontiaPushMessageReceiver()
 com.baidu.frontia.api.FrontiaPushUtil$DeployStatus: com.baidu.frontia.api.FrontiaPushUtil$DeployStatus[] values()
 com.baidu.frontia.api.FrontiaPushUtil$DeployStatus: com.baidu.frontia.api.FrontiaPushUtil$DeployStatus valueOf(java.lang.String)
 com.google.gson.FieldNamingPolicy: com.google.gson.FieldNamingPolicy[] values()

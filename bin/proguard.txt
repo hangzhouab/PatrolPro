@@ -20,9 +20,6 @@
 # view AndroidManifest.xml #generated:109
 -keep class com.ab.health.GongGaoDetailActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:81
--keep class com.ab.health.GuideActivity { <init>(...); }
-
 # view AndroidManifest.xml #generated:100
 -keep class com.ab.health.HomeActivity { <init>(...); }
 
@@ -31,6 +28,9 @@
 
 # view AndroidManifest.xml #generated:49
 -keep class com.ab.health.MainActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:81
+-keep class com.ab.health.PatrolQueryActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:72
 -keep class com.ab.health.RecentListActivity { <init>(...); }

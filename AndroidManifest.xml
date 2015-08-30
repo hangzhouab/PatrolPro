@@ -79,7 +79,7 @@
         </activity>
         
         <activity
-            android:name=".GuideActivity"
+            android:name=".PatrolQueryActivity"
             android:screenOrientation="portrait" >
         </activity>
          

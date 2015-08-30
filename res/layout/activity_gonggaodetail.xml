@@ -7,8 +7,8 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/title_bg" >
+        android:layout_height="50dp"
+        android:background="#ff46cdd8" >
 
         <Button
             android:id="@id/act_recordCal_back_btn"
@@ -20,13 +20,9 @@
         <TextView
             
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="15dp"
-            android:padding="10.0dip"
-            android:text="公告"
-            android:textColor="@color/titleTextColor"
+            android:layout_height="wrap_content"            
+            android:layout_centerInParent="true"            
+            android:text="单位公告"            
             android:textSize="@dimen/title_text_size" />
 
         
@@ -45,8 +41,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2014-10-12"
+            android:layout_height="wrap_content"           
             
             android:textSize="18.0dip" />
     </ScrollView>

@@ -25,7 +25,7 @@ public class AdStartActivity extends Activity {
 		adImage = (ImageView) findViewById(R.id.start_ad);	
 		  
 		LoadAdImageAysnTask load = new LoadAdImageAysnTask();
-		load.execute(1);
+		load.execute(1); 
 	}
 
 
@@ -36,16 +36,16 @@ public class AdStartActivity extends Activity {
 		
 		@Override
 		protected Integer doInBackground(Object... params) {
-//			try {
-//    			URL picUrl = new URL(AppSetting.getRootURL()+ "ad.png");
-//    			pngBM = BitmapFactory.decodeStream(picUrl.openStream());     			
-//    			
-//    		}catch (Exception e){ 
-//    			e.printStackTrace();
-//    		}    			
+			try {
+    			URL picUrl = new URL(AppSetting.getRootURL()+ "ad.png");
+    			pngBM = BitmapFactory.decodeStream(picUrl.openStream());     			
+    			
+    		}catch (Exception e){   
+    			e.printStackTrace();
+    		}    			
 			return 1;
 		}
-
+  
 		@Override
 		protected void onPostExecute(Integer result) {
 			if(pngBM == null){

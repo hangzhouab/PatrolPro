@@ -7,24 +7,9 @@
        >
 
     <CalendarView
-        android:id="@+id/calendarView1"
+        android:id="@+id/patrol_query_calendar"
         android:layout_width="match_parent"
-        android:layout_height="380dp"
+        android:layout_height="match_parent"
          />
-
-    <Button
-        android:id="@id/act_physiology_record_weight"
-        android:layout_width="220dp"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"        
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="25dp"
-        
-        android:background="@drawable/blue_btn_select"
-        android:gravity="center"
-        android:text="查询纪录"
-        android:textColor="#ffffffff"
-        android:textSize="14.0dip" />
      
 </RelativeLayout>
