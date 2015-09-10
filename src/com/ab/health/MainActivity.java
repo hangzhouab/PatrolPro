@@ -78,24 +78,14 @@ public class MainActivity extends Activity {
 	private View viewGongGao, activityServer, activityTool,
 			activityPhysiology;
 
-	private Button btn_about, btn_bbs, btn_tool, btn_record, btn_topbar_home;
+	private Button btn_about, btn_bbs, btn_tool, btn_record;
 			
-	private Button btn_patrolQuery;
-	
-	private Button gonggao;
-	
-	
 	private OnClickListener onClickListener;
-	private String url, param, ret, inputWeight = "";
-	private int recordCalorie = 0, sex;
-	private String username = "nlk", nicename = "nlk", height = "175",
-			weight = "75", age = "30", target = "70", days = "20";
-
-	private TextView recordCal, titleBar, query, recordSports, courseTarget,
-			sportsTarget, changePlain, yourBMI, yourWeight, targetWeight;
+	private String url;
+	private int recordCalorie = 0;
+	private TextView titleBar, query;
 	private ArrayList<View> weightRecordList = new ArrayList<View>();
 	private UpdateManager update;
-	private HttpGetData commitDate;
 	private LinearLayout bottom_record, bottom_tool, bottom_weight,
 			bottom_server;
 	
@@ -121,7 +111,7 @@ public class MainActivity extends Activity {
 	private int year,month,day=0;
 	private  CalendarView calendar;
 	private Button refresh;
-	private boolean isInit = false,patroltouch=false;
+	private boolean patroltouch=false;
 	private String ramUsername,ramOrgniztion;
 
 	@Override
@@ -148,7 +138,7 @@ public class MainActivity extends Activity {
 		SharedPreferences appSetting = getSharedPreferences( AppSetting.getSettingFile(), MODE_PRIVATE);		
 		if (!appSetting.getBoolean(AppSetting.isRegister, false)) {			
 			Intent intent = new Intent();
-			intent.setClass(this, LoginActivity.class);
+			intent.setClass(this, AdStartActivity.class);
 			startActivity(intent);
 			finish();
 			return true;
@@ -361,7 +351,6 @@ public class MainActivity extends Activity {
 
 
 	private void db() {
-		int calorieSum = 0;
 		recordCalorie = 0;
 		SQLiteDatabase db = openOrCreateDatabase("health",
 				Context.MODE_PRIVATE, null);
@@ -385,7 +374,7 @@ public class MainActivity extends Activity {
 				+ " and month=" + monthNow + " and day=" + dayNow;
 		Cursor c2 = db.rawQuery(sql2, null);
 		while (c2.moveToNext()) {
-			calorieSum += c2.getFloat(c2.getColumnIndex("calorie"));
+			c2.getFloat(c2.getColumnIndex("calorie"));
 		}
 
 		db.close();
@@ -444,15 +433,7 @@ public class MainActivity extends Activity {
 				startActivity(intentplain);
 				overridePendingTransition(R.anim.slide_in_from_bottom,
 						R.anim.slide_out_to_top);
-				break;
-			
-			case R.id.bottombar_home:
-				Intent intenthome = new Intent(MainActivity.this,
-						HomeActivity.class);
-				startActivity(intenthome);
-				overridePendingTransition(R.anim.push_left_in,
-						R.anim.push_right_out);
-				break;
+				break;		
 			
 			case R.id.topbar_query:
 				
