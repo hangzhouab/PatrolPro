@@ -8,22 +8,22 @@
 # view AndroidManifest.xml #generated:40
 -keep class com.ab.health.AdStartActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:95
+# view AndroidManifest.xml #generated:99
 -keep class com.ab.health.CoreBriefActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:91
+# view AndroidManifest.xml #generated:95
 -keep class com.ab.health.FirstUseActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:105
+# view AndroidManifest.xml #generated:109
 -keep class com.ab.health.GongGaoActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:109
+# view AndroidManifest.xml #generated:113
 -keep class com.ab.health.GongGaoDetailActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:100
+# view AndroidManifest.xml #generated:104
 -keep class com.ab.health.HomeActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:86
+# view AndroidManifest.xml #generated:90
 -keep class com.ab.health.LoginActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:49
@@ -37,6 +37,9 @@
 
 # view AndroidManifest.xml #generated:76
 -keep class com.ab.health.RegisterActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:86
+-keep class com.ab.health.TongXunLuActivity { <init>(...); }
 
 # view res/xml/alarm_prefs.xml #generated:29
 -keep class com.ab.health.clock.AlarmPreference { <init>(...); }

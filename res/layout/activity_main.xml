@@ -22,14 +22,14 @@
             
             android:textSize="20sp" />
 
-<!--         <Button -->
-<!--             android:id="@id/bottombar_home" -->
-<!--             android:layout_width="30dp" -->
-<!--             android:layout_height="28dp" -->
-<!--             android:layout_alignParentLeft="true" -->
-<!--             android:layout_centerVertical="true" -->
-<!--             android:layout_marginLeft="15dp" -->
-<!--             android:background="@drawable/title_people" /> -->
+        <Button
+            android:id="@+id/topbar_address_list"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/address_list" />
 
         <TextView
             android:id="@+id/topbar_query"

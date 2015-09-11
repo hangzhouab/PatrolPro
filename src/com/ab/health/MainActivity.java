@@ -78,7 +78,7 @@ public class MainActivity extends Activity {
 	private View viewGongGao, activityServer, activityTool,
 			activityPhysiology;
 
-	private Button btn_about, btn_bbs, btn_tool, btn_record;
+	private Button btn_about, btn_bbs, btn_tool, btn_record,btn_addresslist;
 			
 	private OnClickListener onClickListener;
 	private String url;
@@ -343,8 +343,9 @@ public class MainActivity extends Activity {
 //		btn_topbar_home = (Button) findViewById(R.id.bottombar_home);
 //		btn_topbar_home.setOnClickListener(onClickListener);
 		titleBar = (TextView) findViewById(R.id.titlebar_home_title);
-
-
+		btn_addresslist = (Button) findViewById(R.id.topbar_address_list);
+		btn_addresslist.setOnClickListener(onClickListener);
+		
 
 	}
 
@@ -449,8 +450,10 @@ public class MainActivity extends Activity {
 				LoadPatrolRecordAysnTask load = new LoadPatrolRecordAysnTask();
 				load.execute(0);
 				break;	
-			
-			
+			case R.id.topbar_address_list:				
+				Intent intent4 = new Intent(MainActivity.this,TongXunLuActivity.class);
+				startActivity(intent4);
+				break;			
 			case R.id.setting_about_weibo_textView:
 				Uri nuolikangUri = Uri.parse("http://www.nlk759.com");
 				Intent intent3 = new Intent(Intent.ACTION_VIEW, nuolikangUri);
