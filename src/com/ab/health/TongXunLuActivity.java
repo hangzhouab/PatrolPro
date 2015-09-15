@@ -15,6 +15,7 @@ import com.ab.health.utility.NetworkConnect;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -54,7 +55,15 @@ public class TongXunLuActivity extends Activity {
 			AddressListData = new ArrayList<HashMap<String, String>>();			
 			AddressListLV = (ListView) findViewById(R.id.act_patrol_data_lv);
 			patrolwaiter = (ProgressBar) findViewById(R.id.patrol_waiter);
-						
+			btn_back = (Button) findViewById(R.id.tool_standardweight_back_btn);
+			btn_back.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					finish();
+					
+				}
+			});
 			
 			AddressListLV.setOnScrollListener(new AbsListView.OnScrollListener() {
 				
@@ -105,10 +114,10 @@ public class TongXunLuActivity extends Activity {
 	class ItemClick implements AdapterView.OnItemClickListener{
 
 		@Override
-		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {			
-			
-			Intent intent = new Intent(TongXunLuActivity.this, GongGaoDetailActivity.class);
-			
+		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {	
+			HashMap<String, String> course = AddressListData.get(arg2);
+			String phone = course.get("phone");			
+			Intent intent = new Intent(Intent.ACTION_CALL,Uri.parse("tel:" + phone));			
 			startActivity(intent);
 		} 		
 	}

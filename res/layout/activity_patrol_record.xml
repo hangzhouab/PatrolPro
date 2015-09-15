@@ -24,6 +24,18 @@
         android:text="您还没有巡更记录或获取失败，请单击刷新"
         android:textColor="#ffffffff"
         android:textSize="17.0dip" />
+ 	<Button
+        android:id="@+id/patrol_noTagid"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"        
+        android:layout_marginTop="40dp"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:background="@drawable/blue_btn_select"
+        android:gravity="center"
+        android:text="该标签不是本系统注册标签"
+        android:textColor="#ffffffff"
+        android:textSize="14.0dip" />
     <LinearLayout
         android:id="@+id/patrol_list"        
         android:layout_width="fill_parent"
@@ -34,7 +46,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:visibility="gone"
-            android:layout_marginBottom="10.0dip"            
+            android:layout_marginRight="10dp"                      
             android:cacheColorHint="#00000000"
             android:divider="#ffffffff"
             android:dividerHeight="0dip" />

@@ -42,6 +42,16 @@
                 android:textColor="@android:color/darker_gray"
                 android:textSize="@dimen/value_text_size" />
         </LinearLayout>
+         <ImageView
+             	android:layout_marginRight="10dp"
+		        android:id="@id/view_meal_list_icon_iv"
+		        android:layout_width="30dp"
+		        android:layout_height="30dp"
+		        android:layout_centerVertical="true"
+		        android:layout_alignParentRight="true"
+		        android:src="@drawable/tel"
+		        android:focusable="false"
+		        android:scaleType="fitXY" />
     </RelativeLayout>
-
+	
 </LinearLayout>

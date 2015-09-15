@@ -18,6 +18,7 @@ import android.net.Uri;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
+import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Looper;
@@ -107,10 +108,10 @@ public class MainActivity extends Activity {
 	private ListView patrolRecordLV;	
 	private ProgressBar patrolwaiter;
 	private SoundPool soundPool;
-	private String TAGaddress;
+	private String TAGaddress,tagid;
 	private int year,month,day=0;
 	private  CalendarView calendar;
-	private Button refresh;
+	private Button refresh,noTagid;
 	private boolean patroltouch=false;
 	private String ramUsername,ramOrgniztion;
 
@@ -163,6 +164,7 @@ public class MainActivity extends Activity {
 	private void UpdatePatrolRecord() {		
 		NFCReader nfcReader = new NFCReader();
 		TAGaddress = nfcReader.read(getIntent());
+		
 		if(TAGaddress.equals("error")){			
 			return;
 		}else{
@@ -316,6 +318,7 @@ public class MainActivity extends Activity {
 		refresh.setOnClickListener(onClickListener);
 		query = (TextView) findViewById(R.id.topbar_query);
 		query.setOnClickListener(onClickListener);
+		noTagid = (Button) findViewById(R.id.patrol_noTagid);
 		
 		btn_record = (Button) findViewById(R.id.bottombar_record);
 		btn_record.setOnClickListener(onClickListener);
@@ -541,6 +544,7 @@ public class MainActivity extends Activity {
 		protected void onPostExecute(Integer result) {				
 			patrolwaiter.setVisibility(View.GONE);		
 			refresh.setVisibility(View.GONE);
+			noTagid.setVisibility(View.GONE);
 			patrolRecordLV.setVisibility(View.VISIBLE);
 			patrolRecordAdapter.notifyDataSetChanged();				
 			if(patrolRecordData.size() <= 0){
@@ -568,14 +572,16 @@ public class MainActivity extends Activity {
 	
 	private class UploadPatrolRecordAysnTask extends AsyncTask<Object, Integer, Integer>{
 		
-		String uploadparam,url;
+		String uploadparam,url,ret;
 		@Override
 		protected void onPreExecute() {	
+			Tag tag = getIntent().getParcelableExtra("TAG");
+			tagig = tag.getId();
 			soundPool = new SoundPool(10, AudioManager.STREAM_NOTIFICATION, 0);
 			soundPool.load(getApplicationContext(), R.raw.notis, 1);
 			url = AppSetting.getRootURL() + "patrolrecord.php";
 			GetShared();
-			uploadparam = "?username="+ramUsername + "&address=" + TAGaddress ;	
+			uploadparam = "?username="+ramUsername + "&address=" + TAGaddress + "&tagid=" + tagid + "&unit=" + ramOrgniztion ;	
 			
 		}  
 		
@@ -583,16 +589,20 @@ public class MainActivity extends Activity {
 		protected Integer doInBackground(Object... params) {	
 			HttpGetData httpData = new HttpGetData();
 			Log.i("upload", uploadparam);
-			httpData.HttpGets(url,uploadparam);
+			ret = httpData.HttpGets(url,uploadparam);
 			return 1;
 		}
 
 		@Override
 		protected void onPostExecute(Integer result) {	
-			
-			LoadPatrolRecordAysnTask load = new LoadPatrolRecordAysnTask();
-			load.execute(0);
-			soundPool.play(1, 1, 1, 1, 0, 1);
+			if(ret.equals("tagid")){
+				patrolwaiter.setVisibility(View.GONE);	
+				noTagid.setVisibility(View.VISIBLE);
+			}else{
+				LoadPatrolRecordAysnTask load = new LoadPatrolRecordAysnTask();
+				load.execute(0);
+				soundPool.play(1, 1, 1, 1, 0, 1);
+			}
 		}
 	}
 	
@@ -608,7 +618,7 @@ public class MainActivity extends Activity {
 		@Override
 		protected Integer doInBackground(Object... params) {
 			
-			param = "?username="+ramUsername;		
+			param = "?username="+ramUsername + "&unit=" + ramOrgniztion;		
 			HttpGetData httpData = new HttpGetData();
 			httpData.HttpGets(url,param);
 			return ret;
