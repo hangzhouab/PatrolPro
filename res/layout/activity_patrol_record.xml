@@ -35,7 +35,7 @@
         android:gravity="center"
         android:text="该标签不是本系统注册标签"
         android:textColor="#ffffffff"
-        android:textSize="14.0dip" />
+        android:textSize="18.0dip" />
     <LinearLayout
         android:id="@+id/patrol_list"        
         android:layout_width="fill_parent"

@@ -19,6 +19,7 @@ import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
+import android.nfc.tech.Ndef;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Looper;
@@ -164,9 +165,7 @@ public class MainActivity extends Activity {
 	private void UpdatePatrolRecord() {		
 		NFCReader nfcReader = new NFCReader();
 		TAGaddress = nfcReader.read(getIntent());
-//		Tag tag = getIntent().getParcelableExtra("TAG");
-//		byte[] id = tag.getId();
-//		tagid = byte2HexStr(id);
+
 		if(TAGaddress.equals("error")){			
 			return;
 		}else{
@@ -401,6 +400,7 @@ public class MainActivity extends Activity {
 				bottom_tool.setBackgroundColor(0XFFFFFFFF);
 				bottom_weight.setBackgroundColor(0XFFFFFFFF);		
 				query.setVisibility(View.GONE);
+				btn_addresslist.setVisibility(View.VISIBLE);
 				break;
 
 			case R.id.bottombar_tool:
@@ -412,8 +412,10 @@ public class MainActivity extends Activity {
 				bottom_tool.setBackgroundColor(0Xff46cdd8);
 				bottom_weight.setBackgroundColor(0XFFFFFFFF);
 				query.setVisibility(View.GONE);
+				btn_addresslist.setVisibility(View.VISIBLE);
 				break;
 			case R.id.bottombar_bbs:
+				btn_addresslist.setVisibility(View.GONE);
 				contentViewPager.setDisplayedChild(1);
 				contentViewPager.showNext();
 				titleBar.setText("巡更查询");
@@ -422,6 +424,7 @@ public class MainActivity extends Activity {
 				bottom_tool.setBackgroundColor(0XFFFFFFFF);
 				bottom_weight.setBackgroundColor(0Xff46cdd8);
 				query.setVisibility(View.VISIBLE);
+				
 				break;
 			case R.id.bottombar_about:
 				contentViewPager.setDisplayedChild(2);
@@ -432,6 +435,7 @@ public class MainActivity extends Activity {
 				bottom_tool.setBackgroundColor(0XFFFFFFFF);
 				bottom_weight.setBackgroundColor(0XFFFFFFFF);
 				query.setVisibility(View.GONE);
+				btn_addresslist.setVisibility(View.VISIBLE);
 				break;
 			case R.id.changefitness:
 				Intent intentplain = new Intent(MainActivity.this,
@@ -536,7 +540,7 @@ public class MainActivity extends Activity {
 		@Override
 		protected Integer doInBackground(Object... params) {	
 			int sId = (Integer) params[0];
-			loadParam = "?username="+ramUsername + "&startid="+sId+"&endid=10";		
+			loadParam = "?username="+ramUsername + "&startid="+sId+"&endid=10" + "&unit=" + ramOrgniztion;		
 			HttpGetData httpData = new HttpGetData();
 			patrolRecordJsonHandle(httpData.HttpGets(url,loadParam));
 			return 1;
@@ -590,7 +594,11 @@ public class MainActivity extends Activity {
 		String uploadparam,url,ret;
 		@Override
 		protected void onPreExecute() {	
-			
+			Tag tag = getIntent().getParcelableExtra(NfcAdapter.EXTRA_TAG);
+			if(tag != null){
+				byte[] id = tag.getId();
+				tagid = byte2HexStr(id);
+			}
 			soundPool = new SoundPool(10, AudioManager.STREAM_NOTIFICATION, 0);
 			soundPool.load(getApplicationContext(), R.raw.notis, 1);
 			url = AppSetting.getRootURL() + "patrolrecord.php";
@@ -610,8 +618,10 @@ public class MainActivity extends Activity {
 		@Override
 		protected void onPostExecute(Integer result) {	
 			if(ret.equals("tagid")){
+				patrolRecordLV.setVisibility(View.GONE);
 				patrolwaiter.setVisibility(View.GONE);	
 				noTagid.setVisibility(View.VISIBLE);
+				
 			}else{
 				LoadPatrolRecordAysnTask load = new LoadPatrolRecordAysnTask();
 				load.execute(0);
@@ -691,7 +701,7 @@ public class MainActivity extends Activity {
 			Log.i("ret", "获取巡更失败");			
 			return 1;
 		}
-		Log.i("ret", retResponse);
+		Log.i("Patrolret", retResponse);
 		try { 					
 			JSONObject json = new JSONObject(retResponse);
 			JSONArray foodsArray = json.getJSONArray("foods");	

@@ -85,7 +85,7 @@ public class PatrolQueryActivity extends Activity {
 		@Override
 		protected Integer doInBackground(Object... params) {	
 			int sId = (Integer) params[0];
-			loadParam = "?username="+ramUsername + "&startid="+sId+"&endid=10" +"&year="+year+"&month="+month+"&day="+day;				
+			loadParam = "?username="+ramUsername + "&startid="+sId+"&endid=10" +"&year="+year+"&month="+month+"&day="+day + "&unit=" + ramOrgniztion;				
 			HttpGetData httpData = new HttpGetData();
 			patrolRecordJsonHandle(httpData.HttpGets(url,loadParam));
 			return 1;
