@@ -164,7 +164,9 @@ public class MainActivity extends Activity {
 	private void UpdatePatrolRecord() {		
 		NFCReader nfcReader = new NFCReader();
 		TAGaddress = nfcReader.read(getIntent());
-		
+//		Tag tag = getIntent().getParcelableExtra("TAG");
+//		byte[] id = tag.getId();
+//		tagid = byte2HexStr(id);
 		if(TAGaddress.equals("error")){			
 			return;
 		}else{
@@ -570,13 +572,25 @@ public class MainActivity extends Activity {
 	
 	}
 	
+	private static String byte2HexStr(byte[] b) {  
+	    String hs = "";  
+	    String stmp = "";  
+	    for (int n = 0; n < b.length; n++) {  
+	        stmp = (Integer.toHexString(b[n] & 0XFF));  
+	        if (stmp.length() == 1)  
+	            hs = hs + "0" + stmp;  
+	        else  
+	            hs = hs + stmp;  	        
+	    }  
+	    return hs.toUpperCase();  
+	}  
+	
 	private class UploadPatrolRecordAysnTask extends AsyncTask<Object, Integer, Integer>{
 		
 		String uploadparam,url,ret;
 		@Override
 		protected void onPreExecute() {	
-			Tag tag = getIntent().getParcelableExtra("TAG");
-			tagig = tag.getId();
+			
 			soundPool = new SoundPool(10, AudioManager.STREAM_NOTIFICATION, 0);
 			soundPool.load(getApplicationContext(), R.raw.notis, 1);
 			url = AppSetting.getRootURL() + "patrolrecord.php";
