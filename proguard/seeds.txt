@@ -73,14 +73,10 @@ com.ab.health.AdStartActivity
 com.ab.health.AdStartActivity: AdStartActivity()
 com.ab.health.CoreBriefActivity
 com.ab.health.CoreBriefActivity: CoreBriefActivity()
-com.ab.health.FirstUseActivity
-com.ab.health.FirstUseActivity: FirstUseActivity()
 com.ab.health.GongGaoActivity
 com.ab.health.GongGaoActivity: GongGaoActivity()
 com.ab.health.GongGaoDetailActivity
 com.ab.health.GongGaoDetailActivity: GongGaoDetailActivity()
-com.ab.health.HomeActivity
-com.ab.health.HomeActivity: HomeActivity()
 com.ab.health.LoginActivity
 com.ab.health.LoginActivity: LoginActivity()
 com.ab.health.MainActivity
@@ -454,7 +450,6 @@ com.ab.health.R$dimen: int title_text_size
 com.ab.health.R$dimen: int umeng_socialize_pad_window_height
 com.ab.health.R$dimen: int umeng_socialize_pad_window_width
 com.ab.health.R$dimen: int value_text_size
-com.ab.health.R$drawable: int about_title
 com.ab.health.R$drawable: int access_point
 com.ab.health.R$drawable: int act_physiology_height_image
 com.ab.health.R$drawable: int act_physiology_height_image_corner
@@ -463,6 +458,7 @@ com.ab.health.R$drawable: int act_physiology_weight_image
 com.ab.health.R$drawable: int act_physiology_weight_image_corner
 com.ab.health.R$drawable: int ad
 com.ab.health.R$drawable: int add_alarm
+com.ab.health.R$drawable: int address_list
 com.ab.health.R$drawable: int alarm_alert_bg
 com.ab.health.R$drawable: int alarm_alert_icon
 com.ab.health.R$drawable: int back_btn_normal
@@ -599,6 +595,7 @@ com.ab.health.R$drawable: int guide_edittext_input
 com.ab.health.R$drawable: int guide_edittext_input_focused
 com.ab.health.R$drawable: int guide_edittext_input_unfocused
 com.ab.health.R$drawable: int guide_round
+com.ab.health.R$drawable: int header
 com.ab.health.R$drawable: int ic_background
 com.ab.health.R$drawable: int ic_clock_add_alarm
 com.ab.health.R$drawable: int ic_clock_add_alarm_selected
@@ -732,7 +729,6 @@ com.ab.health.R$drawable: int shoppingmall_buy_btn_state
 com.ab.health.R$drawable: int shoppingmall_index_bg_gray
 com.ab.health.R$drawable: int shoppingmall_textselect_blue
 com.ab.health.R$drawable: int shoppingmall_top_text_state
-com.ab.health.R$drawable: int shouhuan
 com.ab.health.R$drawable: int shysiology_quare
 com.ab.health.R$drawable: int shysiology_repeat
 com.ab.health.R$drawable: int simple_notification_icon
@@ -770,6 +766,8 @@ com.ab.health.R$drawable: int task_target_weight3
 com.ab.health.R$drawable: int task_target_weight4
 com.ab.health.R$drawable: int task_target_weight_state
 com.ab.health.R$drawable: int task_weight_press
+com.ab.health.R$drawable: int tel
+com.ab.health.R$drawable: int telephone
 com.ab.health.R$drawable: int telphone
 com.ab.health.R$drawable: int time_icon
 com.ab.health.R$drawable: int title_bar_add_btn_normal
@@ -788,28 +786,6 @@ com.ab.health.R$drawable: int title_people
 com.ab.health.R$drawable: int title_server
 com.ab.health.R$drawable: int title_setting
 com.ab.health.R$drawable: int title_sports
-com.ab.health.R$drawable: int tongbu
-com.ab.health.R$drawable: int tongbu2
-com.ab.health.R$drawable: int tongbuanniu
-com.ab.health.R$drawable: int tongbubeijing2
-com.ab.health.R$drawable: int tool_bmi
-com.ab.health.R$drawable: int tool_clock
-com.ab.health.R$drawable: int tool_convert
-com.ab.health.R$drawable: int tool_courserecord
-com.ab.health.R$drawable: int tool_discuz
-com.ab.health.R$drawable: int tool_fine
-com.ab.health.R$drawable: int tool_food
-com.ab.health.R$drawable: int tool_gonggao
-com.ab.health.R$drawable: int tool_lipin
-com.ab.health.R$drawable: int tool_niaotong
-com.ab.health.R$drawable: int tool_online
-com.ab.health.R$drawable: int tool_record_food
-com.ab.health.R$drawable: int tool_record_sports
-com.ab.health.R$drawable: int tool_record_weight
-com.ab.health.R$drawable: int tool_sanwei
-com.ab.health.R$drawable: int tool_sports
-com.ab.health.R$drawable: int tool_weight
-com.ab.health.R$drawable: int tool_xinlv
 com.ab.health.R$drawable: int top
 com.ab.health.R$drawable: int topic_key_search_state
 com.ab.health.R$drawable: int translucence_bg
@@ -833,32 +809,6 @@ com.ab.health.R$drawable: int white_foot
 com.ab.health.R$drawable: int white_left
 com.ab.health.R$drawable: int white_right
 com.ab.health.R$drawable: int white_space_backgroud
-com.ab.health.R$drawable: int yys_baoyan_body
-com.ab.health.R$drawable: int yys_baoyan_head
-com.ab.health.R$drawable: int yys_dengna_body
-com.ab.health.R$drawable: int yys_dengna_head
-com.ab.health.R$drawable: int yys_dialogue
-com.ab.health.R$drawable: int yys_dingjie_body
-com.ab.health.R$drawable: int yys_dingjie_head
-com.ab.health.R$drawable: int yys_guanhonglin_body
-com.ab.health.R$drawable: int yys_guanhonglin_head
-com.ab.health.R$drawable: int yys_lidongmei_body
-com.ab.health.R$drawable: int yys_lidongmei_head
-com.ab.health.R$drawable: int yys_luojia_body
-com.ab.health.R$drawable: int yys_luojia_head
-com.ab.health.R$drawable: int yys_lvpeiyi_head
-com.ab.health.R$drawable: int yys_other_body
-com.ab.health.R$drawable: int yys_other_head
-com.ab.health.R$drawable: int yys_server_body
-com.ab.health.R$drawable: int yys_server_head
-com.ab.health.R$drawable: int yys_wangyingbei_body
-com.ab.health.R$drawable: int yys_wangyingbei_head
-com.ab.health.R$drawable: int yys_xujiajia_body
-com.ab.health.R$drawable: int yys_xujiajia_head
-com.ab.health.R$drawable: int yys_zhaoxiaojuan_body
-com.ab.health.R$drawable: int yys_zhaoxiaojuan_head
-com.ab.health.R$drawable: int yys_zhengxiaoyan_body
-com.ab.health.R$drawable: int yys_zhengxiaoyan_head
 com.ab.health.R$drawable: int zhishiitem
 com.ab.health.R$id: int FILL
 com.ab.health.R$id: int FaceRelativeLayout
@@ -1076,17 +1026,13 @@ com.ab.health.R$id: int adapter_tutorial_sport_child_name_textView
 com.ab.health.R$id: int adapter_tutorial_sport_group_imageView
 com.ab.health.R$id: int adapter_tutorial_sport_group_textView
 com.ab.health.R$id: int add_alarm
-com.ab.health.R$id: int add_userinfo_age_editText
 com.ab.health.R$id: int add_userinfo_back_button
-com.ab.health.R$id: int add_userinfo_back_text
 com.ab.health.R$id: int add_userinfo_back_text2
 com.ab.health.R$id: int add_userinfo_birthday_textView
 com.ab.health.R$id: int add_userinfo_brithday_layout
 com.ab.health.R$id: int add_userinfo_height_editText
 com.ab.health.R$id: int add_userinfo_height_layout
 com.ab.health.R$id: int add_userinfo_height_unit
-com.ab.health.R$id: int add_userinfo_height_unit2
-com.ab.health.R$id: int add_userinfo_height_unit3
 com.ab.health.R$id: int add_userinfo_next_text
 com.ab.health.R$id: int add_userinfo_next_text2
 com.ab.health.R$id: int add_userinfo_nicename_editText
@@ -1234,7 +1180,6 @@ com.ab.health.R$id: int cal_intake_name_tv
 com.ab.health.R$id: int cal_intake_quantity
 com.ab.health.R$id: int cal_intake_xx_btn
 com.ab.health.R$id: int cancle_button
-com.ab.health.R$id: int changeInfo
 com.ab.health.R$id: int changefitness
 com.ab.health.R$id: int chat_sender_content
 com.ab.health.R$id: int chat_sender_content_layout
@@ -1269,7 +1214,6 @@ com.ab.health.R$id: int comment_item_remark_user_name
 com.ab.health.R$id: int comment_item_root_layout
 com.ab.health.R$id: int comment_item_user_icon
 com.ab.health.R$id: int comment_item_user_name
-com.ab.health.R$id: int connection_state
 com.ab.health.R$id: int contentPanel
 com.ab.health.R$id: int content_flipper
 com.ab.health.R$id: int courseConditon_listview
@@ -2032,19 +1976,14 @@ com.ab.health.R$id: int partner_vs_second_week_consume_text
 com.ab.health.R$id: int partner_vs_sport_record
 com.ab.health.R$id: int partner_vs_top_layout
 com.ab.health.R$id: int patrol_list
+com.ab.health.R$id: int patrol_noTagid
 com.ab.health.R$id: int patrol_query_calendar
 com.ab.health.R$id: int patrol_refresh
 com.ab.health.R$id: int patrol_waiter
 com.ab.health.R$id: int pcenterPanel
-com.ab.health.R$id: int person_bmi
-com.ab.health.R$id: int person_bmi_title
-com.ab.health.R$id: int person_bmr
-com.ab.health.R$id: int person_health
 com.ab.health.R$id: int person_sport_empty_relativeLayout
 com.ab.health.R$id: int person_sport_list_linearLayout
 com.ab.health.R$id: int person_sport_record_list_layout
-com.ab.health.R$id: int person_standard
-com.ab.health.R$id: int person_weight
 com.ab.health.R$id: int personal_fans_back_button
 com.ab.health.R$id: int personal_fans_listView
 com.ab.health.R$id: int personal_fans_root_layout
@@ -2279,7 +2218,6 @@ com.ab.health.R$id: int right_menu_frame
 com.ab.health.R$id: int rl_input
 com.ab.health.R$id: int scrollView
 com.ab.health.R$id: int scrollView1
-com.ab.health.R$id: int scrollView2
 com.ab.health.R$id: int scroller
 com.ab.health.R$id: int scrollview
 com.ab.health.R$id: int search_text
@@ -2463,7 +2401,6 @@ com.ab.health.R$id: int task_yundong_current_textView
 com.ab.health.R$id: int test
 com.ab.health.R$id: int textView1
 com.ab.health.R$id: int textView2
-com.ab.health.R$id: int textView4
 com.ab.health.R$id: int text_head
 com.ab.health.R$id: int text_log
 com.ab.health.R$id: int text_log_tip
@@ -2499,42 +2436,13 @@ com.ab.health.R$id: int today_task_tutorial_layout
 com.ab.health.R$id: int today_task_tutorial_num_complete_text
 com.ab.health.R$id: int today_task_tutorial_num_target_text
 com.ab.health.R$id: int today_task_tutorial_num_text
-com.ab.health.R$id: int tongbu
-com.ab.health.R$id: int tongbubeijing
-com.ab.health.R$id: int tool_background_blue
-com.ab.health.R$id: int tool_background_bmi
-com.ab.health.R$id: int tool_background_convert
 com.ab.health.R$id: int tool_background_course
-com.ab.health.R$id: int tool_background_food
-com.ab.health.R$id: int tool_background_sports
-com.ab.health.R$id: int tool_background_sportsrecord
-com.ab.health.R$id: int tool_background_standard
-com.ab.health.R$id: int tool_background_zhishi
-com.ab.health.R$id: int tool_bluetooth
-com.ab.health.R$id: int tool_bmi
-com.ab.health.R$id: int tool_bmr
-com.ab.health.R$id: int tool_calorie
-com.ab.health.R$id: int tool_clock
-com.ab.health.R$id: int tool_course_record
-com.ab.health.R$id: int tool_discuz
-com.ab.health.R$id: int tool_food_btn
-com.ab.health.R$id: int tool_gonggao
 com.ab.health.R$id: int tool_health_weight
-com.ab.health.R$id: int tool_lipin
-com.ab.health.R$id: int tool_niaotong
-com.ab.health.R$id: int tool_online_btn
-com.ab.health.R$id: int tool_sanwei
-com.ab.health.R$id: int tool_sports_btn
-com.ab.health.R$id: int tool_sports_record
-com.ab.health.R$id: int tool_standard_tunwei
 com.ab.health.R$id: int tool_standard_weight
-com.ab.health.R$id: int tool_standard_weight_btn
-com.ab.health.R$id: int tool_standard_xiongwei
-com.ab.health.R$id: int tool_standard_yaowei
 com.ab.health.R$id: int tool_standardweight_back_btn
 com.ab.health.R$id: int tool_userinfo_age_editText
-com.ab.health.R$id: int tool_zhishi
 com.ab.health.R$id: int topPanel
+com.ab.health.R$id: int topbar_address_list
 com.ab.health.R$id: int topbar_query
 com.ab.health.R$id: int topic_banner_image
 com.ab.health.R$id: int topic_detail_bottom_camera_button
@@ -2883,28 +2791,19 @@ com.ab.health.R$id: int xuetang
 com.ab.health.R$id: int xueya_shousuoya
 com.ab.health.R$id: int xueya_shuzhangya
 com.ab.health.R$id: int yesteday_reword_root_linearLayout
-com.ab.health.R$id: int yys_dengji
 com.ab.health.R$id: int yys_head
-com.ab.health.R$id: int yys_image
-com.ab.health.R$id: int yys_jianjie
 com.ab.health.R$id: int yys_jieshao
 com.ab.health.R$id: int yys_name
-com.ab.health.R$id: int yys_nickname
-com.ab.health.R$id: int yys_zixun
 com.ab.health.R$id: int yyslist_loading
 com.ab.health.R$integer: int num_cols
 com.ab.health.R$layout: int actionbar_indeterminate_progress
 com.ab.health.R$layout: int activity_account_login
 com.ab.health.R$layout: int activity_ad_start
-com.ab.health.R$layout: int activity_bluetooth_result
-com.ab.health.R$layout: int activity_bluetooth_scan
-com.ab.health.R$layout: int activity_bluetooth_tongbu
-com.ab.health.R$layout: int activity_body_info
+com.ab.health.R$layout: int activity_addresslist
 com.ab.health.R$layout: int activity_changeinfo
 com.ab.health.R$layout: int activity_course_record
 com.ab.health.R$layout: int activity_course_search
 com.ab.health.R$layout: int activity_discuz
-com.ab.health.R$layout: int activity_fill_body_info
 com.ab.health.R$layout: int activity_find_partner
 com.ab.health.R$layout: int activity_firstuse
 com.ab.health.R$layout: int activity_gonggao2
@@ -2918,7 +2817,6 @@ com.ab.health.R$layout: int activity_niao
 com.ab.health.R$layout: int activity_patrol_query
 com.ab.health.R$layout: int activity_patrol_record
 com.ab.health.R$layout: int activity_physiology
-com.ab.health.R$layout: int activity_pinggu_info
 com.ab.health.R$layout: int activity_plain
 com.ab.health.R$layout: int activity_plainchange
 com.ab.health.R$layout: int activity_recordcal
@@ -2940,7 +2838,6 @@ com.ab.health.R$layout: int bpush_download_progress
 com.ab.health.R$layout: int bpush_media_list
 com.ab.health.R$layout: int bpush_media_list_item
 com.ab.health.R$layout: int chat_item_left
-com.ab.health.R$layout: int chat_item_right
 com.ab.health.R$layout: int context_menu_header
 com.ab.health.R$layout: int custom_activity
 com.ab.health.R$layout: int discuz_new
@@ -2948,8 +2845,6 @@ com.ab.health.R$layout: int fragment_bbs
 com.ab.health.R$layout: int fragment_patrol_query
 com.ab.health.R$layout: int fragment_physiology
 com.ab.health.R$layout: int fragment_task
-com.ab.health.R$layout: int fragment_tool
-com.ab.health.R$layout: int fragment_tool2
 com.ab.health.R$layout: int guide1_page
 com.ab.health.R$layout: int guide2_page
 com.ab.health.R$layout: int guide3_page
@@ -2968,13 +2863,9 @@ com.ab.health.R$layout: int recent_listview_item
 com.ab.health.R$layout: int set_alarm
 com.ab.health.R$layout: int softupdate_progress
 com.ab.health.R$layout: int title_line
-com.ab.health.R$layout: int tool_bmr
-com.ab.health.R$layout: int tool_calbmi
 com.ab.health.R$layout: int tool_convert
 com.ab.health.R$layout: int tool_health_weight
-com.ab.health.R$layout: int tool_sanwei
-com.ab.health.R$layout: int tool_standard_sanwei
-com.ab.health.R$layout: int tool_standard_weight
+com.ab.health.R$layout: int view_address_list
 com.ab.health.R$layout: int view_course_catarg
 com.ab.health.R$layout: int view_discuz_list
 com.ab.health.R$layout: int view_gonggao_list
@@ -2984,10 +2875,8 @@ com.ab.health.R$layout: int view_online_list
 com.ab.health.R$layout: int view_patrol_record_list
 com.ab.health.R$layout: int view_physiology_image_item
 com.ab.health.R$layout: int view_physiology_image_item2
-com.ab.health.R$layout: int view_shouhuan_list
 com.ab.health.R$layout: int view_sports_list
 com.ab.health.R$layout: int view_zhishi_list
-com.ab.health.R$layout: int yys_guide
 com.ab.health.R$menu: int alarm_list_menu
 com.ab.health.R$menu: int context_menu
 com.ab.health.R$menu: int desk_clock_menu
@@ -3234,6 +3123,8 @@ com.ab.health.R$xml: int nfc_tech_filter
 com.ab.health.R$xml: int settings
 com.ab.health.RegisterActivity
 com.ab.health.RegisterActivity: RegisterActivity()
+com.ab.health.TongXunLuActivity
+com.ab.health.TongXunLuActivity: TongXunLuActivity()
 com.baidu.frontia.FrontiaApplication
 com.baidu.frontia.FrontiaApplication: FrontiaApplication()
 com.baidu.frontia.FrontiaQuery$SortOrder: com.baidu.frontia.FrontiaQuery$SortOrder[] values()

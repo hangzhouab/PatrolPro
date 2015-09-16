@@ -1544,78 +1544,7 @@ com.ab.health.AdStartActivity$LoadAdImageAysnTask -> com.ab.health.a:
 com.ab.health.AdStartActivity$LoadAdImageAysnTask$1 -> com.ab.health.b:
     com.ab.health.AdStartActivity$LoadAdImageAysnTask this$1 -> a
     void run() -> run
-com.ab.health.ChangeInfoActivity -> com.ab.health.c:
-    com.ab.health.model.User user -> a
-    android.widget.EditText inputAge -> b
-    android.widget.EditText inputHeight -> c
-    android.widget.EditText inputNicename -> d
-    android.widget.TextView calButton -> e
-    android.widget.Button btnWowmen -> f
-    android.widget.Button btnMen -> g
-    java.lang.Boolean sex -> h
-    int sexTemp -> i
-    java.lang.String username -> j
-    java.lang.String url -> k
-    java.lang.String param -> l
-    java.lang.String password -> m
-    java.lang.String xuetang -> n
-    java.lang.String xueya_shu -> o
-    java.lang.String xueya_shou -> p
-    java.lang.String height -> q
-    java.lang.String weight -> r
-    java.lang.String target -> s
-    java.lang.String age -> t
-    java.lang.String days -> u
-    java.lang.String nicename -> v
-    android.widget.EditText xuetangET -> w
-    android.widget.EditText xueya_shuET -> x
-    android.widget.EditText xueya_shouET -> y
-    void onCreate(android.os.Bundle) -> onCreate
-    void writeAppConfig() -> a
-    void access$0(com.ab.health.ChangeInfoActivity,java.lang.String) -> a
-    java.lang.String access$1(com.ab.health.ChangeInfoActivity) -> a
-    java.lang.String access$2(com.ab.health.ChangeInfoActivity) -> b
-    java.lang.String access$3(com.ab.health.ChangeInfoActivity) -> c
-    java.lang.String access$4(com.ab.health.ChangeInfoActivity) -> d
-    java.lang.Boolean access$5(com.ab.health.ChangeInfoActivity) -> e
-    java.lang.String access$6(com.ab.health.ChangeInfoActivity) -> f
-    java.lang.String access$7(com.ab.health.ChangeInfoActivity) -> g
-    java.lang.String access$8(com.ab.health.ChangeInfoActivity) -> h
-    java.lang.String access$9(com.ab.health.ChangeInfoActivity) -> i
-    java.lang.String access$10(com.ab.health.ChangeInfoActivity) -> j
-    java.lang.String access$11(com.ab.health.ChangeInfoActivity) -> k
-    java.lang.String access$12(com.ab.health.ChangeInfoActivity) -> l
-    void access$13(com.ab.health.ChangeInfoActivity,java.lang.String) -> b
-    java.lang.String access$14(com.ab.health.ChangeInfoActivity) -> m
-    java.lang.String access$15(com.ab.health.ChangeInfoActivity) -> n
-    android.widget.EditText access$16(com.ab.health.ChangeInfoActivity) -> o
-    void access$17(com.ab.health.ChangeInfoActivity,java.lang.String) -> c
-    android.widget.EditText access$18(com.ab.health.ChangeInfoActivity) -> p
-    void access$19(com.ab.health.ChangeInfoActivity,java.lang.String) -> d
-    android.widget.EditText access$20(com.ab.health.ChangeInfoActivity) -> q
-    void access$21(com.ab.health.ChangeInfoActivity,java.lang.String) -> e
-    android.widget.EditText access$22(com.ab.health.ChangeInfoActivity) -> r
-    void access$23(com.ab.health.ChangeInfoActivity,java.lang.String) -> f
-    android.widget.EditText access$24(com.ab.health.ChangeInfoActivity) -> s
-    void access$25(com.ab.health.ChangeInfoActivity,java.lang.String) -> g
-    android.widget.EditText access$26(com.ab.health.ChangeInfoActivity) -> t
-    void access$27(com.ab.health.ChangeInfoActivity,java.lang.String) -> h
-    android.widget.Button access$28(com.ab.health.ChangeInfoActivity) -> u
-    android.widget.Button access$29(com.ab.health.ChangeInfoActivity) -> v
-    void access$30(com.ab.health.ChangeInfoActivity,java.lang.Boolean) -> a
-com.ab.health.ChangeInfoActivity$Click -> com.ab.health.d:
-    com.ab.health.ChangeInfoActivity this$0 -> a
-    void onClick(android.view.View) -> onClick
-com.ab.health.ChangeInfoActivity$SubmitAysnTask -> com.ab.health.e:
-    java.lang.String pass -> a
-    com.ab.health.utility.HttpGetData http -> b
-    com.ab.health.ChangeInfoActivity this$0 -> c
-    void onPreExecute() -> onPreExecute
-    java.lang.Integer doInBackground(java.lang.Object[]) -> a
-    void onPostExecute(java.lang.Integer) -> a
-    void onPostExecute(java.lang.Object) -> onPostExecute
-    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-com.ab.health.ChangePlainActivity -> com.ab.health.f:
+com.ab.health.ChangePlainActivity -> com.ab.health.c:
     com.ab.health.model.User user -> a
     android.widget.EditText inputDays -> b
     android.widget.EditText inputTarget -> c
@@ -1657,10 +1586,10 @@ com.ab.health.ChangePlainActivity -> com.ab.health.f:
     void access$17(com.ab.health.ChangePlainActivity,java.lang.String) -> c
     android.widget.EditText access$18(com.ab.health.ChangePlainActivity) -> p
     void access$19(com.ab.health.ChangePlainActivity,java.lang.String) -> d
-com.ab.health.ChangePlainActivity$Click -> com.ab.health.g:
+com.ab.health.ChangePlainActivity$Click -> com.ab.health.d:
     com.ab.health.ChangePlainActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-com.ab.health.ChangePlainActivity$SubmitAysnTask -> com.ab.health.h:
+com.ab.health.ChangePlainActivity$SubmitAysnTask -> com.ab.health.e:
     java.lang.String pass -> a
     com.ab.health.utility.HttpGetData http -> b
     com.ab.health.ChangePlainActivity this$0 -> c
@@ -1680,115 +1609,12 @@ com.ab.health.CoreBriefActivity -> com.ab.health.CoreBriefActivity:
     void access$0(com.ab.health.CoreBriefActivity,float) -> a
     float access$1(com.ab.health.CoreBriefActivity) -> a
     android.widget.ViewFlipper access$2(com.ab.health.CoreBriefActivity) -> b
-com.ab.health.CoreBriefActivity$ButtonOnClick -> com.ab.health.i:
+com.ab.health.CoreBriefActivity$ButtonOnClick -> com.ab.health.f:
     com.ab.health.CoreBriefActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-com.ab.health.CoreBriefActivity$GuideOnTouchListener -> com.ab.health.j:
+com.ab.health.CoreBriefActivity$GuideOnTouchListener -> com.ab.health.g:
     com.ab.health.CoreBriefActivity this$0 -> a
     boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
-com.ab.health.FirstUseActivity -> com.ab.health.FirstUseActivity:
-    android.widget.ViewFlipper containView -> a
-    android.view.LayoutInflater inflater -> b
-    java.lang.String userName -> c
-    java.lang.String passWord -> d
-    java.lang.String confirmPassWord -> e
-    java.lang.String url -> f
-    java.lang.String param -> g
-    java.lang.String height -> h
-    java.lang.String weight -> i
-    java.lang.String target -> j
-    java.lang.String age -> k
-    java.lang.String requestCode -> l
-    java.lang.String days -> m
-    java.lang.String nicename -> n
-    java.lang.String xuetang -> o
-    java.lang.String xueya_shu -> p
-    java.lang.String xueya_shou -> q
-    android.widget.EditText et2 -> r
-    android.widget.EditText et3 -> s
-    android.widget.EditText et -> t
-    android.widget.EditText heightET -> u
-    android.widget.EditText weightET -> v
-    android.widget.EditText targetET -> w
-    android.widget.EditText ageET -> x
-    android.widget.EditText requestCodeET -> y
-    android.widget.EditText daysET -> z
-    android.widget.EditText nicenameET -> A
-    android.widget.EditText xuetangET -> B
-    android.widget.EditText xueya_shuET -> C
-    android.widget.EditText xueya_shouET -> D
-    int sex -> E
-    android.widget.Button btnWowmen -> F
-    android.widget.Button btnMen -> G
-    android.widget.Button btnRquestCode -> H
-    void onCreate(android.os.Bundle) -> onCreate
-    void writeAppConfig() -> a
-    void getInputInfo() -> b
-    void access$0(com.ab.health.FirstUseActivity,java.lang.String) -> a
-    java.lang.String access$1(com.ab.health.FirstUseActivity) -> a
-    void access$2(com.ab.health.FirstUseActivity,java.lang.String) -> b
-    java.lang.String access$3(com.ab.health.FirstUseActivity) -> b
-    java.lang.String access$4(com.ab.health.FirstUseActivity) -> c
-    java.lang.String access$5(com.ab.health.FirstUseActivity) -> d
-    android.widget.ViewFlipper access$6(com.ab.health.FirstUseActivity) -> e
-    java.lang.String access$7(com.ab.health.FirstUseActivity) -> f
-    java.lang.String access$8(com.ab.health.FirstUseActivity) -> g
-    java.lang.String access$9(com.ab.health.FirstUseActivity) -> h
-    int access$10(com.ab.health.FirstUseActivity) -> i
-    java.lang.String access$11(com.ab.health.FirstUseActivity) -> j
-    java.lang.String access$12(com.ab.health.FirstUseActivity) -> k
-    java.lang.String access$13(com.ab.health.FirstUseActivity) -> l
-    java.lang.String access$14(com.ab.health.FirstUseActivity) -> m
-    java.lang.String access$15(com.ab.health.FirstUseActivity) -> n
-    java.lang.String access$16(com.ab.health.FirstUseActivity) -> o
-    java.lang.String access$17(com.ab.health.FirstUseActivity) -> p
-    java.lang.String access$18(com.ab.health.FirstUseActivity) -> q
-    android.widget.EditText access$19(com.ab.health.FirstUseActivity) -> r
-    void access$20(com.ab.health.FirstUseActivity,java.lang.String) -> c
-    android.widget.EditText access$21(com.ab.health.FirstUseActivity) -> s
-    void access$22(com.ab.health.FirstUseActivity,java.lang.String) -> d
-    android.widget.EditText access$23(com.ab.health.FirstUseActivity) -> t
-    void access$24(com.ab.health.FirstUseActivity,java.lang.String) -> e
-    android.widget.EditText access$25(com.ab.health.FirstUseActivity) -> u
-    void access$26(com.ab.health.FirstUseActivity,java.lang.String) -> f
-    android.widget.EditText access$27(com.ab.health.FirstUseActivity) -> v
-    void access$28(com.ab.health.FirstUseActivity,java.lang.String) -> g
-    android.widget.EditText access$29(com.ab.health.FirstUseActivity) -> w
-    void access$30(com.ab.health.FirstUseActivity,java.lang.String) -> h
-    android.widget.Button access$31(com.ab.health.FirstUseActivity) -> x
-    android.widget.Button access$32(com.ab.health.FirstUseActivity) -> y
-    android.widget.Button access$33(com.ab.health.FirstUseActivity) -> z
-    void access$34(com.ab.health.FirstUseActivity,int) -> a
-com.ab.health.FirstUseActivity$CheckCodeAysnTask -> com.ab.health.k:
-    java.lang.String pass -> a
-    com.ab.health.utility.HttpGetData http -> b
-    com.ab.health.FirstUseActivity this$0 -> c
-    void onPreExecute() -> onPreExecute
-    java.lang.Integer doInBackground(java.lang.Object[]) -> a
-    void onPostExecute(java.lang.Integer) -> a
-    void onPostExecute(java.lang.Object) -> onPostExecute
-    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-com.ab.health.FirstUseActivity$OnClick -> com.ab.health.l:
-    com.ab.health.FirstUseActivity this$0 -> a
-    void onClick(android.view.View) -> onClick
-com.ab.health.FirstUseActivity$RequestCodeAysnTask -> com.ab.health.m:
-    java.lang.String pass -> a
-    com.ab.health.utility.HttpGetData http -> b
-    com.ab.health.FirstUseActivity this$0 -> c
-    void onPreExecute() -> onPreExecute
-    java.lang.Integer doInBackground(java.lang.Object[]) -> a
-    void onPostExecute(java.lang.Integer) -> a
-    void onPostExecute(java.lang.Object) -> onPostExecute
-    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-com.ab.health.FirstUseActivity$SubmitAysnTask -> com.ab.health.n:
-    java.lang.String pass -> a
-    com.ab.health.utility.HttpGetData http -> b
-    com.ab.health.FirstUseActivity this$0 -> c
-    void onPreExecute() -> onPreExecute
-    java.lang.Integer doInBackground(java.lang.Object[]) -> a
-    void onPostExecute(java.lang.Integer) -> a
-    void onPostExecute(java.lang.Object) -> onPostExecute
-    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
 com.ab.health.GongGaoActivity -> com.ab.health.GongGaoActivity:
     android.widget.ListView gonggaoLV -> a
     java.util.List gonggaoData -> b
@@ -1813,14 +1639,14 @@ com.ab.health.GongGaoActivity -> com.ab.health.GongGaoActivity:
     java.lang.Integer access$7(com.ab.health.GongGaoActivity,java.lang.String) -> b
     android.widget.SimpleAdapter access$8(com.ab.health.GongGaoActivity) -> g
     android.widget.ListView access$9(com.ab.health.GongGaoActivity) -> h
-com.ab.health.GongGaoActivity$1 -> com.ab.health.o:
+com.ab.health.GongGaoActivity$1 -> com.ab.health.h:
     com.ab.health.GongGaoActivity this$0 -> a
     void onScrollStateChanged(android.widget.AbsListView,int) -> onScrollStateChanged
     void onScroll(android.widget.AbsListView,int,int,int) -> onScroll
-com.ab.health.GongGaoActivity$ItemClick -> com.ab.health.p:
+com.ab.health.GongGaoActivity$ItemClick -> com.ab.health.i:
     com.ab.health.GongGaoActivity this$0 -> a
     void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
-com.ab.health.GongGaoActivity$LoadGongGaoAysnTask -> com.ab.health.q:
+com.ab.health.GongGaoActivity$LoadGongGaoAysnTask -> com.ab.health.j:
     int ret -> a
     com.ab.health.GongGaoActivity this$0 -> b
     void onPreExecute() -> onPreExecute
@@ -1839,10 +1665,10 @@ com.ab.health.GongGaoDetailActivity -> com.ab.health.GongGaoDetailActivity:
     void access$2(com.ab.health.GongGaoDetailActivity,java.lang.String) -> a
     java.lang.String access$3(com.ab.health.GongGaoDetailActivity) -> c
     android.widget.TextView access$4(com.ab.health.GongGaoDetailActivity) -> d
-com.ab.health.GongGaoDetailActivity$BtnClick -> com.ab.health.r:
+com.ab.health.GongGaoDetailActivity$BtnClick -> com.ab.health.k:
     com.ab.health.GongGaoDetailActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-com.ab.health.GongGaoDetailActivity$LoadGongGaoDetailAysnTask -> com.ab.health.s:
+com.ab.health.GongGaoDetailActivity$LoadGongGaoDetailAysnTask -> com.ab.health.l:
     int ret -> a
     com.ab.health.GongGaoDetailActivity this$0 -> b
     void onPreExecute() -> onPreExecute
@@ -1850,27 +1676,6 @@ com.ab.health.GongGaoDetailActivity$LoadGongGaoDetailAysnTask -> com.ab.health.s
     void onPostExecute(java.lang.Integer) -> a
     void onPostExecute(java.lang.Object) -> onPostExecute
     java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-com.ab.health.HomeActivity -> com.ab.health.HomeActivity:
-    java.lang.String username -> a
-    java.lang.String nicename -> b
-    java.lang.String height -> c
-    java.lang.String weight -> d
-    java.lang.String age -> e
-    java.lang.String target -> f
-    java.lang.String days -> g
-    android.widget.TextView bmiTV -> h
-    android.widget.TextView bmrTV -> i
-    android.widget.TextView standardweightTV -> j
-    android.widget.TextView healthweightTV -> k
-    android.widget.TextView weightTV -> l
-    boolean sex -> m
-    void onCreate(android.os.Bundle) -> onCreate
-com.ab.health.HomeActivity$1 -> com.ab.health.t:
-    com.ab.health.HomeActivity this$0 -> a
-    void onClick(android.view.View) -> onClick
-com.ab.health.HomeActivity$2 -> com.ab.health.u:
-    com.ab.health.HomeActivity this$0 -> a
-    void onClick(android.view.View) -> onClick
 com.ab.health.LoginActivity -> com.ab.health.LoginActivity:
     java.lang.String url -> a
     java.lang.String param -> b
@@ -1894,13 +1699,13 @@ com.ab.health.LoginActivity -> com.ab.health.LoginActivity:
     java.lang.String access$8(com.ab.health.LoginActivity) -> e
     java.lang.String access$9(com.ab.health.LoginActivity) -> f
     java.lang.Integer access$10(com.ab.health.LoginActivity,java.lang.String) -> e
-com.ab.health.LoginActivity$1 -> com.ab.health.v:
+com.ab.health.LoginActivity$1 -> com.ab.health.m:
     com.ab.health.LoginActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-com.ab.health.LoginActivity$2 -> com.ab.health.w:
+com.ab.health.LoginActivity$2 -> com.ab.health.n:
     com.ab.health.LoginActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-com.ab.health.LoginActivity$LoginAysnTask -> com.ab.health.x:
+com.ab.health.LoginActivity$LoginAysnTask -> com.ab.health.o:
     java.lang.String pass -> a
     com.ab.health.utility.HttpGetData http -> b
     com.ab.health.LoginActivity this$0 -> c
@@ -1920,47 +1725,41 @@ com.ab.health.MainActivity -> com.ab.health.MainActivity:
     android.widget.Button btn_bbs -> h
     android.widget.Button btn_tool -> i
     android.widget.Button btn_record -> j
-    com.ab.health.MainActivity$OnClickListener onClickListener -> k
-    java.lang.String url -> l
-    java.lang.String inputWeight -> m
+    android.widget.Button btn_addresslist -> k
+    com.ab.health.MainActivity$OnClickListener onClickListener -> l
+    java.lang.String url -> m
     int recordCalorie -> n
-    java.lang.String username -> o
-    java.lang.String nicename -> p
-    java.lang.String height -> q
-    java.lang.String weight -> r
-    java.lang.String age -> s
-    java.lang.String target -> t
-    java.lang.String days -> u
-    android.widget.TextView titleBar -> v
-    android.widget.TextView query -> w
-    java.util.ArrayList weightRecordList -> x
-    com.ab.health.utility.UpdateManager update -> y
-    android.widget.LinearLayout bottom_record -> z
-    android.widget.LinearLayout bottom_tool -> A
-    android.widget.LinearLayout bottom_weight -> B
-    android.widget.LinearLayout bottom_server -> C
-    java.util.List gonggaoData -> D
-    android.widget.SimpleAdapter gongGaoAdapter -> E
-    android.widget.ListView gonggaoLV -> F
-    boolean isComplelet -> G
-    com.ab.health.utility.HttpGetData httpData -> H
-    java.lang.String subTitle -> I
-    com.ab.health.MainActivity$GongGaoItemClick itemclick -> J
-    java.util.List patrolRecordData -> K
-    com.ab.nfc.NFCAdapter patrolRecordAdapter -> L
-    android.widget.ListView patrolRecordLV -> M
-    android.widget.ProgressBar patrolwaiter -> N
-    android.media.SoundPool soundPool -> O
-    java.lang.String TAGaddress -> P
-    int year -> Q
-    int month -> R
-    int day -> S
-    android.widget.CalendarView calendar -> T
-    android.widget.Button refresh -> U
-    boolean isInit -> V
-    boolean patroltouch -> W
-    java.lang.String ramUsername -> X
-    java.lang.String ramOrgniztion -> Y
+    android.widget.TextView titleBar -> o
+    android.widget.TextView query -> p
+    java.util.ArrayList weightRecordList -> q
+    com.ab.health.utility.UpdateManager update -> r
+    android.widget.LinearLayout bottom_record -> s
+    android.widget.LinearLayout bottom_tool -> t
+    android.widget.LinearLayout bottom_weight -> u
+    android.widget.LinearLayout bottom_server -> v
+    java.util.List gonggaoData -> w
+    android.widget.SimpleAdapter gongGaoAdapter -> x
+    android.widget.ListView gonggaoLV -> y
+    boolean isComplelet -> z
+    com.ab.health.utility.HttpGetData httpData -> A
+    java.lang.String subTitle -> B
+    com.ab.health.MainActivity$GongGaoItemClick itemclick -> C
+    java.util.List patrolRecordData -> D
+    com.ab.nfc.NFCAdapter patrolRecordAdapter -> E
+    android.widget.ListView patrolRecordLV -> F
+    android.widget.ProgressBar patrolwaiter -> G
+    android.media.SoundPool soundPool -> H
+    java.lang.String TAGaddress -> I
+    java.lang.String tagid -> J
+    int year -> K
+    int month -> L
+    int day -> M
+    android.widget.CalendarView calendar -> N
+    android.widget.Button refresh -> O
+    android.widget.Button noTagid -> P
+    boolean patroltouch -> Q
+    java.lang.String ramUsername -> R
+    java.lang.String ramOrgniztion -> S
     void onCreate(android.os.Bundle) -> onCreate
     boolean firstUse() -> a
     void CreatePatroRecordTabel() -> b
@@ -1971,6 +1770,7 @@ com.ab.health.MainActivity -> com.ab.health.MainActivity:
     void GetShared() -> g
     void onResume() -> onResume
     void InitButton() -> h
+    java.lang.String byte2HexStr(byte[]) -> b
     java.lang.Integer gongGaoJsonHandle(java.lang.String) -> a
     java.lang.Integer patrolRecordJsonHandle(java.lang.String) -> b
     java.util.List access$0(com.ab.health.MainActivity) -> a
@@ -1981,45 +1781,50 @@ com.ab.health.MainActivity -> com.ab.health.MainActivity:
     android.widget.LinearLayout access$5(com.ab.health.MainActivity) -> f
     android.widget.LinearLayout access$6(com.ab.health.MainActivity) -> g
     android.widget.TextView access$7(com.ab.health.MainActivity) -> h
-    int access$8(com.ab.health.MainActivity) -> i
+    android.widget.Button access$8(com.ab.health.MainActivity) -> i
     int access$9(com.ab.health.MainActivity) -> j
     int access$10(com.ab.health.MainActivity) -> k
-    android.widget.ProgressBar access$11(com.ab.health.MainActivity) -> l
-    android.widget.Button access$12(com.ab.health.MainActivity) -> m
-    void access$13(com.ab.health.MainActivity) -> n
-    boolean access$14(com.ab.health.MainActivity) -> o
-    java.lang.String access$15(com.ab.health.MainActivity) -> p
-    com.ab.health.utility.HttpGetData access$16(com.ab.health.MainActivity) -> q
-    java.lang.Integer access$17(com.ab.health.MainActivity,java.lang.String) -> a
-    android.widget.SimpleAdapter access$18(com.ab.health.MainActivity) -> r
-    boolean access$19(com.ab.health.MainActivity) -> s
-    java.util.List access$20(com.ab.health.MainActivity) -> t
-    java.lang.String access$21(com.ab.health.MainActivity) -> u
-    java.lang.Integer access$22(com.ab.health.MainActivity,java.lang.String) -> b
-    android.widget.ListView access$23(com.ab.health.MainActivity) -> v
-    com.ab.nfc.NFCAdapter access$24(com.ab.health.MainActivity) -> w
-    void access$25(com.ab.health.MainActivity,com.ab.health.utility.UpdateManager) -> a
-    com.ab.health.utility.UpdateManager access$26(com.ab.health.MainActivity) -> x
-    void access$27(com.ab.health.MainActivity,android.media.SoundPool) -> a
-    android.media.SoundPool access$28(com.ab.health.MainActivity) -> y
-    java.lang.String access$29(com.ab.health.MainActivity) -> z
-    android.widget.ListView access$30(com.ab.health.MainActivity) -> A
-    void access$31(com.ab.health.MainActivity,boolean) -> a
-    void access$32(com.ab.health.MainActivity,int) -> a
-    void access$33(com.ab.health.MainActivity,int) -> b
-    void access$34(com.ab.health.MainActivity,int) -> c
-com.ab.health.MainActivity$1 -> com.ab.health.y:
+    int access$11(com.ab.health.MainActivity) -> l
+    android.widget.ProgressBar access$12(com.ab.health.MainActivity) -> m
+    android.widget.Button access$13(com.ab.health.MainActivity) -> n
+    void access$14(com.ab.health.MainActivity) -> o
+    boolean access$15(com.ab.health.MainActivity) -> p
+    java.lang.String access$16(com.ab.health.MainActivity) -> q
+    com.ab.health.utility.HttpGetData access$17(com.ab.health.MainActivity) -> r
+    java.lang.Integer access$18(com.ab.health.MainActivity,java.lang.String) -> a
+    android.widget.SimpleAdapter access$19(com.ab.health.MainActivity) -> s
+    boolean access$20(com.ab.health.MainActivity) -> t
+    java.util.List access$21(com.ab.health.MainActivity) -> u
+    java.lang.String access$22(com.ab.health.MainActivity) -> v
+    java.lang.Integer access$23(com.ab.health.MainActivity,java.lang.String) -> b
+    android.widget.Button access$24(com.ab.health.MainActivity) -> w
+    android.widget.ListView access$25(com.ab.health.MainActivity) -> x
+    com.ab.nfc.NFCAdapter access$26(com.ab.health.MainActivity) -> y
+    void access$27(com.ab.health.MainActivity,com.ab.health.utility.UpdateManager) -> a
+    com.ab.health.utility.UpdateManager access$28(com.ab.health.MainActivity) -> z
+    java.lang.String access$29(byte[]) -> a
+    void access$30(com.ab.health.MainActivity,java.lang.String) -> c
+    void access$31(com.ab.health.MainActivity,android.media.SoundPool) -> a
+    android.media.SoundPool access$32(com.ab.health.MainActivity) -> A
+    java.lang.String access$33(com.ab.health.MainActivity) -> B
+    java.lang.String access$34(com.ab.health.MainActivity) -> C
+    android.widget.ListView access$35(com.ab.health.MainActivity) -> D
+    void access$36(com.ab.health.MainActivity,boolean) -> a
+    void access$37(com.ab.health.MainActivity,int) -> a
+    void access$38(com.ab.health.MainActivity,int) -> b
+    void access$39(com.ab.health.MainActivity,int) -> c
+com.ab.health.MainActivity$1 -> com.ab.health.p:
     com.ab.health.MainActivity this$0 -> a
     void onScrollStateChanged(android.widget.AbsListView,int) -> onScrollStateChanged
     void onScroll(android.widget.AbsListView,int,int,int) -> onScroll
-com.ab.health.MainActivity$2 -> com.ab.health.z:
+com.ab.health.MainActivity$2 -> com.ab.health.q:
     com.ab.health.MainActivity this$0 -> a
     void onScrollStateChanged(android.widget.AbsListView,int) -> onScrollStateChanged
     void onScroll(android.widget.AbsListView,int,int,int) -> onScroll
-com.ab.health.MainActivity$3 -> com.ab.health.aa:
+com.ab.health.MainActivity$3 -> com.ab.health.r:
     com.ab.health.MainActivity this$0 -> a
     void onSelectedDayChange(android.widget.CalendarView,int,int,int) -> onSelectedDayChange
-com.ab.health.MainActivity$CreateTableAysnTask -> com.ab.health.ab:
+com.ab.health.MainActivity$CreateTableAysnTask -> com.ab.health.s:
     int ret -> a
     java.lang.String url -> b
     java.lang.String param -> c
@@ -2029,10 +1834,10 @@ com.ab.health.MainActivity$CreateTableAysnTask -> com.ab.health.ab:
     void onPostExecute(java.lang.Integer) -> a
     void onPostExecute(java.lang.Object) -> onPostExecute
     java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-com.ab.health.MainActivity$GongGaoItemClick -> com.ab.health.ac:
+com.ab.health.MainActivity$GongGaoItemClick -> com.ab.health.t:
     com.ab.health.MainActivity this$0 -> a
     void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
-com.ab.health.MainActivity$LoadGongGaoAysnTask -> com.ab.health.ad:
+com.ab.health.MainActivity$LoadGongGaoAysnTask -> com.ab.health.u:
     int ret -> a
     java.lang.String ggURL -> b
     java.lang.String gonggaoParam -> c
@@ -2042,7 +1847,7 @@ com.ab.health.MainActivity$LoadGongGaoAysnTask -> com.ab.health.ad:
     void onPostExecute(java.lang.Integer) -> a
     void onPostExecute(java.lang.Object) -> onPostExecute
     java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-com.ab.health.MainActivity$LoadPatrolRecordAysnTask -> com.ab.health.ae:
+com.ab.health.MainActivity$LoadPatrolRecordAysnTask -> com.ab.health.v:
     java.lang.String loadParam -> a
     java.lang.String url -> b
     com.ab.health.MainActivity this$0 -> c
@@ -2051,19 +1856,20 @@ com.ab.health.MainActivity$LoadPatrolRecordAysnTask -> com.ab.health.ae:
     void onPostExecute(java.lang.Integer) -> a
     void onPostExecute(java.lang.Object) -> onPostExecute
     java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-com.ab.health.MainActivity$OnClickListener -> com.ab.health.af:
+com.ab.health.MainActivity$OnClickListener -> com.ab.health.w:
     com.ab.health.MainActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-com.ab.health.MainActivity$UpdateAppAysnTask -> com.ab.health.ag:
+com.ab.health.MainActivity$UpdateAppAysnTask -> com.ab.health.x:
     int ret -> a
     com.ab.health.MainActivity this$0 -> b
     void onPreExecute() -> onPreExecute
     java.lang.Integer doInBackground(java.lang.Object[]) -> a
     java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-com.ab.health.MainActivity$UploadPatrolRecordAysnTask -> com.ab.health.ah:
+com.ab.health.MainActivity$UploadPatrolRecordAysnTask -> com.ab.health.y:
     java.lang.String uploadparam -> a
     java.lang.String url -> b
-    com.ab.health.MainActivity this$0 -> c
+    java.lang.String ret -> c
+    com.ab.health.MainActivity this$0 -> d
     void onPreExecute() -> onPreExecute
     java.lang.Integer doInBackground(java.lang.Object[]) -> a
     void onPostExecute(java.lang.Integer) -> a
@@ -2089,20 +1895,21 @@ com.ab.health.PatrolQueryActivity -> com.ab.health.PatrolQueryActivity:
     java.util.List access$2(com.ab.health.PatrolQueryActivity) -> c
     void access$3(com.ab.health.PatrolQueryActivity) -> d
     java.lang.String access$4(com.ab.health.PatrolQueryActivity) -> e
-    java.lang.Integer access$5(com.ab.health.PatrolQueryActivity,java.lang.String) -> a
-    android.widget.ProgressBar access$6(com.ab.health.PatrolQueryActivity) -> f
-    android.widget.ListView access$7(com.ab.health.PatrolQueryActivity) -> g
-    com.ab.nfc.NFCAdapter access$8(com.ab.health.PatrolQueryActivity) -> h
-    android.widget.TextView access$9(com.ab.health.PatrolQueryActivity) -> i
-    void access$10(com.ab.health.PatrolQueryActivity,boolean) -> a
-com.ab.health.PatrolQueryActivity$1 -> com.ab.health.ai:
+    java.lang.String access$5(com.ab.health.PatrolQueryActivity) -> f
+    java.lang.Integer access$6(com.ab.health.PatrolQueryActivity,java.lang.String) -> a
+    android.widget.ProgressBar access$7(com.ab.health.PatrolQueryActivity) -> g
+    android.widget.ListView access$8(com.ab.health.PatrolQueryActivity) -> h
+    com.ab.nfc.NFCAdapter access$9(com.ab.health.PatrolQueryActivity) -> i
+    android.widget.TextView access$10(com.ab.health.PatrolQueryActivity) -> j
+    void access$11(com.ab.health.PatrolQueryActivity,boolean) -> a
+com.ab.health.PatrolQueryActivity$1 -> com.ab.health.z:
     com.ab.health.PatrolQueryActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-com.ab.health.PatrolQueryActivity$2 -> com.ab.health.aj:
+com.ab.health.PatrolQueryActivity$2 -> com.ab.health.aa:
     com.ab.health.PatrolQueryActivity this$0 -> a
     void onScrollStateChanged(android.widget.AbsListView,int) -> onScrollStateChanged
     void onScroll(android.widget.AbsListView,int,int,int) -> onScroll
-com.ab.health.PatrolQueryActivity$LoadPatrolRecordAysnTask -> com.ab.health.ak:
+com.ab.health.PatrolQueryActivity$LoadPatrolRecordAysnTask -> com.ab.health.ab:
     java.lang.String loadParam -> a
     java.lang.String url -> b
     int year -> c
@@ -2114,24 +1921,6 @@ com.ab.health.PatrolQueryActivity$LoadPatrolRecordAysnTask -> com.ab.health.ak:
     void onPostExecute(java.lang.Integer) -> a
     void onPostExecute(java.lang.Object) -> onPostExecute
     java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-com.ab.health.PingGuActivity -> com.ab.health.al:
-    java.lang.String username -> a
-    java.lang.String nicename -> b
-    java.lang.String height -> c
-    java.lang.String weight -> d
-    java.lang.String age -> e
-    java.lang.String target -> f
-    java.lang.String days -> g
-    android.widget.TextView bmiTV -> h
-    android.widget.TextView bmrTV -> i
-    android.widget.TextView standardweightTV -> j
-    android.widget.TextView healthweightTV -> k
-    android.widget.TextView weightTV -> l
-    boolean sex -> m
-    void onCreate(android.os.Bundle) -> onCreate
-com.ab.health.PingGuActivity$1 -> com.ab.health.am:
-    com.ab.health.PingGuActivity this$0 -> a
-    void onClick(android.view.View) -> onClick
 com.ab.health.RegisterActivity -> com.ab.health.RegisterActivity:
     android.widget.EditText userName -> a
     android.widget.EditText passWord -> b
@@ -2143,10 +1932,10 @@ com.ab.health.RegisterActivity -> com.ab.health.RegisterActivity:
     android.widget.EditText access$1(com.ab.health.RegisterActivity) -> b
     android.widget.EditText access$2(com.ab.health.RegisterActivity) -> c
     android.widget.EditText access$3(com.ab.health.RegisterActivity) -> d
-com.ab.health.RegisterActivity$1 -> com.ab.health.an:
+com.ab.health.RegisterActivity$1 -> com.ab.health.ac:
     com.ab.health.RegisterActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-com.ab.health.RegisterActivity$RegisterAysnTask -> com.ab.health.ao:
+com.ab.health.RegisterActivity$RegisterAysnTask -> com.ab.health.ad:
     java.lang.String res -> a
     java.lang.String url -> b
     java.lang.String param -> c
@@ -2157,35 +1946,60 @@ com.ab.health.RegisterActivity$RegisterAysnTask -> com.ab.health.ao:
     void onPostExecute(java.lang.Integer) -> a
     void onPostExecute(java.lang.Object) -> onPostExecute
     java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
+com.ab.health.TongXunLuActivity -> com.ab.health.TongXunLuActivity:
+    android.widget.ListView AddressListLV -> a
+    android.widget.Button btn_back -> b
+    java.util.List AddressListData -> c
+    android.widget.SimpleAdapter AddressListAdapter -> d
+    com.ab.health.utility.HttpGetData httpData -> e
+    java.lang.String ramOrgniztion -> f
+    boolean isComplelet -> g
+    com.ab.health.TongXunLuActivity$ItemClick itemclick -> h
+    android.widget.ProgressBar patrolwaiter -> i
+    void onCreate(android.os.Bundle) -> onCreate
+    void GetShared() -> a
+    java.lang.Integer AddressListJsonHandle(java.lang.String) -> a
+    java.util.List access$0(com.ab.health.TongXunLuActivity) -> a
+    boolean access$1(com.ab.health.TongXunLuActivity) -> b
+    void access$2(com.ab.health.TongXunLuActivity) -> c
+    java.lang.String access$3(com.ab.health.TongXunLuActivity) -> d
+    java.lang.Integer access$4(com.ab.health.TongXunLuActivity,java.lang.String) -> a
+    android.widget.ProgressBar access$5(com.ab.health.TongXunLuActivity) -> e
+    android.widget.ListView access$6(com.ab.health.TongXunLuActivity) -> f
+    android.widget.SimpleAdapter access$7(com.ab.health.TongXunLuActivity) -> g
+com.ab.health.TongXunLuActivity$1 -> com.ab.health.ae:
+    com.ab.health.TongXunLuActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.ab.health.TongXunLuActivity$2 -> com.ab.health.af:
+    com.ab.health.TongXunLuActivity this$0 -> a
+    void onScrollStateChanged(android.widget.AbsListView,int) -> onScrollStateChanged
+    void onScroll(android.widget.AbsListView,int,int,int) -> onScroll
+com.ab.health.TongXunLuActivity$ItemClick -> com.ab.health.ag:
+    com.ab.health.TongXunLuActivity this$0 -> a
+    void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+com.ab.health.TongXunLuActivity$LoadAddressListAysnTask -> com.ab.health.ah:
+    java.lang.String loadParam -> a
+    java.lang.String url -> b
+    com.ab.health.TongXunLuActivity this$0 -> c
+    void onPreExecute() -> onPreExecute
+    java.lang.Integer doInBackground(java.lang.Object[]) -> a
+    void onPostExecute(java.lang.Integer) -> a
+    void onPostExecute(java.lang.Object) -> onPostExecute
+    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
 com.ab.health.model.User -> com.ab.health.a.a:
-    int age -> a
-    float height -> b
-    java.lang.Boolean sex -> c
-    float weight -> d
-    int getAge() -> a
-    float getHeight() -> b
-    java.lang.Boolean getSex() -> c
-    float getWeight() -> d
 com.ab.health.utility.AppSetting -> com.ab.health.b.a:
     java.lang.String getRootURL() -> a
     java.lang.String getSettingFile() -> b
-com.ab.health.utility.HealthUtility -> com.ab.health.b.b:
-    float calHeightMi(float) -> a
-    float calBMI(com.ab.health.model.User) -> a
-    float calStanderWeight(com.ab.health.model.User) -> b
-    float calBMR(com.ab.health.model.User) -> c
-    java.lang.String boolHealth(com.ab.health.model.User) -> d
-    float standardHealthWeight(com.ab.health.model.User,boolean) -> a
-com.ab.health.utility.HttpGetData -> com.ab.health.b.c:
+com.ab.health.utility.HttpGetData -> com.ab.health.b.b:
     java.lang.String retResponse -> a
     java.lang.String HttpGets(java.lang.String,java.lang.String) -> a
-com.ab.health.utility.NetworkConnect -> com.ab.health.b.d:
+com.ab.health.utility.NetworkConnect -> com.ab.health.b.c:
     void AlertNotCon(android.content.Context) -> a
     boolean isNetworkConnected(android.content.Context) -> b
-com.ab.health.utility.NetworkConnect$1 -> com.ab.health.b.e:
+com.ab.health.utility.NetworkConnect$1 -> com.ab.health.b.d:
     android.content.Context val$context -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-com.ab.health.utility.UpdateManager -> com.ab.health.b.f:
+com.ab.health.utility.UpdateManager -> com.ab.health.b.e:
     java.lang.String updateAddress -> a
     java.lang.String updateFileName -> b
     int currentVersion -> c
@@ -2210,19 +2024,19 @@ com.ab.health.utility.UpdateManager -> com.ab.health.b.f:
     void access$3(com.ab.health.utility.UpdateManager) -> d
     void access$4(com.ab.health.utility.UpdateManager,boolean) -> a
     void access$5(com.ab.health.utility.UpdateManager) -> e
-com.ab.health.utility.UpdateManager$1 -> com.ab.health.b.g:
+com.ab.health.utility.UpdateManager$1 -> com.ab.health.b.f:
     com.ab.health.utility.UpdateManager this$0 -> a
     void handleMessage(android.os.Message) -> handleMessage
-com.ab.health.utility.UpdateManager$2 -> com.ab.health.b.h:
+com.ab.health.utility.UpdateManager$2 -> com.ab.health.b.g:
     com.ab.health.utility.UpdateManager this$0 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-com.ab.health.utility.UpdateManager$3 -> com.ab.health.b.i:
+com.ab.health.utility.UpdateManager$3 -> com.ab.health.b.h:
     com.ab.health.utility.UpdateManager this$0 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-com.ab.health.utility.UpdateManager$4 -> com.ab.health.b.j:
+com.ab.health.utility.UpdateManager$4 -> com.ab.health.b.i:
     com.ab.health.utility.UpdateManager this$0 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-com.ab.health.utility.UpdateManager$5 -> com.ab.health.b.k:
+com.ab.health.utility.UpdateManager$5 -> com.ab.health.b.j:
     com.ab.health.utility.UpdateManager this$0 -> a
     void run() -> run
 com.ab.nfc.NFCAdapter -> com.ab.a.a:

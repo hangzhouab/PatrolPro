@@ -1085,8 +1085,9 @@ android.support.v4.widget.ViewDragHelper$2
 android.support.v4.widget.ViewDragHelper$Callback:
     148:148:public ViewDragHelper$Callback()
 com.ab.health.BuildConfig
-com.ab.health.ChangeInfoActivity:
-    private android.widget.TextView standardWeight
+com.ab.health.ChangeInfoActivity
+com.ab.health.ChangeInfoActivity$Click
+com.ab.health.ChangeInfoActivity$SubmitAysnTask
 com.ab.health.ChangePlainActivity:
     private android.widget.TextView standardWeight
     private android.widget.TextView calButton
@@ -1104,35 +1105,14 @@ com.ab.health.CourseActivity$SearchCourseAysnTask
 com.ab.health.CourseRecordActivity
 com.ab.health.CourseRecordActivity$1
 com.ab.health.DatePicker
-com.ab.health.FirstUseActivity:
-    private java.lang.String dateString
-    private android.widget.EditText xuezhiET
 com.ab.health.GongGaoActivity:
     private android.widget.Button btn_back
-com.ab.health.GuideActivity
-com.ab.health.GuideActivity$ButtonOnClick
-com.ab.health.GuideActivity$GuideOnTouchListener
 com.ab.health.LiPinActivity
 com.ab.health.LiPinActivity$1
 com.ab.health.LiPinActivity$LoadAdImageAysnTask
 com.ab.health.MainActivity:
-    private android.widget.Button btn_topbar_home
-    private android.widget.Button btn_patrolQuery
-    private android.widget.Button gonggao
-    private java.lang.String param
-    private java.lang.String ret
-    private int sex
-    private android.widget.TextView recordCal
-    private android.widget.TextView recordSports
-    private android.widget.TextView courseTarget
-    private android.widget.TextView sportsTarget
-    private android.widget.TextView changePlain
-    private android.widget.TextView yourBMI
-    private android.widget.TextView yourWeight
-    private android.widget.TextView targetWeight
-    private com.ab.health.utility.HttpGetData commitDate
-    364:392:private void db()
-    485:494:public boolean isNetworkConnected(android.content.Context)
+    359:386:private void db()
+    478:487:public boolean isNetworkConnected(android.content.Context)
 com.ab.health.R
 com.ab.health.R$anim
 com.ab.health.R$array
@@ -1164,6 +1144,10 @@ com.ab.health.SportsActivity$OnClickLis
 com.ab.health.SportsActivity$SearchCourseAysnTask
 com.ab.health.SportsRecordActivity
 com.ab.health.SportsRecordActivity$1
+com.ab.health.TongXunLuActivity:
+    private java.lang.String url
+    private java.lang.String param
+    private java.lang.String subTitle
 com.ab.health.ZhiShiActivity
 com.ab.health.ZhiShiActivity$1
 com.ab.health.ZhiShiActivity$ItemClick
@@ -1175,7 +1159,16 @@ com.ab.health.ZhiShiDetailActivity$LoadGongGaoDetailAysnTask
 com.ab.health.db.DBHelper
 com.ab.health.model.Guarder
 com.ab.health.model.User:
+    private int age
+    private float height
+    private java.lang.Boolean sex
+    private float weight
     10:14:public User(float,float)
+    21:27:public User(java.lang.Boolean,int,float,float)
+    31:31:public int getAge()
+    36:36:public float getHeight()
+    41:41:public java.lang.Boolean getSex()
+    46:46:public float getWeight()
     51:52:public void setAge(int)
     56:57:public void setHeight(float)
     61:62:public void setSex(java.lang.Boolean)
@@ -1193,16 +1186,7 @@ com.ab.health.utility.AppSetting:
     33:39:public static int getAndroidSDKVersion()
     43:56:public static void writeAppConfig(android.content.Context,com.ab.health.model.Guarder)
 com.ab.health.utility.DensityUtil
-com.ab.health.utility.HealthUtility:
-    5:5:public HealthUtility()
-    26:26:public static double highFat(com.ab.health.model.User)
-    30:30:public static double highHealthWeight(com.ab.health.model.User)
-    35:35:public static double lowFat(com.ab.health.model.User)
-    39:39:public static double lowHealthWeight(com.ab.health.model.User)
-    45:50:public static double tunwei(com.ab.health.model.User)
-    69:74:public static double xiongwei(com.ab.health.model.User)
-    96:101:public static double yaowei(com.ab.health.model.User)
-    113:113:public static double xishu(com.ab.health.model.User)
+com.ab.health.utility.HealthUtility
 com.ab.health.utility.NetworkConnect:
     15:15:public NetworkConnect()
 com.ab.health.utility.TelPhone
