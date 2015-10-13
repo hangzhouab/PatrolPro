@@ -97,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10.0dip"
-                android:text="浙江公众信息产业有限公司"
+                android:text="浙江省公众信息产业有限公司"
                 android:textColor="#ff666666"
                 android:textSize="@dimen/value_text_size" />
 

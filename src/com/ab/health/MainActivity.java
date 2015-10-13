@@ -85,7 +85,7 @@ public class MainActivity extends Activity {
 	private OnClickListener onClickListener;
 	private String url;
 	private int recordCalorie = 0;
-	private TextView titleBar, query;
+	private TextView titleBar, query,btn_loginout;
 	private ArrayList<View> weightRecordList = new ArrayList<View>();
 	private UpdateManager update;
 	private LinearLayout bottom_record, bottom_tool, bottom_weight,
@@ -350,6 +350,9 @@ public class MainActivity extends Activity {
 		btn_addresslist = (Button) findViewById(R.id.topbar_address_list);
 		btn_addresslist.setOnClickListener(onClickListener);
 		
+		btn_loginout = (TextView) findViewById(R.id.topbar_loginout);
+		btn_loginout.setOnClickListener(onClickListener);
+		
 
 	}
 
@@ -400,6 +403,7 @@ public class MainActivity extends Activity {
 				bottom_tool.setBackgroundColor(0XFFFFFFFF);
 				bottom_weight.setBackgroundColor(0XFFFFFFFF);		
 				query.setVisibility(View.GONE);
+				btn_loginout.setVisibility(View.GONE);
 				btn_addresslist.setVisibility(View.VISIBLE);
 				break;
 
@@ -412,6 +416,7 @@ public class MainActivity extends Activity {
 				bottom_tool.setBackgroundColor(0Xff46cdd8);
 				bottom_weight.setBackgroundColor(0XFFFFFFFF);
 				query.setVisibility(View.GONE);
+				btn_loginout.setVisibility(View.GONE);
 				btn_addresslist.setVisibility(View.VISIBLE);
 				break;
 			case R.id.bottombar_bbs:
@@ -424,7 +429,7 @@ public class MainActivity extends Activity {
 				bottom_tool.setBackgroundColor(0XFFFFFFFF);
 				bottom_weight.setBackgroundColor(0Xff46cdd8);
 				query.setVisibility(View.VISIBLE);
-				
+				btn_loginout.setVisibility(View.GONE);
 				break;
 			case R.id.bottombar_about:
 				contentViewPager.setDisplayedChild(2);
@@ -434,8 +439,11 @@ public class MainActivity extends Activity {
 				bottom_server.setBackgroundColor(0Xff46cdd8);
 				bottom_tool.setBackgroundColor(0XFFFFFFFF);
 				bottom_weight.setBackgroundColor(0XFFFFFFFF);
+				
 				query.setVisibility(View.GONE);
-				btn_addresslist.setVisibility(View.VISIBLE);
+				btn_addresslist.setVisibility(View.GONE);
+				btn_loginout.setVisibility(View.VISIBLE);
+				
 				break;
 			case R.id.changefitness:
 				Intent intentplain = new Intent(MainActivity.this,
