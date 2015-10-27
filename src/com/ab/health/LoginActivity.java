@@ -23,7 +23,7 @@ import android.widget.Toast;
 
 public class LoginActivity extends Activity {
 
-	private String url,param,username,password,orgniztion;
+	private String url,param,username,password,orgniztion,bumen;
 	
 	
 	
@@ -39,16 +39,16 @@ public class LoginActivity extends Activity {
 		passWord = (EditText) findViewById(R.id.login_password_edittext);
 		
 		
-
-		TextView reg = (TextView) findViewById(R.id.login_jump_textview);
-		reg.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				finish();
-				Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-				startActivity(intent);
-			}
-		});
+//      注册页面跳转按钮
+//		TextView reg = (TextView) findViewById(R.id.login_jump_textview);
+//		reg.setOnClickListener(new View.OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				finish();
+//				Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+//				startActivity(intent);
+//			}
+//		});
 		
 		
 		Button login = (Button) findViewById(R.id.login_sumbit_button);
@@ -108,7 +108,10 @@ public class LoginActivity extends Activity {
 				Toast.makeText(getApplicationContext(),"密码不正确",Toast.LENGTH_SHORT).show();
 				return;
 			}
-			JsonHandle(pass);	
+			if (!JsonHandle(pass)){
+				Toast.makeText(getApplicationContext(),"获取信息失败，请重试",Toast.LENGTH_SHORT).show();
+				return;
+			}
 			writeAppConfig();			
 			Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 			startActivity(intent);			
@@ -117,19 +120,24 @@ public class LoginActivity extends Activity {
 	}
 	
 	
-	private Integer JsonHandle(String retResponse) {
-		int ret =0;
+	private boolean JsonHandle(String retResponse) {
+		boolean ret = true;
+		if(retResponse == null ){
+			Log.i("ret", "登陆时获取用户信息失败");
+			return false;
+		}
 		try { 
 			JSONObject json = new JSONObject(retResponse);
 			JSONArray foodsArray = json.getJSONArray("foods");
 			for (int i = 0; i < foodsArray.length(); i++) {
 				JSONObject temp = (JSONObject) foodsArray.opt(i);
-				username = temp.getString("username");
-				orgniztion = temp.getString("orgniztion");				
+				username = temp.getString("username"); 
+				orgniztion = temp.getString("orgniztion");		
+				bumen = temp.getString("bumen");
 			}			
 		} catch (JSONException e) {
 			e.printStackTrace();
-			ret = 1;
+			ret = false;
 		}
 		return ret;
 	}
@@ -139,9 +147,11 @@ public class LoginActivity extends Activity {
 		Editor editor = appSetting.edit();
 		editor.putString(AppSetting.username, username);
 		editor.putString(AppSetting.orgnization, orgniztion);		
+		editor.putString(AppSetting.bumen, bumen);
 		editor.putBoolean(AppSetting.isRegister, true);			
 		editor.commit();
 		Log.i("username", username);
 		Log.i("org", orgniztion);
+		Log.i("bumen", bumen);
 	}
 }

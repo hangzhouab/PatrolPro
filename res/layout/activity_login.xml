@@ -105,7 +105,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="没有账户？请单击这里注册"
+                    android:text="请联系单位管理员索取账户密码"
                     android:textColor="#ff6666ff"
                     android:textSize="16.0dip" />
             </RelativeLayout>
