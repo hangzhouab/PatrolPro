@@ -61,6 +61,13 @@ import com.ab.health.R;
 
 import com.ab.health.GongGaoActivity.ItemClick;
 
+import com.ab.health.contactstview.ActivityTxl;
+import com.ab.health.contactstview.CharacterParser;
+import com.ab.health.contactstview.ClearEditText;
+import com.ab.health.contactstview.PinyinComparator;
+import com.ab.health.contactstview.SideBar;
+import com.ab.health.contactstview.SortAdapter;
+import com.ab.health.contactstview.SortModel;
 import com.ab.health.model.User;
 
 import com.ab.health.utility.DensityUtil;
@@ -93,7 +100,7 @@ public class MainActivity extends Activity {
 	
 
 	
-	// GongGao viewFliper
+	// 公告 viewFliper
 	private List<HashMap<String, String>> gonggaoData;
 	private SimpleAdapter gongGaoAdapter;
 	private ListView gonggaoLV;
@@ -115,6 +122,17 @@ public class MainActivity extends Activity {
 	private Button refresh,noTagid;
 	private boolean patroltouch=false;
 	private String ramUsername,ramOrgniztion;
+	
+	
+	// 通信录
+	private ListView sortListView;
+	private SideBar sideBar;
+	private TextView dialog;
+	private SortAdapter adapter;
+	private ClearEditText mClearEditText;	
+	private CharacterParser characterParser;
+	private List<SortModel> SourceDateList;
+	private PinyinComparator pinyinComparator;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -291,8 +309,8 @@ public class MainActivity extends Activity {
 		viewGongGao = flater.inflate(R.layout.activity_gonggao2, contentViewPager);
 		
 		
-		activityPhysiology = flater.inflate(R.layout.fragment_patrol_query,
-				contentViewPager); 
+	//	activityPhysiology = flater.inflate(R.layout.fragment_patrol_query,	contentViewPager); 
+		activityPhysiology = flater.inflate(R.layout.activity_txl,	contentViewPager); 
 		activityServer = flater.inflate(R.layout.activity_setting_about,
 				contentViewPager);
 		onClickListener = new OnClickListener();
@@ -467,8 +485,9 @@ public class MainActivity extends Activity {
 				LoadPatrolRecordAysnTask load = new LoadPatrolRecordAysnTask();
 				load.execute(0);
 				break;	
-			case R.id.topbar_address_list:				
-				Intent intent4 = new Intent(MainActivity.this,TongXunLuActivity.class);
+			case R.id.topbar_address_list:			
+				Intent intent4 = new Intent(MainActivity.this,ActivityTxl.class);
+			//	Intent intent4 = new Intent(MainActivity.this,TongXunLuActivity.class);
 				startActivity(intent4);
 				break;			
 			case R.id.setting_about_weibo_textView:

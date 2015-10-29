@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/catalog"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1.0"
+        android:background="#E0E0E0"
+        android:paddingBottom="5dip"
+        android:paddingLeft="5dip"
+        android:paddingTop="5dip"
+        android:text="A"
+        android:textColor="#454545" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/view_meal_list_icon_iv"
+            android:layout_width="60.0dip"
+            android:layout_height="60.0dip"
+            android:layout_marginLeft="15dip"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="8dp"
+            android:focusable="false"
+            android:scaleType="fitXY"
+            android:src="@drawable/sportsitem2" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10.0dip"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/view_meal_list_cal_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="16dp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+    
+    <ImageView
+            android:id="@+id/view_meon_iv"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginLeft="15dip"
+            android:layout_marginRight="25dip"
+            android:focusable="false"
+            android:scaleType="fitXY"
+            android:src="@drawable/title_bg_blue" />
+
+</LinearLayout>

@@ -5,28 +5,31 @@
 # view res/layout/notification_custom_builder.xml #generated:48
 -keep class android.widget.DateTimeView { <init>(...); }
 
+# view AndroidManifest.xml #generated:49
+-keep class com.ab.health.ActivityTxl { <init>(...); }
+
 # view AndroidManifest.xml #generated:40
 -keep class com.ab.health.AdStartActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:99
+# view AndroidManifest.xml #generated:103
 -keep class com.ab.health.CoreBriefActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:95
 -keep class com.ab.health.FirstUseActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:109
+# view AndroidManifest.xml #generated:116
 -keep class com.ab.health.GongGaoActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:113
+# view AndroidManifest.xml #generated:120
 -keep class com.ab.health.GongGaoDetailActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:104
+# view AndroidManifest.xml #generated:111
 -keep class com.ab.health.HomeActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:90
 -keep class com.ab.health.LoginActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:49
+# view AndroidManifest.xml #generated:107
 -keep class com.ab.health.MainActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:81
@@ -54,6 +57,15 @@
 
 # view res/xml/alarm_prefs.xml #generated:25
 -keep class com.ab.health.clock.RepeatPreference { <init>(...); }
+
+# view AndroidManifest.xml #generated:99
+-keep class com.ab.health.contactstview.ActivityTxl { <init>(...); }
+
+# view res/layout/activity_txl.xml #generated:7
+-keep class com.ab.health.contactstview.ClearEditText { <init>(...); }
+
+# view res/layout/activity_txl.xml #generated:40
+-keep class com.ab.health.contactstview.SideBar { <init>(...); }
 
 # view res/layout/online_recentlist.xml #generated:50
 -keep class com.ab.health.online.swipelistview.SwipeListView { <init>(...); }
