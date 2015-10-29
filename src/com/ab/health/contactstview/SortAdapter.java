@@ -50,6 +50,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
 			view = LayoutInflater.from(mContext).inflate(R.layout.item, null);
 			viewHolder.tvTitle = (TextView) view.findViewById(R.id.title);
 			viewHolder.tvLetter = (TextView) view.findViewById(R.id.catalog);
+			viewHolder.tvPhone = (TextView) view.findViewById(R.id.phone);
 			view.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolder) view.getTag();
@@ -67,7 +68,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
 		}
 	
 		viewHolder.tvTitle.setText(this.list.get(position).getName());
-		
+		viewHolder.tvPhone.setText(this.list.get(position).getPhone());
 		return view;
 
 	}
@@ -77,6 +78,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
 	final static class ViewHolder {
 		TextView tvLetter;
 		TextView tvTitle;
+		TextView tvPhone;
 	}
 
 

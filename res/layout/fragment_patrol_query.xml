@@ -1,15 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@id/act_physiology_root_layout"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#ffeeeeee"
-       >
+    android:background="@android:color/white"
+    android:orientation="vertical" >
 
-    <CalendarView
-        android:id="@+id/patrol_query_calendar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-         />
-     
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#ff46cdd8" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:padding="10.0dip"
+            android:text="巡更查询 "
+            
+            android:textSize="@dimen/title_text_size" />
+
+        <Button
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/back_btn_state" />   
+            
+        <TextView
+            android:id="@+id/query_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:text="查 询" />
+        
+    </RelativeLayout>
+	<CalendarView 
+	    android:id="@+id/patrol_query_calendar"
+	    android:layout_width="fill_parent"
+        android:layout_height="fill_parent"     
+	    />
+    
+</LinearLayout>

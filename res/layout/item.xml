@@ -25,15 +25,15 @@
 
         <ImageView
             android:id="@+id/view_meal_list_icon_iv"
-            android:layout_width="60.0dip"
-            android:layout_height="60.0dip"
+            android:layout_width="40.0dip"
+            android:layout_height="40.0dip"
             android:layout_marginLeft="15dip"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="8dp"
             android:focusable="false"
             android:scaleType="fitXY"
-            android:src="@drawable/sportsitem2" />
+            android:src="@drawable/lianxiren" />
 
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -48,15 +48,17 @@
 
                 <TextView
                     android:id="@+id/title"
+                    android:text="五小五"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/black"
                     android:textSize="16dp" />
 
                 <TextView
-                    android:id="@+id/view_meal_list_cal_tv"
+                    android:id="@+id/phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="138569866"
                     android:textColor="@android:color/darker_gray"
                     android:textSize="16dp" />
             </LinearLayout>

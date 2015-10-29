@@ -150,8 +150,9 @@ public class LoginActivity extends Activity {
 		editor.putString(AppSetting.bumen, bumen);
 		editor.putBoolean(AppSetting.isRegister, true);			
 		editor.commit();
-		Log.i("username", username);
-		Log.i("org", orgniztion);
+		Log.i("name", username);
+		Log.i("unit", orgniztion);
 		Log.i("bumen", bumen);
+		
 	}
 }

@@ -104,6 +104,10 @@
             android:name=".CoreBriefActivity"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name=".QueryRecordActivity"
+            android:screenOrientation="portrait" >
+        </activity>
        <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" >
